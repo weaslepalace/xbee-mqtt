@@ -31,7 +31,7 @@ static int fetch_callback(uint8_t *c, int length)
 	{
 		c[i] = _fetch_data[i + _fetch_head];
 	} 
-	_fetch_head = i;
+	_fetch_head += i;
 	return length;
 }
 
@@ -63,7 +63,8 @@ class GB4MQTTClient {
 		PUBREQ,
 		PUBCOMP,
 		UNSUBACK,
-		PINGRESP
+		PINGRESP,
+		PUBLISH
 	} state;
 
 	bool is_connected;
@@ -268,6 +269,7 @@ static bool got_connection = false;
 static bool got_socket_id = false;
 static bool got_close_resp = false;
 static bool got_socket_create_error = false;
+static bool got_connection_lost = true;
 
 static void notify_callback(
 	xbee_sock_t sock,
@@ -280,6 +282,10 @@ static void notify_callback(
 		break;
 
 		case XBEE_FRAME_SOCK_STATE:
+		if(XBEE_SOCK_STATE_CONNECTION_LOST == message)
+		{
+			got_connection_lost = true;
+		}
 		break;
 
 		case XBEE_FRAME_SOCK_CREATE_RESP:
@@ -316,6 +322,8 @@ static void notify_callback(
 }
 
 static bool got_mqtt_connack = false;
+static bool got_mqtt_suback = false;
+static bool got_mqtt_beep_topic = false;
 
 static void receive_callback(
 	xbee_sock_t sock,
@@ -356,16 +364,74 @@ static void receive_callback(
 			{
 				break;
 			}
-			client.state = GB4MQTTClient::Await::PUBSUB;
+			client.state = GB4MQTTClient::Await::SUBACK;
 			client.is_connected = true;
 
 			got_mqtt_connack = true;
 		}
 		break;
+
+		case GB4MQTTClient::Await::SUBACK:
+		if(SUBACK == type)
+		{
+			uint16_t packet_id;
+			int qos_count;
+			int qos[1];
+			if(1 != MQTTDeserialize_suback(
+				&packet_id,
+				1,
+				&qos_count,
+				qos,
+				rx_buffer,
+				payload_length))
+			{
+				break;
+			}
+			got_mqtt_suback = true;
+
+			client.state = GB4MQTTClient::Await::PUBLISH;
+		}
+		break;
 		
+		case GB4MQTTClient::Await::PUBLISH:
+		if(PUBLISH == type)
+		{
+			uint8_t duplicate_flag;
+			uint8_t retain_flag;
+			int qos;
+			uint16_t packet_id;
+			MQTTString topic;
+			uint8_t *topic_data;
+			int topic_data_len;	
+			if(1 != MQTTDeserialize_publish(
+				&duplicate_flag,
+				&qos,
+				&retain_flag,
+				&packet_id,
+				&topic,
+				&topic_data,
+				&topic_data_len,
+				rx_buffer,
+				payload_length))
+			{
+				break;
+			}
+			if(0 != memcmp("beep", topic.lenstring.data, 4))
+			{
+				break;
+			}
+			if('1' != topic_data[0])
+			{
+				break;
+			}
+			got_mqtt_beep_topic = true;
+		}
+		break;
+
 		default:
 		break;
 	}
+	fetch_rewind();
 }
 
 
@@ -374,6 +440,9 @@ int main()
 {
 	init();
 	watchdogDisable();
+
+	pinMode(LED_BUILTIN, OUTPUT);
+	digitalWrite(LED_BUILTIN, HIGH);
 
 	xbee_serial_t ser = {
 		.baudrate = 9600
@@ -436,20 +505,6 @@ int main()
 		{
 			Serial.print("Failed to initialize AT command layer ");
 			Serial.println(status);
-	
-			xbee_init.readAPIMode(&xbee);
-			while(-1 == apiMode);
-			if(1 != apiMode)
-			{
-//				while(false == xbee_init.enterCommandMode())
-//				{
-//					delay(1000);
-//				}
-//				xbee_init.enableAPIMode();
-//				xbee_init.applyChanges();
-//				xbee_init.writeChanges();
-//				xbee_init.exitCommandMode();
-			}
 
 			xbee_cmd_query_device(&xbee, 0);
 		}
@@ -505,7 +560,9 @@ int main()
 	{
 		xbee_dev_tick(&xbee);
 	}
-	
+
+	digitalWrite(LED_BUILTIN, LOW);
+
 	uint8_t connect_packet[100];
 	MQTTPacket_connectData conn = MQTTPacket_connectData_initializer; 
 	conn.clientID.cstring = (char*)"NovaSource-GB4";
@@ -529,8 +586,36 @@ int main()
 		xbee_dev_tick(&xbee);
 	}
 
+	uint8_t subscribe_packet[100];
+	MQTTString beep_topic[1] = {{.cstring = (char*)"beep"}};
+	int beep_qos[1] = {0};
+	int packet_id = 1;	
+	int subscribe_packet_len = MQTTSerialize_subscribe(
+		subscribe_packet, 100,
+		0,
+		packet_id,
+		1,
+		beep_topic,
+		beep_qos);		
+	status = xbee_sock_send(sock, 0, subscribe_packet, subscribe_packet_len);
+	if(0 != status)
+	{
+		Serial.print("Failed to send sub packet ");
+		Serial.println(status);
+		for(;;);
+	}
+	
+
 	for(;;)
 	{
+		if(true == got_connection_lost)
+		{
+			Serial.println("Connection lost");
+			for(;;);
+		}
+
+		digitalWrite(LED_BUILTIN, LOW);
+
 		uint8_t publish_packet[100];
 		MQTTString topic = {.cstring = (char *)"count"};
 		static uint8_t pub_count[1] = {'0'};
@@ -556,6 +641,11 @@ int main()
 		for(uint32_t tick0 = millis(); millis() - tick0 < 5000;)
 		{
 			xbee_dev_tick(&xbee);
+			if(true == got_mqtt_beep_topic)
+			{
+				digitalWrite(LED_BUILTIN, HIGH);
+				got_mqtt_beep_topic = false;
+			}
 		}
 	}
 

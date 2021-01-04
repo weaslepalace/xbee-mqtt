@@ -6,6 +6,8 @@ C_SOURCES += \
 	libs/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.c \
 	libs/paho.mqtt.embedded-c/MQTTPacket/src/MQTTConnectClient.c \
 	libs/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSerializePublish.c \
+	libs/paho.mqtt.embedded-c/MQTTPacket/src/MQTTDeserializePublish.c \
+	libs/paho.mqtt.embedded-c/MQTTPacket/src/MQTTSubscribeClient.c \
 
 CPP_SOURCES += \
 	libs/xbee_ansic_library/ports/arduino-due/xbee_platform_arduino_due.cpp \
