@@ -20,7 +20,7 @@ bool GB4MQTT::begin()
 	return true;	
 }
 
-GB4MQTT::tick()
+GB4MQTT::poll()
 {
 	switch(state)
 	{

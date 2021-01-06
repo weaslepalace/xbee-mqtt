@@ -10,14 +10,20 @@ static size_t constexpr GB4XBEE_ACCESS_POINT_NAME_SIZE = 32;
 static size_t constexpr GB4XBEE_RECEIVED_MESSAGE_MAX_SIZE = 1500;
 static uint32_t constexpr GB4XBEE_DEFAULT_BAUD = 9600;
 static uint32_t constexpr GB4XBEE_DEFAULT_COMMAND_TIMEOUT = 10000;
+static int32_t constexpr GB4XBEE_CONNECT_TIMEOUT = 10000;
+static int32_t constexpr GB4XBEE_SOCKET_CREATE_TIMEOUT = 10000;
 
 class GB4XBee {
 	public:
 
 	enum class Return {
-		INIT_TRY_AGAIN = -5,
-		APN_READ_ERROR = -4, 
-		SOCKET_ERROR = -3,
+		INIT_TRY_AGAIN = -9,
+		CONNECT_TIMEOUT = -8,
+		CONNECT_TRY_AGAIN = -7,
+		CONNECT_ERROR = -6,
+		APN_READ_ERROR = -5, 
+		SOCKET_ERROR = -4,
+		SOCKET_TIMEOUT = -3,
 		COMMAND_TIMEOUT = -2,
 		COMMAND_NOT_OK = -1,
 		COMMAND_OK = 0,
@@ -42,6 +48,7 @@ class GB4XBee {
 	GB4XBee(uint32_t baud, char const apn[]);
 	
 	bool begin();
+	void resetSocket();
 	Return pollStartup();
 	bool connect(uint16_t port, char const *address);
 	Return pollConnectStatus();
@@ -53,7 +60,6 @@ class GB4XBee {
 	char const *getAPN();
 
 	uint32_t const cast_guard;
-
 
 	private:
 	void startCommandModeGuard();
@@ -96,6 +102,8 @@ class GB4XBee {
 	int32_t err;
 	int32_t guard_time_start;
 	int32_t response_start_time;
+	int32_t connect_start_time;
+	int32_t socket_create_start_time;
 	char access_point_name[GB4XBEE_ACCESS_POINT_NAME_SIZE];
 	size_t access_point_name_len;
 	bool got_access_point_name;

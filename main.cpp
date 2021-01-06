@@ -185,7 +185,7 @@ static bool got_mqtt_beep_topic = false;
 //	fetch_rewind();
 //}
 
-
+volatile uint32_t timeoutCount = 0;
 
 int main()
 {
@@ -202,8 +202,31 @@ int main()
 	radio.begin();
 	while(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup());	
 
-	radio.connect(1883, "69.62.134.151");
-	while(GB4XBee::Return::CONNECT_IN_PROGRESS == radio.pollConnectStatus());
+	GB4XBee::Return status;
+	do
+	{
+		if(false == radio.connect(1883, "69.62.134.151"))
+		{
+			radio.resetSocket();
+			while(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup());
+			continue;
+		}		
+		do
+		{
+			status = radio.pollConnectStatus();
+		}
+		while(GB4XBee::Return::CONNECT_IN_PROGRESS == status);
+		if(GB4XBee::Return::CONNECT_TIMEOUT == status)
+		{
+			timeoutCount++;
+		}
+		delay(1000);
+//		if(GB4XBee::Return::CONNECT_TRY_AGAIN == status)
+//		{
+//			delay(1000);
+//		}
+	}
+	while(GB4XBee::Return::CONNECTED != status);
 	
 	digitalWrite(LED_BUILTIN, LOW);
 

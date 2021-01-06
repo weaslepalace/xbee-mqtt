@@ -54,8 +54,14 @@ bool GB4XBee::begin()
 		return false;
 	}
 	
-	state = GB4XBee::State::START;	
+	state = State::START;	
 	return true;
+}
+
+
+void GB4XBee::resetSocket()
+{
+	state = State::BEGIN_CREATE_SOCKET;
 }
 
 
@@ -63,38 +69,38 @@ GB4XBee::Return GB4XBee::pollStartup()
 {
 	switch(state)
 	{
-		case GB4XBee::State::START:
+		case State::START:
 		startCommandModeGuard();
-		state = GB4XBee::State::AWAIT_COMMAND_MODE_GUARD_0; 
+		state = State::AWAIT_COMMAND_MODE_GUARD_0; 
 		break;
 
-		case GB4XBee::State::AWAIT_COMMAND_MODE_GUARD_0:
+		case State::AWAIT_COMMAND_MODE_GUARD_0:
 		if(false == pollCommandModeGuard())
 		{
 			break;
 		}
-		state = GB4XBee::State::BEGIN_COMMAND_MODE;
+		state = State::BEGIN_COMMAND_MODE;
 		break;
 
-		case GB4XBee::State::BEGIN_COMMAND_MODE:
+		case State::BEGIN_COMMAND_MODE:
 		sendEscapeSequence();
 		startCommandModeGuard();
-		state = GB4XBee::State::AWAIT_COMMAND_MODE_GUARD_1;
+		state = State::AWAIT_COMMAND_MODE_GUARD_1;
 		break;
 
-		case GB4XBee::State::AWAIT_COMMAND_MODE_GUARD_1:
+		case State::AWAIT_COMMAND_MODE_GUARD_1:
 		if(false == pollCommandModeGuard())
 		{
 			break;
 		}
-		state = GB4XBee::State::AWAIT_COMMAND_MODE_RESPONSE;
+		state = State::AWAIT_COMMAND_MODE_RESPONSE;
 		break;
 
-		case GB4XBee::State::AWAIT_COMMAND_MODE_RESPONSE:
+		case State::AWAIT_COMMAND_MODE_RESPONSE:
 		switch(pollResponseOK())
 		{
 			case Return::COMMAND_OK:
-			state = GB4XBee::State::BEGIN_API_MODE_COMMAND;
+			state = State::BEGIN_API_MODE_COMMAND;
 			break;
 			case Return::COMMAND_TIMEOUT:
 			//Error state
@@ -107,16 +113,16 @@ GB4XBee::Return GB4XBee::pollStartup()
 		}
 		break;
 
-		case GB4XBee::State::BEGIN_API_MODE_COMMAND:
+		case State::BEGIN_API_MODE_COMMAND:
 		sendAPIMode();
-		state = GB4XBee::State::AWAIT_API_MODE_RESPONSE;
+		state = State::AWAIT_API_MODE_RESPONSE;
 		break;
 
-		case GB4XBee::State::AWAIT_API_MODE_RESPONSE:
+		case State::AWAIT_API_MODE_RESPONSE:
 		switch(pollResponseOK())
 		{
 			case Return::COMMAND_OK:
-			state = GB4XBee::State::BEGIN_COMMAND_MODE_EXIT;
+			state = State::BEGIN_COMMAND_MODE_EXIT;
 			break;
 			case Return::COMMAND_TIMEOUT:
 			//Error state
@@ -129,16 +135,16 @@ GB4XBee::Return GB4XBee::pollStartup()
 		}
 		break;
 
-		case GB4XBee::State::BEGIN_COMMAND_MODE_EXIT:
+		case State::BEGIN_COMMAND_MODE_EXIT:
 		sendCommandModeExit();
-		state = GB4XBee::State::AWAIT_COMMAND_MODE_EXIT_RESPONSE;
+		state = State::AWAIT_COMMAND_MODE_EXIT_RESPONSE;
 		break;
 
-		case GB4XBee::State::AWAIT_COMMAND_MODE_EXIT_RESPONSE:
+		case State::AWAIT_COMMAND_MODE_EXIT_RESPONSE:
 		switch(pollResponseOK())
 		{
 			case Return::COMMAND_OK:
-			state = GB4XBee::State::BEGIN_INIT_XBEE_API;
+			state = State::BEGIN_INIT_XBEE_API;
 			break;
 			case Return::COMMAND_TIMEOUT:
 			//Error state
@@ -151,12 +157,12 @@ GB4XBee::Return GB4XBee::pollStartup()
 		}
 		break;
 
-		case GB4XBee::State::BEGIN_INIT_XBEE_API:
+		case State::BEGIN_INIT_XBEE_API:
 		startInitAPI();
-		state = GB4XBee::State::AWAIT_INIT_XBEE_API_DONE;
+		state = State::AWAIT_INIT_XBEE_API_DONE;
 		break;
 
-		case GB4XBee::State::AWAIT_INIT_XBEE_API_DONE:
+		case State::AWAIT_INIT_XBEE_API_DONE:
 		{
 			Return status = pollInitStatus();
 			if(Return::INIT_TRY_AGAIN == status)
@@ -169,22 +175,22 @@ GB4XBee::Return GB4XBee::pollStartup()
 				break;
 			}
 		}
-		state = GB4XBee::State::BEGIN_READ_APN;
+		state = State::BEGIN_READ_APN;
 		break;
 
-		case GB4XBee::State::BEGIN_READ_APN:
+		case State::BEGIN_READ_APN:
 		sendReadAPN();
-		state = GB4XBee::State::AWAIT_READ_APN_RESPONSE;
+		state = State::AWAIT_READ_APN_RESPONSE;
 		break;
 
-		case GB4XBee::State::AWAIT_READ_APN_RESPONSE:
+		case State::AWAIT_READ_APN_RESPONSE:
 		switch(pollAPNStatus())
 		{
 			case Return::APN_IS_SET:
-			state = GB4XBee::State::BEGIN_CREATE_SOCKET;
+			state = State::BEGIN_CREATE_SOCKET;
 			break;
 			case Return::APN_NOT_SET:
-			state = GB4XBee::State::SET_APN;
+			state = State::SET_APN;
 			break;
 			case Return::APN_READ_ERROR:
 			//Error state
@@ -194,30 +200,39 @@ GB4XBee::Return GB4XBee::pollStartup()
 		}
 		break;
 
-		case GB4XBee::State::SET_APN:
+		case State::SET_APN:
 		sendSetAPN();
 		sendWriteChanges();
-		state = GB4XBee::State::BEGIN_CREATE_SOCKET;
+		state = State::BEGIN_CREATE_SOCKET;
 		break;
 
-		case GB4XBee::State::BEGIN_CREATE_SOCKET:
+		case State::BEGIN_CREATE_SOCKET:
 		sendSocketCreate();
-		state = GB4XBee::State::AWAIT_SOCKET_ID;
+		state = State::AWAIT_SOCKET_ID;
 		break;
 
-		case GB4XBee::State::AWAIT_SOCKET_ID: 	
-		if(Return::GOT_SOCKET_ID != pollSocketStatus())
+		case State::AWAIT_SOCKET_ID: 	
+		switch(pollSocketStatus())
 		{
+			case Return::GOT_SOCKET_ID:
+			state = State::READY;
+			break;
+
+			case Return::SOCKET_TIMEOUT:
+			case Return::SOCKET_ERROR:
+			state = State::BEGIN_CREATE_SOCKET;
+			break;
+
+			default:
 			break;
 		}
-		state = GB4XBee::State::READY;
 		break;
 
 		default:
 		break;
 	}
 
-	if(state != GB4XBee::State::READY)
+	if(state != State::READY)
 	{
 		return Return::STARTUP_IN_PROGRESS;
 	}
@@ -410,6 +425,9 @@ bool GB4XBee::sendSetAPN()
 
 
 static bool notify_connection_lost = false;
+static bool notify_connection_started = false;
+static bool notify_connection_refused = false;
+static bool notify_connection_try_again = false;
 static bool notify_got_connection = false;
 static bool notify_got_socket_id = false;
 static bool notify_socket_error = false;
@@ -422,12 +440,43 @@ static void notify_callback(
 	switch(frame_type)
 	{
 		case XBEE_FRAME_TX_STATUS:
+		switch(message)
+		{
+			case XBEE_TX_DELIVERY_SUCCESS:
+			break;
+			
+			case XBEE_TX_DELIVERY_RESOURCE_ERROR:
+			notify_connection_try_again = true;
+			break;
+
+			case XBEE_TX_DELIVERY_CONNECTION_REFUSED:
+			notify_connection_refused = true;
+			break;
+
+			default:
+			notify_socket_error = true;
+			break;
+		}
 		break;
 
 		case XBEE_FRAME_SOCK_STATE:
-		if(XBEE_SOCK_STATE_CONNECTION_LOST == message)
+		switch(message)
 		{
+			case XBEE_SOCK_STATE_CONNECTED:
+			notify_got_connection = true;
+			break;
+			
+			case XBEE_SOCK_STATE_CONNECTION_REFUSED:
+			notify_connection_refused = true;
+			break;
+
+			case XBEE_SOCK_STATE_CONNECTION_LOST:
 			notify_connection_lost = true;
+			break;	
+			
+			default:
+			notify_socket_error = true;
+			break;
 		}
 		break;
 
@@ -447,7 +496,7 @@ static void notify_callback(
 		case XBEE_FRAME_SOCK_CONNECT_RESP:
 		if(XBEE_SOCK_STATUS_SUCCESS == message)
 		{
-			notify_got_connection = true;
+			notify_connection_started = true;
 		}
 		break;
 
@@ -467,6 +516,9 @@ static void notify_callback(
 
 bool GB4XBee::sendSocketCreate()
 {
+	notify_socket_error = false;
+	notify_got_socket_id = false;
+	notify_socket_closed = false;
 	xbee_sock_reset(&xbee);
 	sock = xbee_sock_create(&xbee, XBEE_SOCK_PROTOCOL_TCP, notify_callback);
 	if(sock < 0)
@@ -474,6 +526,7 @@ bool GB4XBee::sendSocketCreate()
 		err = sock;
 		return false;
 	}
+	socket_create_start_time = millis();
 	return true;
 }
 
@@ -484,6 +537,10 @@ GB4XBee::Return GB4XBee::pollSocketStatus()
 	if(true == notify_socket_error)
 	{
 		return Return::SOCKET_ERROR;
+	}
+	if((millis() - socket_create_start_time) > GB4XBEE_SOCKET_CREATE_TIMEOUT)
+	{
+		return Return::SOCKET_TIMEOUT;
 	}
 	if(false == notify_got_socket_id)
 	{
@@ -520,12 +577,16 @@ static void receive_callback(
 
 bool GB4XBee::connect(uint16_t port, char const *address)
 {
+	notify_connection_try_again = false;
+	notify_connection_refused = false;
+	notify_got_connection = false;
 	int status = xbee_sock_connect(sock, port, 0, address, receive_callback);
 	if(0 != status)
 	{
 		err = status;
 		return false;
 	}
+	connect_start_time = millis();
 	return true;
 } 
 
@@ -533,10 +594,23 @@ bool GB4XBee::connect(uint16_t port, char const *address)
 GB4XBee::Return GB4XBee::pollConnectStatus()
 {
 	xbee_dev_tick(&xbee);
-	if(false == notify_got_connection)
+	if(true == notify_connection_try_again)
+	{
+		return Return::CONNECT_TRY_AGAIN;
+	}
+	else if(true == notify_connection_refused)
+	{
+		return Return::CONNECT_ERROR;
+	}
+	else if((millis() - connect_start_time) > GB4XBEE_CONNECT_TIMEOUT)
+	{
+		return Return::CONNECT_TIMEOUT;
+	}
+	else if(false == notify_got_connection)
 	{
 		return Return::CONNECT_IN_PROGRESS;
 	}
+
 	return  Return::CONNECTED;
 }
 
