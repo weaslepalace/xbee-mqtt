@@ -1,7 +1,8 @@
 TARGET := hello-xbee
 
 CPP_SOURCES := \
-	./main.cpp 
+	./gb4xbee.cpp \
+	./main.cpp \
 
 HEADERS := ./
 
