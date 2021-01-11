@@ -1,0 +1,4 @@
+*.swp
+.gdbinit
+.jlink.*
+build/

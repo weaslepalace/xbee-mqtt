@@ -1,6 +1,7 @@
 
 #include "Arduino.h"
-#include "gb4xbee.h"
+#include "gb4mqtt.h"
+//#include "gb4xbee.h"
 #include "MQTTPacket.h"
 
 
@@ -195,80 +196,92 @@ int main()
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, LOW);
 
-	GB4XBee radio(9600, "em");
-	Serial.begin(radio.getBaud());
+//	GB4MQTT mqtt(9600, "em", 1883, "69.62.134.151");
+	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
+	Serial.begin(mqtt.getRadioBaud());
 	Serial.setTimeout(10000);
 
-	radio.begin();
-	while(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup());	
-
-	GB4XBee::Return status;
-	do
-	{
-		if(false == radio.connect(1883, "69.62.134.151"))
-		{
-			radio.resetSocket();
-			while(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup());
-			continue;
-		}		
-		do
-		{
-			status = radio.pollConnectStatus();
-		}
-		while(GB4XBee::Return::CONNECT_IN_PROGRESS == status);
-		if(GB4XBee::Return::CONNECT_TIMEOUT == status)
-		{
-			timeoutCount++;
-		}
-		delay(1000);
-//		if(GB4XBee::Return::CONNECT_TRY_AGAIN == status)
+	mqtt.begin();
+	while(GB4MQTT::Return::CONNECTED != mqtt.poll());
+//	GB4XBee radio(9600, "em");
+//	Serial.begin(radio.getBaud());
+//	Serial.setTimeout(10000);
+//
+//	radio.begin();
+//	while(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup());	
+//
+//	GB4XBee::Return status;
+//	do
+//	{
+////		if(false == radio.connect(1883, "69.62.134.151"))
+//		if(false == radio.connect(1883, "13.93.230.129"))
 //		{
-//			delay(1000);
+//			radio.resetSocket();
+//			while(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup());
+//			continue;
+//		}		
+//		do
+//		{
+//			status = radio.pollConnectStatus();
 //		}
-	}
-	while(GB4XBee::Return::CONNECTED != status);
-	
-	digitalWrite(LED_BUILTIN, LOW);
-
-	uint8_t connect_packet[100];
-	MQTTPacket_connectData conn = MQTTPacket_connectData_initializer; 
-	conn.clientID.cstring = (char*)"NovaSource-GB4";
-	conn.keepAliveInterval = 60;
-	conn.cleansession = 1;
-	int connect_packet_len = MQTTSerialize_connect(connect_packet, 100, &conn);
-	if(0 == connect_packet_len)
-	{
-		Serial.println("Failed to create MQTT connect packet");
-		for(;;);
-	}
-	radio.sendMessage(connect_packet, connect_packet_len);
-	
-	uint8_t payload[64];
-	size_t payload_len = 64;
-	while(GB4XBee::Return::MESSAGE_RECEIVED != radio.pollReceivedMessage(payload, &payload_len));
-	GB4MQTTClient client;
-	set_fetch_data(payload);
-	enum msgTypes type = (enum msgTypes) MQTTPacket_read(rx_buffer, payload_len, fetch_callback);
-	if(CONNACK == type)
-	{
-		enum connack_return_codes code;
-		uint8_t session_bit;
-		if(0 != MQTTDeserialize_connack(
-			&session_bit,
-			(uint8_t*)&code,
-			rx_buffer,
-			payload_len))
-		{
-			if(MQTT_CONNECTION_ACCEPTED == code)
-			{
-				client.state = GB4MQTTClient::Await::SUBACK;
-				client.is_connected = true;
-
-				got_mqtt_connack = true;
-				digitalWrite(LED_BUILTIN, HIGH);
-			}
-		}
-	}
-
+//		while(GB4XBee::Return::CONNECT_IN_PROGRESS == status);
+//		switch(status)
+//		{
+//			case GB4XBee::Return::CONNECT_TIMEOUT:
+//			timeoutCount++;
+//			//Fall-through OK
+//			case GB4XBee::Return::CONNECT_TRY_AGAIN:
+//			case GB4XBee::Return::CONNECT_ERROR:
+//			delay(1000);
+//			break;
+//			
+//			default:
+//			break;
+//		}
+//	}
+//	while(GB4XBee::Return::CONNECTED != status);
+//  
+//  digitalWrite(LED_BUILTIN, HIGH);
+//
+//	uint8_t connect_packet[100];
+//	MQTTPacket_connectData conn = MQTTPacket_connectData_initializer; 
+//	conn.clientID.cstring = (char*)"NovaSource-GB4";
+//	conn.keepAliveInterval = 60;
+//	conn.cleansession = 1;
+//	int connect_packet_len = MQTTSerialize_connect(connect_packet, 100, &conn);
+//	if(0 == connect_packet_len)
+//	{
+//		Serial.println("Failed to create MQTT connect packet");
+//		for(;;);
+//	}
+//	radio.sendMessage(connect_packet, connect_packet_len);
+//	
+//	uint8_t payload[64];
+//	size_t payload_len = 64;
+//	while(GB4XBee::Return::MESSAGE_RECEIVED != radio.pollReceivedMessage(payload, &payload_len));
+//	GB4MQTTClient client;
+//	set_fetch_data(payload);
+//	enum msgTypes type = (enum msgTypes) MQTTPacket_read(rx_buffer, payload_len, fetch_callback);
+//	if(CONNACK == type)
+//	{
+//		enum connack_return_codes code;
+//		uint8_t session_bit;
+//		if(0 != MQTTDeserialize_connack(
+//			&session_bit,
+//			(uint8_t*)&code,
+//			rx_buffer,
+//			payload_len))
+//		{
+//			if(MQTT_CONNECTION_ACCEPTED == code)
+//			{
+//				client.state = GB4MQTTClient::Await::SUBACK;
+//				client.is_connected = true;
+//
+//				got_mqtt_connack = true;
+//				digitalWrite(LED_BUILTIN, HIGH);
+//			}
+//		}
+//	}
+	digitalWrite(LED_BUILTIN, HIGH);
 	for(;;);	
 }

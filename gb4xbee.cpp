@@ -61,8 +61,24 @@ bool GB4XBee::begin()
 
 void GB4XBee::resetSocket()
 {
-	state = State::BEGIN_CREATE_SOCKET;
+	state = State::SOCKET_COOLDOWN_PERIOD;
+	socket_cooldown_start_time = millis();
 }
+
+
+void GB4XBee::startConnectRetryDelay()
+{
+	connect_retry_delay_start_time = millis();
+}
+
+
+bool GB4XBee::pollConnectRetryDelay()
+{
+	return
+		(millis() - connect_retry_delay_start_time) > 
+		GB4XBEE_CONNECT_RETRY_DELAY_INTERVAL;
+}
+
 
 
 GB4XBee::Return GB4XBee::pollStartup()
@@ -206,6 +222,14 @@ GB4XBee::Return GB4XBee::pollStartup()
 		state = State::BEGIN_CREATE_SOCKET;
 		break;
 
+		case State::SOCKET_COOLDOWN_PERIOD:
+		if(false == pollSocketCooldown())
+		{
+			break;
+		}
+		state = State::BEGIN_CREATE_SOCKET;
+		break;
+
 		case State::BEGIN_CREATE_SOCKET:
 		sendSocketCreate();
 		state = State::AWAIT_SOCKET_ID;
@@ -324,8 +348,6 @@ GB4XBee::Return GB4XBee::pollInitStatus()
 
 	return Return::INIT_DONE;
 }
-
-
 
 
 static int readAPNCallback(xbee_cmd_response_t const *response)
@@ -534,21 +556,21 @@ bool GB4XBee::sendSocketCreate()
 GB4XBee::Return GB4XBee::pollSocketStatus()
 {
 	xbee_dev_tick(&xbee);
-	if(true == notify_socket_error)
-	{
-		return Return::SOCKET_ERROR;
-	}
-	if((millis() - socket_create_start_time) > GB4XBEE_SOCKET_CREATE_TIMEOUT)
-	{
-		return Return::SOCKET_TIMEOUT;
-	}
-	if(false == notify_got_socket_id)
-	{
-		return Return::SOCKET_IN_PROGRESS;
-	}
-	return Return::GOT_SOCKET_ID;
+	return 
+		(true == notify_got_socket_id) ? Return::GOT_SOCKET_ID :
+		(true == notify_socket_error) ? Return::SOCKET_ERROR :
+		((millis() - socket_create_start_time) >
+			GB4XBEE_SOCKET_CREATE_TIMEOUT) ? Return::SOCKET_TIMEOUT :
+		Return::SOCKET_IN_PROGRESS;
 }
 
+
+bool GB4XBee::pollSocketCooldown()
+{
+	return
+		(millis() - socket_cooldown_start_time) >
+		GB4XBEE_SOCKET_COOLDOWN_INTERVAL;
+}
 
 
 static bool notify_received_message = false;
@@ -580,6 +602,7 @@ bool GB4XBee::connect(uint16_t port, char const *address)
 	notify_connection_try_again = false;
 	notify_connection_refused = false;
 	notify_got_connection = false;
+	notify_received_message = false;
 	int status = xbee_sock_connect(sock, port, 0, address, receive_callback);
 	if(0 != status)
 	{
@@ -594,24 +617,12 @@ bool GB4XBee::connect(uint16_t port, char const *address)
 GB4XBee::Return GB4XBee::pollConnectStatus()
 {
 	xbee_dev_tick(&xbee);
-	if(true == notify_connection_try_again)
-	{
-		return Return::CONNECT_TRY_AGAIN;
-	}
-	else if(true == notify_connection_refused)
-	{
-		return Return::CONNECT_ERROR;
-	}
-	else if((millis() - connect_start_time) > GB4XBEE_CONNECT_TIMEOUT)
-	{
-		return Return::CONNECT_TIMEOUT;
-	}
-	else if(false == notify_got_connection)
-	{
-		return Return::CONNECT_IN_PROGRESS;
-	}
-
-	return  Return::CONNECTED;
+	return
+		(true == notify_got_connection) ? Return::CONNECTED :
+		(true == notify_connection_try_again) ? Return::CONNECT_TRY_AGAIN :
+		(true == notify_connection_refused) ? Return::CONNECT_ERROR :
+		((millis() - connect_start_time) > GB4XBEE_CONNECT_TIMEOUT) ?
+		Return::CONNECT_TIMEOUT : Return::CONNECT_IN_PROGRESS;
 }
 
 
@@ -622,6 +633,7 @@ GB4XBee::Return GB4XBee::pollReceivedMessage(uint8_t message[], size_t *message_
 	{
 		return Return::WAITING_MESSAGE;
 	}
+	notify_received_message = false;
 	
 	*message_len =
 		(*message_len < received_message_len) ?

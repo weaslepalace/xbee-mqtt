@@ -12,6 +12,8 @@ static uint32_t constexpr GB4XBEE_DEFAULT_BAUD = 9600;
 static uint32_t constexpr GB4XBEE_DEFAULT_COMMAND_TIMEOUT = 10000;
 static int32_t constexpr GB4XBEE_CONNECT_TIMEOUT = 10000;
 static int32_t constexpr GB4XBEE_SOCKET_CREATE_TIMEOUT = 10000;
+static int32_t constexpr GB4XBEE_SOCKET_COOLDOWN_INTERVAL = 1000;
+static int32_t constexpr GB4XBEE_CONNECT_RETRY_DELAY_INTERVAL = 1000;
 
 class GB4XBee {
 	public:
@@ -52,6 +54,8 @@ class GB4XBee {
 	Return pollStartup();
 	bool connect(uint16_t port, char const *address);
 	Return pollConnectStatus();
+	void startConnectRetryDelay();
+	bool pollConnectRetryDelay();
 	Return pollReceivedMessage(uint8_t message[], size_t *message_len);
 	Return sendMessage(uint8_t message[], size_t message_len);
 
@@ -76,6 +80,7 @@ class GB4XBee {
 	bool sendSetAPN();
 	bool sendWriteChanges();
 	bool sendSocketCreate();
+	bool pollSocketCooldown();
 	Return pollSocketStatus();
 
 	enum class State {
@@ -93,6 +98,7 @@ class GB4XBee {
 		BEGIN_READ_APN,
 		AWAIT_READ_APN_RESPONSE,
 		SET_APN,
+		SOCKET_COOLDOWN_PERIOD,
 		BEGIN_CREATE_SOCKET,
 		AWAIT_SOCKET_ID,
 		READY,	
@@ -103,7 +109,9 @@ class GB4XBee {
 	int32_t guard_time_start;
 	int32_t response_start_time;
 	int32_t connect_start_time;
+	int32_t connect_retry_delay_start_time;
 	int32_t socket_create_start_time;
+	int32_t socket_cooldown_start_time;
 	char access_point_name[GB4XBEE_ACCESS_POINT_NAME_SIZE];
 	size_t access_point_name_len;
 	bool got_access_point_name;
