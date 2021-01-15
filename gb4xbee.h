@@ -10,15 +10,20 @@ static size_t constexpr GB4XBEE_ACCESS_POINT_NAME_SIZE = 32;
 static size_t constexpr GB4XBEE_RECEIVED_MESSAGE_MAX_SIZE = 1500;
 static uint32_t constexpr GB4XBEE_DEFAULT_BAUD = 9600;
 static uint32_t constexpr GB4XBEE_DEFAULT_COMMAND_TIMEOUT = 10000;
-static int32_t constexpr GB4XBEE_CONNECT_TIMEOUT = 10000;
+static int32_t constexpr GB4XBEE_CONNECT_TIMEOUT = 20000;
 static int32_t constexpr GB4XBEE_SOCKET_CREATE_TIMEOUT = 10000;
 static int32_t constexpr GB4XBEE_SOCKET_COOLDOWN_INTERVAL = 1000;
 static int32_t constexpr GB4XBEE_CONNECT_RETRY_DELAY_INTERVAL = 1000;
+static int32_t constexpr GB4XBEE_TLS_PROFILE_TIMEOUT = 10000;
 
 class GB4XBee {
 	public:
 
 	enum class Return {
+		BUFFER_FULL = -13,
+		TLS_PROFILE_ERROR = -12,
+		TLS_PROFILE_TIMEOUT = -11,
+		PACKET_ERROR = -10,
 		INIT_TRY_AGAIN = -9,
 		CONNECT_TIMEOUT = -8,
 		CONNECT_TRY_AGAIN = -7,
@@ -37,6 +42,8 @@ class GB4XBee {
 		APN_IS_SET,
 		SOCKET_IN_PROGRESS,
 		GOT_SOCKET_ID,
+		TLS_PROFILE_IN_PROGRESS,
+		TLS_PROFILE_OK,		
 		CONNECT_IN_PROGRESS,
 		CONNECTED,
 		DISCONNECTED,
@@ -47,7 +54,11 @@ class GB4XBee {
 		STARTUP_COMPLETE
 	};
 
-	GB4XBee(uint32_t baud, char const apn[]);
+	GB4XBee(
+		uint32_t baud,
+		char const apn[],
+		bool use_tls = false,
+		uint8_t use_tls_profile = 0);
 	
 	bool begin();
 	void resetSocket();
@@ -82,6 +93,8 @@ class GB4XBee {
 	bool sendSocketCreate();
 	bool pollSocketCooldown();
 	Return pollSocketStatus();
+	bool sendSocketOption();
+	Return pollSocketOptionResponse();
 
 	enum class State {
 		START,
@@ -101,6 +114,8 @@ class GB4XBee {
 		SOCKET_COOLDOWN_PERIOD,
 		BEGIN_CREATE_SOCKET,
 		AWAIT_SOCKET_ID,
+		BEGIN_SET_TLS_PROFILE,
+		AWAIT_TLS_PROFILE_RESPONSE,
 		READY,	
 	};
 
@@ -112,6 +127,7 @@ class GB4XBee {
 	int32_t connect_retry_delay_start_time;
 	int32_t socket_create_start_time;
 	int32_t socket_cooldown_start_time;
+	int32_t option_start_time;
 	char access_point_name[GB4XBEE_ACCESS_POINT_NAME_SIZE];
 	size_t access_point_name_len;
 	bool got_access_point_name;
@@ -119,6 +135,8 @@ class GB4XBee {
 	xbee_dev_t xbee;
 	xbee_serial_t ser;	
 	xbee_sock_t sock;
+	uint8_t transport_protocol;
+	uint8_t tls_profile;
 };
 
 #endif //GB4XBEE_H

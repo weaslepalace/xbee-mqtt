@@ -15,21 +15,25 @@ xbee_dispatch_table_entry_t const xbee_frame_handlers[] = {
 };
 
 
-GB4XBee::GB4XBee(uint32_t baud, char const apn[]) :
+GB4XBee::GB4XBee(
+	uint32_t baud,
+	char const apn[],
+	bool use_tls,
+	uint8_t use_tls_profile) :
 	cast_guard(GB4XBEE_CAST_GUARD),
 	ser({.baudrate = baud}),
 	guard_time_start(0),
 	response_start_time(0),
 	got_access_point_name(0),
 	need_set_access_point_name(0),
-	err(0)
+	err(0),
+	tls_profile(use_tls_profile)
 {
-	access_point_name_len = strlen(apn);
-	if(access_point_name_len >= GB4XBEE_ACCESS_POINT_NAME_SIZE)
-	{
-		access_point_name_len = GB4XBEE_ACCESS_POINT_NAME_SIZE - 1;
-	}
-	memcpy(access_point_name, apn, access_point_name_len);
+	
+	transport_protocol =
+		(true == use_tls) ?
+		XBEE_SOCK_PROTOCOL_SSL : XBEE_SOCK_PROTOCOL_TCP; 
+	strncpy(access_point_name, apn, GB4XBEE_ACCESS_POINT_NAME_SIZE - 1);
 }
 
 
@@ -223,10 +227,31 @@ GB4XBee::Return GB4XBee::pollStartup()
 		break;
 
 		case State::SOCKET_COOLDOWN_PERIOD:
-		if(false == pollSocketCooldown())
-		{
-			break;
-		}
+//		if(false == pollSocketCooldown())
+//		{
+//			break;
+//		}
+
+///**DEBUGGING**
+///**DELETE ME**
+//{
+//delay(1200);
+//Serial.write("+++", 3);
+//char resp[200];
+//Serial.readBytesUntil('\r', resp, 200);
+//delay(1200);
+//Serial.write("ATDB\r", 5);
+//size_t len = Serial.readBytesUntil('\r', resp, 200);
+//Serial.println();
+//Serial.write(resp, len);
+//Serial.println();
+//Serial.write("ATMN\r", 5);
+//Serial.readBytesUntil('\r', resp, 200);
+//Serial.write(resp, len);
+//Serial.println();
+//Serial.write("ATCN\r", 5);
+//Serial.readBytesUntil('\r', resp, 200);
+//}
 		state = State::BEGIN_CREATE_SOCKET;
 		break;
 
@@ -239,12 +264,29 @@ GB4XBee::Return GB4XBee::pollStartup()
 		switch(pollSocketStatus())
 		{
 			case Return::GOT_SOCKET_ID:
-			state = State::READY;
+//**DELETE ME**
+//{
+//delay(1200);
+//Serial.write("+++", 3);
+//char resp[200];
+//Serial.readBytesUntil('\r', resp, 200);
+//delay(1200);
+//Serial.write("ATSI\r", 5);
+//size_t len = Serial.readBytesUntil('\r', resp, 200);
+//Serial.println();
+//Serial.write(resp, len);
+//Serial.println();
+//Serial.println(sock);
+//Serial.write("ATCN\r", 5);
+//Serial.readBytesUntil('\r', resp, 200);
+//}
+			state = State::BEGIN_SET_TLS_PROFILE;
 			break;
 
 			case Return::SOCKET_TIMEOUT:
 			case Return::SOCKET_ERROR:
-			state = State::BEGIN_CREATE_SOCKET;
+			socket_cooldown_start_time = millis();	
+			state = State::SOCKET_COOLDOWN_PERIOD;
 			break;
 
 			default:
@@ -252,6 +294,28 @@ GB4XBee::Return GB4XBee::pollStartup()
 		}
 		break;
 
+		case State::BEGIN_SET_TLS_PROFILE:
+		if(XBEE_SOCK_PROTOCOL_SSL == transport_protocol)
+		{
+			sendSocketOption();
+		}
+//		state = State::AWAIT_TLS_PROFILE_RESPONSE;
+		state = State::READY;
+		break;
+
+//		case State::AWAIT_TLS_PROFILE_RESPONSE:
+//		switch(pollSocketOptionResponse())
+//		{
+//			case Return::TLS_PROFILE_OK:
+//			state = State::READY;
+//			break;
+//
+//			case Return::TLS_PROFILE_ERROR:
+//			case Return::TLS_PROFILE_TIMEOUT:
+//			socket_cooldown_start_time = millis();
+//			state = State::SOCKET_COOLDOWN_PERIOD;
+//			break;
+//		}
 		default:
 		break;
 	}
@@ -455,7 +519,7 @@ static bool notify_got_socket_id = false;
 static bool notify_socket_error = false;
 static bool notify_socket_closed = false;
 static void notify_callback(
-	xbee_sock_t sock,
+	xbee_sock_t sockid,
 	uint8_t frame_type,
 	uint8_t message)
 {
@@ -536,13 +600,39 @@ static void notify_callback(
 }
 
 
+bool notify_got_option_response = false;
+void option_callback(
+	xbee_sock_t sock,
+	uint8_t option_id,
+	uint8_t status,
+	void const *data,
+	size_t data_len)
+{
+	switch(status)
+	{
+		case XBEE_SOCK_STATUS_SUCCESS:
+		notify_got_option_response = true;
+		break;
+
+		case XBEE_SOCK_STATUS_BAD_SOCKET:
+		notify_socket_error = true;
+		break;
+
+		case XBEE_SOCK_STATUS_INVALID_PARAM:
+		case XBEE_SOCK_STATUS_FAILED_TO_READ:
+		default:
+		break;
+	}
+}
+
+
 bool GB4XBee::sendSocketCreate()
 {
 	notify_socket_error = false;
 	notify_got_socket_id = false;
 	notify_socket_closed = false;
 	xbee_sock_reset(&xbee);
-	sock = xbee_sock_create(&xbee, XBEE_SOCK_PROTOCOL_TCP, notify_callback);
+	sock = xbee_sock_create(&xbee, transport_protocol, notify_callback);
 	if(sock < 0)
 	{
 		err = sock;
@@ -570,6 +660,35 @@ bool GB4XBee::pollSocketCooldown()
 	return
 		(millis() - socket_cooldown_start_time) >
 		GB4XBEE_SOCKET_COOLDOWN_INTERVAL;
+}
+
+
+bool GB4XBee::sendSocketOption()
+{
+	notify_socket_error = false;
+	notify_got_option_response = false;
+	uint8_t payload[sizeof tls_profile] = {tls_profile};
+	int status = xbee_sock_option(
+		sock,
+		0,
+		payload, sizeof payload,
+		option_callback);
+	if(0 != status)
+	{
+		return false;
+	}
+	option_start_time = millis();
+	return true;
+}
+
+GB4XBee::Return GB4XBee::pollSocketOptionResponse()
+{
+	return
+		(true == notify_got_option_response) ? Return::TLS_PROFILE_OK :
+		(true == notify_socket_error) ? Return::TLS_PROFILE_ERROR :
+		((millis() - option_start_time) > GB4XBEE_TLS_PROFILE_TIMEOUT) ?
+			Return::TLS_PROFILE_TIMEOUT : 
+		Return::TLS_PROFILE_IN_PROGRESS;
 }
 
 
@@ -621,6 +740,7 @@ GB4XBee::Return GB4XBee::pollConnectStatus()
 		(true == notify_got_connection) ? Return::CONNECTED :
 		(true == notify_connection_try_again) ? Return::CONNECT_TRY_AGAIN :
 		(true == notify_connection_refused) ? Return::CONNECT_ERROR :
+		(true == notify_socket_error) ? Return::CONNECT_ERROR :
 		((millis() - connect_start_time) > GB4XBEE_CONNECT_TIMEOUT) ?
 		Return::CONNECT_TIMEOUT : Return::CONNECT_IN_PROGRESS;
 }
@@ -647,17 +767,30 @@ GB4XBee::Return GB4XBee::pollReceivedMessage(uint8_t message[], size_t *message_
 
 GB4XBee::Return GB4XBee::sendMessage(uint8_t message[], size_t message_len)
 {
-	int status = xbee_sock_send(sock, 0, message, message_len);
-	if(-ENOENT == status)
+	Return status;
+	switch(xbee_sock_send(sock, 0, message, message_len))
 	{
-		return Return::DISCONNECTED;
+		case 0:
+		status = Return::MESSAGE_SENT;
+		break;
+
+		case -ENOENT:
+		status = Return::DISCONNECTED;
+		break;
+
+		case -EBUSY:
+		status = Return::BUFFER_FULL;
+		break;
+
+		case -EMSGSIZE:
+		status = Return::PACKET_ERROR;
+		break;
+
+		default:
+		status = Return::SOCKET_ERROR;
+		break;	
 	}
-	else if(0 != status)
-	{
-		err = status;
-		return Return::SOCKET_ERROR;
-	}
-	return Return::MESSAGE_SENT; 
+	return status; 
 }
 
 

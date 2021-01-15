@@ -8,12 +8,17 @@ GB4MQTT::GB4MQTT(
 	uint32_t radio_baud,
 	char const *radio_apn,
 	uint16_t network_port,
-	char const *network_address) :
-	radio(radio_baud, radio_apn),
+	char const *network_address,
+	bool use_tls,
+	char const *device_id,
+	char const *name,
+	char const *password) :
+	radio(radio_baud, radio_apn, use_tls),
 	port(network_port),
 	address(network_address),
-	keepalive_interval(GB4MQTT_DEFAULT_KEEPALIVE_INTERVAL),
-	client_id(GB4MQTT_DEFAULT_CLIENT_ID)
+	client_id(device_id),
+	client_name(name),
+	client_password(password)
 {
 	connect_start_time = 0;
 	state = State::INIT;
@@ -32,6 +37,33 @@ bool GB4MQTT::begin()
 	state = State::STARTING_RADIO;
 	return true;	
 }
+
+
+GB4MQTT::Return GB4MQTT::publish(
+	char const topic[],
+	size_t topic_len,
+	uint8_t const message[],
+	size_t message_len,
+	uint8_t qos)
+{
+	if(true == pub_queue.is_full())
+	{
+		return Return::PUBLISH_QUEUE_FULL;
+	}
+
+	Queue::Request req(topic, topic_len, message, message_len, qos);
+	pub_queue.enqueue(req);
+	return Return::PUBLISH_QUEUED;	
+}
+
+
+//GB4MQTT::Return GB4MQTT::subscribe(
+//	uint8_t topic[],
+//	size_t topic_len,
+//	uint8_t max_qos)
+//{
+//
+//}
 
 
 GB4MQTT::Return GB4MQTT::poll()
@@ -113,7 +145,7 @@ GB4MQTT::Return GB4MQTT::poll()
 		case State::AWAIT_CONNACK:
 		switch(pollConnackStatus())
 		{
-			case Return::WAITING_CONNACK:
+			case Return::LISTENING:
 			break;
 
 			case Return::GOT_CONNACK:
@@ -132,21 +164,53 @@ GB4MQTT::Return GB4MQTT::poll()
 		}
 		break;
 
-
  
-//		case GB4MTQQ::State::BEGIN_STANDBY:
-//		resetKeepAliveTimer();
-//		state = State::STANDBY;
-//		break;
-//
-//		//PUBLISH messages can also come in during this state
-//		//  and all of the below states
-//		case State::STANDBY:
-//		if(true == pollKeepAliveTimer())
-//		{
-//			sendPing();
-//			state = State::AWAIT_PINGACK;
-//		}
+		case GB4MQTT::State::BEGIN_STANDBY:
+		resetKeepAliveTimer();
+		state = State::STANDBY;
+		break;
+
+		//Times to call resetKeepAliveTimer:
+		//	PINGRESP
+		//	PUBACK, PUBREC, PUBCOMP
+		//	SUBACK, UNSUBACK
+		case State::STANDBY:
+
+		dispatchIncomming();
+
+		Return pub_status;
+		do
+		{
+			pub_status = sendPublishRequest();
+			if(Return::BUFFER_FULL == pub_status)
+			{
+				break;
+			}
+			if(Return::PUBLISH_SOCKET_ERROR == pub_status)
+			{
+				state = State::BEGIN_CONNECT_RETRY_DELAY;
+				break;
+			}
+		}
+		while(Return::PUBLISH_QUEUE_EMPTY != pub_status);
+
+		switch(pollKeepAliveTimer())
+		{
+			case Return::KEEPALIVE_TIMER_RUNNING:
+			break;
+
+			case Return::KEEPALIVE_TIMER_PING:
+			sendPingRequest();
+			break;
+
+			case Return::KEEPALIVE_TIMER_RECONNECT:
+			state = State::BEGIN_CONNECT_RETRY_DELAY;
+			break;
+
+			default:
+			break;
+		}
+	
 //		else if(false != pub_queue.is_empty())
 //		{
 //			if(0 != pub_queue.peakQoS())
@@ -157,8 +221,8 @@ GB4MQTT::Return GB4MQTT::poll()
 //		{
 //			state = State:AWAIT_SUBACK;
 //		}
-//		break;
-//
+		break;
+
 //		case State::AWAIT_SUBACK:
 //		if(false == pollSubackStatus())
 //		{
@@ -199,12 +263,17 @@ GB4MQTT::Return GB4MQTT::poll()
 
 GB4MQTT::Return GB4MQTT::sendConnectRequest()
 {
-	uint8_t connect_packet[64];
+	uint8_t connect_packet[GB4MQTT_CONNECT_PACKET_SIZE];
 	MQTTPacket_connectData conn = MQTTPacket_connectData_initializer;
 	conn.clientID.cstring = const_cast<char*>(client_id);
-	conn.keepAliveInterval = keepalive_interval;
+	conn.username.cstring = const_cast<char*>(client_name);
+	conn.password.cstring = const_cast<char*>(client_password);
+	conn.keepAliveInterval = GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS;
 	conn.cleansession = 1;
-	int connect_packet_len = MQTTSerialize_connect(connect_packet, 64, &conn);
+	int connect_packet_len = MQTTSerialize_connect(
+		connect_packet,
+		GB4MQTT_CONNECT_PACKET_SIZE,
+		&conn);
 	if(0 == connect_packet_len)
 	{
 		return Return::CONNECT_PACKET_ERROR;
@@ -276,20 +345,23 @@ GB4MQTT::Return GB4MQTT::pollIncomming(
 }
 
 
-GB4MQTT::Return GB4MQTT::pollConnackStatus()
-{
-	uint8_t message[GB4MQTT_MAX_PACKET_SIZE];
-	size_t message_len = sizeof message;
-	enum msgTypes type;
-	if(Return::WAITING_MESSAGE == pollIncomming(message, &message_len, &type))
-	{
-		if((millis() - connect_start_time) > GB4MQTT_CONNACK_TIMEOUT)
-		{
-			return Return::CONNACK_TIMEOUT;
-		}
-		return Return::WAITING_CONNACK;
-	}
 
+
+//GB4MQTT::Return GB4MQTT::pollConnackStatus()
+//{
+//	uint8_t message[GB4MQTT_MAX_PACKET_SIZE];
+//	size_t message_len = sizeof message;
+//	enum msgTypes type;
+//	if(Return::WAITING_MESSAGE == pollIncomming(message, &message_len, &type))
+//	{
+//		if((millis() - connect_start_time) > GB4MQTT_CONNACK_TIMEOUT)
+//		{
+//			return Return::CONNACK_TIMEOUT;
+//		}
+//		return Return::WAITING_CONNACK;
+//	}
+GB4MQTT::Return GB4MQTT::checkConnack(uint8_t message[], size_t message_len)
+{
 	enum connack_return_codes code;
 	uint8_t session;
 	if(0 == MQTTDeserialize_connack(
@@ -310,99 +382,265 @@ GB4MQTT::Return GB4MQTT::pollConnackStatus()
 }
 
 
-//GB4MQTTQueue::GB4MQTTQueue()
-//	head(0),
-//	tail(0),
-//	length(0),
-//	full(0)
-//{
-//}
-//
-//
-//bool GB4MQTTQueue::is_empty()
-//{
-//	return (false == full) && (head == tail);
-//}
-//
-//bool GB4MQTTQueue::is_full()
-//{
-//	return full;
-//}
-//
-//bool GB4MQTTQueue::get_length()
-//{
-//	size_t len = GB4MQTTQUEUE_ARRAY_SIZE;
-//	if(false == full)
-//	{
-//		if(head >= tail)
-//		{
-//			len = head - tail;
-//		}
-//		else
-//		{
-//			len = GB4MQTTQUEUE_ARRAY_SIZE + head - tail;
-//		}
-//	}
-//
-//	return len;
-//}
-//
-//
-//void GB4MQTTQueue::enqueue(
-//	char *topic,
-//	size_t topic_len,
-//	uint16_t id,
-//	uint8_t qos,
-//	void *message,
-//	size_t message_len)
-//{
-//	array[head].topic = topic;
-//	array[head].topic_len = topic_len;
-//	array[head].id = id;
-//	array[head].qos = qos;
-//	array[head].message = message;
-//	array[head].message_len = message_len;
-//	if(true == full)
-//	{
-//		tail = (tail + 1) % GB4MQTTQUEUE_ARRAY_SIZE;
-//	}
-//	head = (head + 1) % GB4MQTTQUEUE_ARRAY_SIZE;
-//	
-//	full = (head == tail);		
-//}	
-//
-//
-//
-//bool GB4MQTTQueue::peak(GB4MQTTQueue::Request *req)
-//{
-//	if(true == empty())
-//	{
-//		return false;
-//	}
-//	req = &array[tail];
-//	return true;
-//}
-//
-//
-//uint8_t GB4MQTTQueue::peakQoS()
-//{
-//	if(true == empty())
-//	{
-//		return 0;
-//	}
-//	return array[tail].qos;
-//}
-//
-//
-//bool GB4MQTTQueue::dequeue(GB4MQTTQueue::Request *req)
-//{
-//	if(true == empty())
-//	{
-//		return false;
-//	}
-//	req = &array[tail];
-//	full = false;
-//	tail = (tail + 1) % GB4MQTT_ARRAY_SIZE;
-//}
+
+GB4MQTT::Return GB4MQTT::dispatchIncomming()
+{
+	uint8_t message[GB4MQTT_MAX_PACKET_SIZE];
+	size_t message_len = sizeof message;
+	enum msgTypes type;
+	if(Return::WAITING_MESSAGE == pollIncomming(message, &message_len, &type))
+	{
+		return Return::LISTENING;
+	}
+
+	GB4MQTT::Return status;
+	switch(type)
+	{
+		case CONNACK:
+		status = checkConnack(message, message_len);
+		break;
+	
+		case PINGRESP:
+		resetKeepAliveTimer();		
+		status = Return::DISPATCHED_PING;
+		break;
+
+		case PUBLISH:
+		//1. Deserialize and get topic info and message
+		//2. Check topic length and name for matches in the array of registered topics
+		//3. Call the callback associated with the registered topic with the message 
+		break;
+
+		case PUBACK:
+		case PUBREC:
+		case PUBCOMP:
+		case SUBACK:
+		case UNSUBACK:
+		default:
+		status = Return::DISPATCH_TYPE_ERROR;
+		break;
+	}
+
+	return status;
+}
+
+
+GB4MQTT::Return GB4MQTT::pollConnackStatus()
+{
+	Return status = dispatchIncomming();
+	if(Return::GOT_CONNACK == status)
+	{
+		return Return::GOT_CONNACK;
+	}
+	if((millis() - connect_start_time) > GB4MQTT_CONNACK_TIMEOUT)
+	{
+		return Return::CONNACK_TIMEOUT;
+	}
+	return status;
+
+}
+
+
+GB4MQTT::Return GB4MQTT::sendPingRequest()
+{
+	static size_t constexpr PINGREQ_SIZE = 2;
+	uint8_t ping_request[PINGREQ_SIZE];
+	
+	if(PINGREQ_SIZE != MQTTSerialize_pingreq(ping_request, PINGREQ_SIZE))
+	{
+		return Return::PING_PACKET_ERROR;
+	}
+	if(GB4XBee::Return::MESSAGE_SENT != radio.sendMessage(
+		ping_request,
+		PINGREQ_SIZE))
+	{
+		return Return::PING_SOCKET_ERROR;
+	}
+	ping_period_start_time = millis();
+	return Return::PING_SENT;
+}
+
+
+void GB4MQTT::resetKeepAliveTimer()
+{
+	keepalive_period_start_time = millis();
+	ping_period_start_time = millis();
+}
+
+
+GB4MQTT::Return GB4MQTT::pollKeepAliveTimer()
+{
+	int32_t network_interval = millis() - keepalive_period_start_time;
+	if(network_interval > GB4MQTT_NETWORK_TIMEOUT_INTERVAL)
+	{
+		return Return::KEEPALIVE_TIMER_RECONNECT;
+	}
+	int32_t ping_interval = millis() - ping_period_start_time;
+	if(ping_interval > GB4MQTT_KEEPALIVE_INTERVAL)
+	{
+		return Return::KEEPALIVE_TIMER_PING;
+	}
+	return Return::KEEPALIVE_TIMER_RUNNING;
+}
+
+
+GB4MQTT::Return GB4MQTT::sendPublishRequest(
+	uint8_t duplicate,
+	uint8_t packet_id)
+{
+	static size_t constexpr PUBLISH_HEADER_SIZE = 6;
+	static size_t constexpr PACKET_MAX_SIZE = 
+		Queue::TOPIC_MAX_SIZE + 
+		Queue::MESSAGE_MAX_SIZE +
+		PUBLISH_HEADER_SIZE;
+	uint8_t packet[PACKET_MAX_SIZE];
+	
+	Queue::Request *req = pub_queue.peak();
+	if(nullptr == req)
+	{
+		return Return::PUBLISH_QUEUE_EMPTY;
+	}
+
+	MQTTString topic = {.cstring = req->topic};
+	int32_t packet_len = MQTTSerialize_publish(
+		packet, PACKET_MAX_SIZE,
+		duplicate,
+		req->qos,
+		req->retain,
+		packet_id,
+		topic,
+		req->message, req->message_len);
+	if(packet_len <= 0)
+	{
+		pub_queue.dequeue();
+		return Return::PUBLISH_PACKET_ERROR;
+	}
+
+	Return status;
+	switch(radio.sendMessage(packet, packet_len))
+	{
+		case GB4XBee::Return::MESSAGE_SENT:
+		pub_queue.dequeue();
+		status = Return::PUBLISH_SENT;
+		break;
+
+		case GB4XBee::Return::BUFFER_FULL:
+		status = Return::BUFFER_FULL;
+		break;
+
+		case GB4XBee::Return::DISCONNECTED:
+		case GB4XBee::Return::SOCKET_ERROR:
+		status = Return::PUBLISH_SOCKET_ERROR;
+		break;
+
+		case GB4XBee::Return::PACKET_ERROR:
+		pub_queue.dequeue();
+		status = Return::PUBLISH_PACKET_ERROR;
+		break;
+		
+		default:
+		break;	
+	}
+	return status;
+}
+
+
+GB4MQTT::Queue::Request::Request(
+	char const top[], size_t toplen,
+	uint8_t const mes[], size_t meslen,
+	uint8_t q, uint8_t r)
+{
+	topic_len = (toplen < TOPIC_MAX_SIZE) ? toplen : TOPIC_MAX_SIZE;
+	message_len = (meslen < MESSAGE_MAX_SIZE) ? meslen : MESSAGE_MAX_SIZE;
+	qos = q;
+	retain = r;
+	memcpy(topic, top, topic_len);
+	memcpy(message, mes, message_len);
+}
+
+
+GB4MQTT::Queue::Queue()
+{
+	head = 0;
+	tail = 0;
+	length = 0;
+	full = 0;
+}
+
+
+bool GB4MQTT::Queue::is_empty()
+{
+	return (false == full) && (head == tail);
+}
+
+bool GB4MQTT::Queue::is_full()
+{
+	return full;
+}
+
+bool GB4MQTT::Queue::get_length()
+{
+	size_t len = QUEUE_ARRAY_SIZE;
+	if(false == full)
+	{
+		if(head >= tail)
+		{
+			len = head - tail;
+		}
+		else
+		{
+			len = QUEUE_ARRAY_SIZE + head - tail;
+		}
+	}
+
+	return len;
+}
+
+
+bool GB4MQTT::Queue::enqueue(GB4MQTT::Queue::Request req)
+{
+	array[head] = req;
+	if(true == full)
+	{
+//		tail = (tail + 1) % QUEUE_ARRAY_SIZE;
+		return false;
+	}
+	head = (head + 1) % QUEUE_ARRAY_SIZE;
+	full = (head == tail);		
+	return true;
+}	
+
+
+GB4MQTT::Queue::Request *GB4MQTT::Queue::peak()
+{
+	if(true == is_empty())
+	{
+		return nullptr;
+	}
+	return &array[tail];
+}
+
+
+uint8_t GB4MQTT::Queue::peakQoS()
+{
+	if(true == is_empty())
+	{
+		return 0;
+	}
+	return array[tail].qos;
+}
+
+
+GB4MQTT::Queue::Request *GB4MQTT::Queue::dequeue()
+{
+	if(true == is_empty())
+	{
+		return nullptr;
+	}
+	Queue::Request *req = &array[tail];
+	full = false;
+	tail = (tail + 1) % QUEUE_ARRAY_SIZE;
+	return req;
+}
 
 

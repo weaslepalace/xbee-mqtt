@@ -3,7 +3,7 @@
 #include "gb4mqtt.h"
 //#include "gb4xbee.h"
 #include "MQTTPacket.h"
-
+#include <cstdio>
 
 
 static uint8_t rx_buffer[128];
@@ -197,12 +197,41 @@ int main()
 	digitalWrite(LED_BUILTIN, LOW);
 
 //	GB4MQTT mqtt(9600, "em", 1883, "69.62.134.151");
-	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
+//	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
+	GB4MQTT mqtt(
+		9600,
+//		"em",
+		"hologram",
+		8883,
+//		"nsps-sentinel-iot-hub.azure-devices.net",
+		"40.78.22.17",
+		true,
+		"tonitrus",
+		"nsps-sentinel-iot-hub.azure-devices.net/tonitrus",
+		"");
 	Serial.begin(mqtt.getRadioBaud());
 	Serial.setTimeout(10000);
 
 	mqtt.begin();
-	while(GB4MQTT::Return::CONNECTED != mqtt.poll());
+//	while(GB4MQTT::Return::CONNECTED != mqtt.poll());
+	int delay_start = millis();
+	for(uint32_t cnt = 0;;)
+	{	
+		if((true == mqtt.is_ready()) && ((millis() - delay_start) > 2500))
+		{
+			delay_start = millis();
+			uint8_t cnt_s[18];
+			size_t cnt_len = snprintf(
+				reinterpret_cast<char*>(cnt_s), 18,
+				"{cnt=%d}",
+				cnt);
+			cnt++;
+			static char constexpr t[] = "devices/tonitrus/messages/events/";
+			mqtt.publish(t, sizeof t, cnt_s, cnt_len);
+		}
+		mqtt.poll();
+	}
+
 //	GB4XBee radio(9600, "em");
 //	Serial.begin(radio.getBaud());
 //	Serial.setTimeout(10000);
