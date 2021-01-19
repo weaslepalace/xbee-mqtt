@@ -197,18 +197,18 @@ int main()
 	digitalWrite(LED_BUILTIN, LOW);
 
 //	GB4MQTT mqtt(9600, "em", 1883, "69.62.134.151");
-//	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
-	GB4MQTT mqtt(
-		9600,
-//		"em",
-		"hologram",
-		8883,
-//		"nsps-sentinel-iot-hub.azure-devices.net",
-		"40.78.22.17",
-		true,
-		"tonitrus",
-		"nsps-sentinel-iot-hub.azure-devices.net/tonitrus",
-		"");
+	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
+//	GB4MQTT mqtt(
+//		9600,
+////		"em",
+//		"hologram",
+//		8883,
+////		"nsps-sentinel-iot-hub.azure-devices.net",
+//		"40.78.22.17",
+//		true,
+//		"tonitrus",
+//		"nsps-sentinel-iot-hub.azure-devices.net/tonitrus",
+//		"");
 	Serial.begin(mqtt.getRadioBaud());
 	Serial.setTimeout(10000);
 
@@ -227,7 +227,7 @@ int main()
 				cnt);
 			cnt++;
 			static char constexpr t[] = "devices/tonitrus/messages/events/";
-			mqtt.publish(t, sizeof t, cnt_s, cnt_len);
+			mqtt.publish(t, sizeof t, cnt_s, cnt_len, 1);
 		}
 		mqtt.poll();
 	}

@@ -21,6 +21,8 @@ static int32_t constexpr GB4MQTT_KEEPALIVE_INTERVAL =
 
 static char constexpr GB4MQTT_DEFAULT_CLIENT_ID[] = "UNNAMED_GB4";
 static char constexpr GB4MQTT_CONNECT_PACKET_SIZE = 80;
+static int32_t constexpr GB4MQTT_PUBLISH_TIMEOUT = 10000;
+static uint8_t constexpr GB4MQTT_PUBLISH_MAX_TRIES = 4;
 
 class GB4MQTT {
 	public:
@@ -29,12 +31,14 @@ class GB4MQTT {
 		char const *radio_apn,
 		uint16_t network_port,
 		char const *network_address,
-		bool use_tls = true,
+		bool use_tls = false,
 		char const *device_id = GB4MQTT_DEFAULT_CLIENT_ID,
 		char const *name = "",
 		char const *password = "");
 
 	enum class Return {
+		PUBACK_MALFORMED = -15,
+		PUBLISH_TIMEOUT = -14,
 		PUBLISH_QUEUE_FULL = -13,
 		PUBLISH_QUEUE_EMPTY = -12,
 		PUBLISH_SOCKET_ERROR = -11,
@@ -61,6 +65,9 @@ class GB4MQTT {
 		DISPATCHED_PING,
 		PUBLISH_QUEUED,
 		PUBLISH_SENT,
+		PUBACK_IN_PROGRESS,
+		GOT_PUBACK,
+		DISPATCHED_PUBACK,
 		IN_PROGRESS,
 	};
 
@@ -99,17 +106,25 @@ class GB4MQTT {
 			Request(
 				char const top[], size_t toplen,
 				uint8_t const mes[], size_t meslen,
-				uint8_t q = 0, uint8_t r = 0);
+				uint8_t q = 0, uint8_t r = 0, uint16_t id = 0);
 			char topic[TOPIC_MAX_SIZE];
 			size_t topic_len;
 			uint8_t message[MESSAGE_MAX_SIZE];
 			size_t message_len;
 			uint8_t qos;
 			uint8_t retain;
+			uint8_t duplicate;
+			uint16_t packet_id;
+			int32_t start_time;
+			uint8_t tries;
+			bool got_puback;
 		};
 	
 		bool enqueue(Request req);
+		bool enqueue(Request *req);
 		Request *peak();
+		Request *peak(size_t index);
+		Request * findByPacketId(uint8_t packet_id);
 		uint8_t peakQoS();
 		Request *dequeue();
 		bool is_empty();
@@ -134,11 +149,12 @@ class GB4MQTT {
 	Return dispatchIncomming();	
 	Return pollConnackStatus();
 	Return checkConnack(uint8_t message[], size_t message_len);
+	bool checkPuback(uint8_t message[], size_t message_len);
 	void resetKeepAliveTimer();
 	Return pollKeepAliveTimer();
-	Return sendPublishRequest(
-		uint8_t duplicate = 0,
-		uint8_t packet_id = 0);
+	Return sendPublishRequest(Queue::Request *req);
+	bool handlePublishRequests();
+	void handleInFlightRequests();
 
 	enum class State {
 		RADIO_INIT_FAILED = -2,
@@ -170,8 +186,27 @@ class GB4MQTT {
 	uint16_t const port;
 	char const *address;
 	
+	class PacketId {
+		public:
+		PacketId()
+		{
+			packet_id = 0;
+		}
+
+		uint8_t get_next()
+		{
+			uint8_t pid = packet_id;
+			packet_id++;
+			return pid;
+		}
+		
+		private:
+		uint16_t packet_id;
+	};
+	PacketId packet_id;	
 
 	Queue pub_queue;
+	Queue in_flight;
 //	GB4MQTTQueue sub_queue;
 };
 

@@ -51,7 +51,10 @@ GB4MQTT::Return GB4MQTT::publish(
 		return Return::PUBLISH_QUEUE_FULL;
 	}
 
-	Queue::Request req(topic, topic_len, message, message_len, qos);
+	Queue::Request req(
+		topic, topic_len,
+		message, message_len,
+		qos, 0, packet_id.get_next());
 	pub_queue.enqueue(req);
 	return Return::PUBLISH_QUEUED;	
 }
@@ -178,21 +181,12 @@ GB4MQTT::Return GB4MQTT::poll()
 
 		dispatchIncomming();
 
-		Return pub_status;
-		do
+		handleInFlightRequests();
+		if(false == handlePublishRequests())
 		{
-			pub_status = sendPublishRequest();
-			if(Return::BUFFER_FULL == pub_status)
-			{
-				break;
-			}
-			if(Return::PUBLISH_SOCKET_ERROR == pub_status)
-			{
-				state = State::BEGIN_CONNECT_RETRY_DELAY;
-				break;
-			}
+			state = State::BEGIN_CONNECT_RETRY_DELAY;
+			break;
 		}
-		while(Return::PUBLISH_QUEUE_EMPTY != pub_status);
 
 		switch(pollKeepAliveTimer())
 		{
@@ -250,15 +244,15 @@ GB4MQTT::Return GB4MQTT::poll()
 	}
 
 	//Half-assed dev test; should be removed
-	if(State::BEGIN_STANDBY != state)
+	if((State::BEGIN_STANDBY != state) && (State::STANDBY != state))
 	{
+		digitalWrite(LED_BUILTIN, LOW);
 		return Return::IN_PROGRESS;
 	}
 
+	digitalWrite(LED_BUILTIN, HIGH);
 	return Return::CONNECTED;
 }
-
-
 
 
 GB4MQTT::Return GB4MQTT::sendConnectRequest()
@@ -382,6 +376,24 @@ GB4MQTT::Return GB4MQTT::checkConnack(uint8_t message[], size_t message_len)
 }
 
 
+bool GB4MQTT::checkPuback(uint8_t message[], size_t message_len)
+{
+	uint16_t id;
+	uint8_t dup;
+	uint8_t type;
+	if(0 == MQTTDeserialize_ack(&type, &dup, &id, message, message_len))
+	{
+		return false;
+	}
+	Queue::Request *req = in_flight.findByPacketId(id);
+	if(nullptr == req)
+	{
+		return false;
+	}
+	req->got_puback = true;
+	return true;	
+}
+
 
 GB4MQTT::Return GB4MQTT::dispatchIncomming()
 {
@@ -412,10 +424,20 @@ GB4MQTT::Return GB4MQTT::dispatchIncomming()
 		break;
 
 		case PUBACK:
+		if(false == checkPuback(message, message_len))
+		{
+			status = Return::PUBACK_MALFORMED;
+		}
+		status = Return::DISPATCHED_PUBACK;
+		resetKeepAliveTimer();
+		break;
+
 		case PUBREC:
 		case PUBCOMP:
 		case SUBACK:
 		case UNSUBACK:
+		resetKeepAliveTimer();
+
 		default:
 		status = Return::DISPATCH_TYPE_ERROR;
 		break;
@@ -484,35 +506,26 @@ GB4MQTT::Return GB4MQTT::pollKeepAliveTimer()
 }
 
 
-GB4MQTT::Return GB4MQTT::sendPublishRequest(
-	uint8_t duplicate,
-	uint8_t packet_id)
+GB4MQTT::Return GB4MQTT::sendPublishRequest(GB4MQTT::Queue::Request *req)
 {
 	static size_t constexpr PUBLISH_HEADER_SIZE = 6;
 	static size_t constexpr PACKET_MAX_SIZE = 
 		Queue::TOPIC_MAX_SIZE + 
 		Queue::MESSAGE_MAX_SIZE +
 		PUBLISH_HEADER_SIZE;
-	uint8_t packet[PACKET_MAX_SIZE];
-	
-	Queue::Request *req = pub_queue.peak();
-	if(nullptr == req)
-	{
-		return Return::PUBLISH_QUEUE_EMPTY;
-	}
 
+	uint8_t packet[PACKET_MAX_SIZE];
 	MQTTString topic = {.cstring = req->topic};
 	int32_t packet_len = MQTTSerialize_publish(
 		packet, PACKET_MAX_SIZE,
-		duplicate,
+		req->duplicate,
 		req->qos,
 		req->retain,
-		packet_id,
+		req->packet_id,
 		topic,
 		req->message, req->message_len);
 	if(packet_len <= 0)
 	{
-		pub_queue.dequeue();
 		return Return::PUBLISH_PACKET_ERROR;
 	}
 
@@ -520,40 +533,111 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(
 	switch(radio.sendMessage(packet, packet_len))
 	{
 		case GB4XBee::Return::MESSAGE_SENT:
-		pub_queue.dequeue();
 		status = Return::PUBLISH_SENT;
 		break;
 
-		case GB4XBee::Return::BUFFER_FULL:
-		status = Return::BUFFER_FULL;
-		break;
-
 		case GB4XBee::Return::DISCONNECTED:
+		case GB4XBee::Return::BUFFER_FULL:
+		case GB4XBee::Return::PACKET_ERROR:
 		case GB4XBee::Return::SOCKET_ERROR:
+		default:
 		status = Return::PUBLISH_SOCKET_ERROR;
 		break;
-
-		case GB4XBee::Return::PACKET_ERROR:
-		pub_queue.dequeue();
-		status = Return::PUBLISH_PACKET_ERROR;
-		break;
-		
-		default:
-		break;	
 	}
 	return status;
+}
+
+
+void GB4MQTT::handleInFlightRequests()
+{
+	size_t r = 0;
+	for(
+		Queue::Request *req = in_flight.peak(r); 
+		nullptr != req;
+		r++, req = in_flight.peak(r))
+	{
+		if(true == req->got_puback)
+		{
+			in_flight.dequeue();
+			continue;
+		}
+
+		else if((millis() - req->start_time) < GB4MQTT_PUBLISH_TIMEOUT)
+		{
+			continue;
+		}
+
+		else if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
+		{
+			in_flight.dequeue();
+			continue;
+		}
+		req->start_time = millis();
+		req->tries++;
+		if(true == pub_queue.enqueue(req))
+		{
+			in_flight.dequeue();
+		}
+	}
+}
+
+
+bool GB4MQTT::handlePublishRequests()
+{	
+	size_t r = 0;
+	for(
+		Queue::Request *req = pub_queue.peak(r);
+		nullptr != req;
+		r++, req = pub_queue.peak(r))
+	{
+		switch(sendPublishRequest(req))
+		{
+			case Return::PUBLISH_SENT:
+			if(0 == req->qos)
+			{
+				pub_queue.dequeue();
+			}
+			else
+			{
+				if(0 == req->duplicate)
+				{
+					req->duplicate = 1;
+					req->start_time = millis();	
+				}
+				if(true == in_flight.enqueue(req))
+				{
+					pub_queue.dequeue();
+				}
+			}
+			break;
+	
+			case Return::PUBLISH_PACKET_ERROR:
+			pub_queue.dequeue();
+			break;
+			
+			case Return::PUBLISH_SOCKET_ERROR:
+			default:
+			return false;
+			break;	
+		}
+	}
+	return true;
 }
 
 
 GB4MQTT::Queue::Request::Request(
 	char const top[], size_t toplen,
 	uint8_t const mes[], size_t meslen,
-	uint8_t q, uint8_t r)
+	uint8_t q, uint8_t r, uint16_t id)
 {
 	topic_len = (toplen < TOPIC_MAX_SIZE) ? toplen : TOPIC_MAX_SIZE;
 	message_len = (meslen < MESSAGE_MAX_SIZE) ? meslen : MESSAGE_MAX_SIZE;
 	qos = q;
 	retain = r;
+	tries = 0;
+	duplicate = 0;
+	packet_id = id;
+	got_puback = false;
 	memcpy(topic, top, topic_len);
 	memcpy(message, mes, message_len);
 }
@@ -599,12 +683,24 @@ bool GB4MQTT::Queue::get_length()
 
 bool GB4MQTT::Queue::enqueue(GB4MQTT::Queue::Request req)
 {
-	array[head] = req;
 	if(true == full)
 	{
 //		tail = (tail + 1) % QUEUE_ARRAY_SIZE;
 		return false;
 	}
+	array[head] = req;
+	head = (head + 1) % QUEUE_ARRAY_SIZE;
+	full = (head == tail);		
+	return true;
+}
+
+bool GB4MQTT::Queue::enqueue(GB4MQTT::Queue::Request *req)
+{
+	if(true == full)
+	{
+		return false;
+	}
+	memcpy(&array[head], req, sizeof(Queue::Request));
 	head = (head + 1) % QUEUE_ARRAY_SIZE;
 	full = (head == tail);		
 	return true;
@@ -618,6 +714,36 @@ GB4MQTT::Queue::Request *GB4MQTT::Queue::peak()
 		return nullptr;
 	}
 	return &array[tail];
+}
+
+
+GB4MQTT::Queue::Request *GB4MQTT::Queue::peak(size_t index)
+{
+	if(true == is_empty())
+	{
+		return nullptr;
+	}
+	size_t i = (tail + index) % QUEUE_ARRAY_SIZE;
+	if(i == head)
+	{
+		return nullptr;
+	}
+	return &array[i];
+}
+
+
+GB4MQTT::Queue::Request *GB4MQTT::Queue::findByPacketId(uint8_t packet_id)
+{
+	if(true == is_empty())
+	{
+		return nullptr;
+	}
+	Request *req = peak(0);
+	for(size_t r = 1; (nullptr != req) && (req->packet_id != packet_id); r++)
+	{
+		req = peak(r);
+	}
+	return req;
 }
 
 

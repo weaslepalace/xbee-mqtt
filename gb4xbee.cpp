@@ -748,7 +748,12 @@ GB4XBee::Return GB4XBee::pollConnectStatus()
 
 GB4XBee::Return GB4XBee::pollReceivedMessage(uint8_t message[], size_t *message_len)
 {
-	xbee_dev_tick(&xbee);
+	if(xbee_dev_tick(&xbee) < 0)
+	{
+		digitalWrite(LED_BUILTIN, LOW);
+		return Return::WAITING_MESSAGE;
+	}
+
 	if(false == notify_received_message)
 	{
 		return Return::WAITING_MESSAGE;
