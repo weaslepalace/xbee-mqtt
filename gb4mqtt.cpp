@@ -46,6 +46,11 @@ GB4MQTT::Return GB4MQTT::publish(
 	size_t message_len,
 	uint8_t qos)
 {
+	if(false == is_ready())
+	{
+		return Return::NOT_READY;
+	}
+
 	if(true == pub_queue.is_full())
 	{
 		return Return::PUBLISH_QUEUE_FULL;
@@ -56,6 +61,7 @@ GB4MQTT::Return GB4MQTT::publish(
 		message, message_len,
 		qos, 0, packet_id.get_next());
 	pub_queue.enqueue(req);
+	digitalWrite(LED_BUILTIN, HIGH);
 	return Return::PUBLISH_QUEUED;	
 }
 
@@ -246,11 +252,9 @@ GB4MQTT::Return GB4MQTT::poll()
 	//Half-assed dev test; should be removed
 	if((State::BEGIN_STANDBY != state) && (State::STANDBY != state))
 	{
-		digitalWrite(LED_BUILTIN, LOW);
 		return Return::IN_PROGRESS;
 	}
 
-	digitalWrite(LED_BUILTIN, HIGH);
 	return Return::CONNECTED;
 }
 
@@ -558,6 +562,7 @@ void GB4MQTT::handleInFlightRequests()
 	{
 		if(true == req->got_puback)
 		{
+			digitalWrite(LED_BUILTIN, LOW);
 			in_flight.dequeue();
 			continue;
 		}
@@ -569,6 +574,7 @@ void GB4MQTT::handleInFlightRequests()
 
 		else if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
 		{
+			digitalWrite(LED_BUILTIN, LOW);
 			in_flight.dequeue();
 			continue;
 		}
@@ -617,6 +623,7 @@ bool GB4MQTT::handlePublishRequests()
 			
 			case Return::PUBLISH_SOCKET_ERROR:
 			default:
+			digitalWrite(LED_BUILTIN, LOW);
 			return false;
 			break;	
 		}

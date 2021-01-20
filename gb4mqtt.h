@@ -37,6 +37,7 @@ class GB4MQTT {
 		char const *password = "");
 
 	enum class Return {
+		NOT_READY = -16,
 		PUBACK_MALFORMED = -15,
 		PUBLISH_TIMEOUT = -14,
 		PUBLISH_QUEUE_FULL = -13,
@@ -85,6 +86,11 @@ class GB4MQTT {
 	uint32_t getRadioBaud()
 	{
 		return radio.getBaud();
+	}
+
+	uint64_t getRadioSerialNumber()
+	{
+		return radio.getSerialNumber();
 	}
 	
 	bool is_ready()

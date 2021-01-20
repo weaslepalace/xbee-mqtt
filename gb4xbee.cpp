@@ -49,6 +49,19 @@ char const *GB4XBee::getAPN()
 }
 
 
+uint64_t GB4XBee::getSerialNumber()
+{
+	if(state < State::BEGIN_API_MODE_COMMAND)
+	{
+		return 0;
+	}
+
+	return 
+		(static_cast<uint64_t>(xbee.wpan_dev.address.ieee.l[0]) << 32) | 
+		(xbee.wpan_dev.address.ieee.l[1]);
+}
+
+
 bool GB4XBee::begin()
 {
 	int status = xbee_dev_init(&xbee, &ser, NULL, NULL);
@@ -227,31 +240,10 @@ GB4XBee::Return GB4XBee::pollStartup()
 		break;
 
 		case State::SOCKET_COOLDOWN_PERIOD:
-//		if(false == pollSocketCooldown())
-//		{
-//			break;
-//		}
-
-///**DEBUGGING**
-///**DELETE ME**
-//{
-//delay(1200);
-//Serial.write("+++", 3);
-//char resp[200];
-//Serial.readBytesUntil('\r', resp, 200);
-//delay(1200);
-//Serial.write("ATDB\r", 5);
-//size_t len = Serial.readBytesUntil('\r', resp, 200);
-//Serial.println();
-//Serial.write(resp, len);
-//Serial.println();
-//Serial.write("ATMN\r", 5);
-//Serial.readBytesUntil('\r', resp, 200);
-//Serial.write(resp, len);
-//Serial.println();
-//Serial.write("ATCN\r", 5);
-//Serial.readBytesUntil('\r', resp, 200);
-//}
+		if(false == pollSocketCooldown())
+		{
+			break;
+		}
 		state = State::BEGIN_CREATE_SOCKET;
 		break;
 
@@ -264,22 +256,6 @@ GB4XBee::Return GB4XBee::pollStartup()
 		switch(pollSocketStatus())
 		{
 			case Return::GOT_SOCKET_ID:
-//**DELETE ME**
-//{
-//delay(1200);
-//Serial.write("+++", 3);
-//char resp[200];
-//Serial.readBytesUntil('\r', resp, 200);
-//delay(1200);
-//Serial.write("ATSI\r", 5);
-//size_t len = Serial.readBytesUntil('\r', resp, 200);
-//Serial.println();
-//Serial.write(resp, len);
-//Serial.println();
-//Serial.println(sock);
-//Serial.write("ATCN\r", 5);
-//Serial.readBytesUntil('\r', resp, 200);
-//}
 			state = State::BEGIN_SET_TLS_PROFILE;
 			break;
 

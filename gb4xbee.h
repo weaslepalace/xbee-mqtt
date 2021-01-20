@@ -73,6 +73,7 @@ class GB4XBee {
 	bool verifyAccessPointName(uint8_t const *value, size_t const len);
 	uint32_t getBaud();
 	char const *getAPN();
+	uint64_t getSerialNumber();
 
 	uint32_t const cast_guard;
 

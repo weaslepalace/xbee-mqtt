@@ -6,188 +6,6 @@
 #include <cstdio>
 
 
-static uint8_t rx_buffer[128];
-static uint8_t *_fetch_data = NULL;
-static int _fetch_head = 0;
-static int fetch_callback(uint8_t *c, int length)
-{
-	if(NULL == _fetch_data)
-	{
-		return -1;
-	}
-	int i = 0; 
-	for(; i < length; i++)
-	{
-		c[i] = _fetch_data[i + _fetch_head];
-	} 
-	_fetch_head += i;
-	return length;
-}
-
-static void fetch_rewind()
-{
-	_fetch_data = NULL;
-	_fetch_head = 0;
-}
-
-static void set_fetch_data(uint8_t *r)
-{
-	_fetch_data = r;
-}
-
-
-class GB4MQTTClient {
-	public:
-	GB4MQTTClient()
-	{
-		state = Await::CONACK;
-		is_connected = false;
-	}
-
-	enum class Await {
-		CONACK,
-		PUBSUB,
-		SUBACK,
-		PUBACK,
-		PUBREQ,
-		PUBCOMP,
-		UNSUBACK,
-		PINGRESP,
-		PUBLISH
-	} state;
-
-	bool is_connected;
-
-	private:
-};
-
-
-class GB4MQTTTopic {
-	public:
-	enum class QoS {
-		AT_MOST_ONCE,
-		AT_LEAST_ONCE,
-		EXACTLY_ONCE
-	} qos;
-};
-
-
-
-static bool got_mqtt_connack = false;
-static bool got_mqtt_suback = false;
-static bool got_mqtt_beep_topic = false;
-
-//static void receive_callback(
-//	xbee_sock_t sock,
-//	uint8_t status,
-//	void const *payload,
-//	size_t payload_length)
-//{
-//	if(payload_length >= RX_BUFFER_LEN)
-//	{
-//		payload_length = RX_BUFFER_LEN;
-//	}
-////	memcpy(rx_buffer, payload, payload_length);
-////	rx_buffer[payload_length] = '\0';
-//	got_response = true;
-//
-//	static GB4MQTTClient client;
-//	set_fetch_data((uint8_t *)payload);
-//	enum msgTypes type = (enum msgTypes) MQTTPacket_read(
-//		rx_buffer,
-//		payload_length,
-//		fetch_callback);
-//	switch(client.state)
-//	{
-//		case GB4MQTTClient::Await::CONACK:
-//		if(CONNACK == type)
-//		{
-//			enum connack_return_codes code;
-//			uint8_t session_bit;
-//			if(0 == MQTTDeserialize_connack(
-//				&session_bit,
-//				(uint8_t*)&code,
-//				rx_buffer,
-//				payload_length))
-//			{
-//				break;
-//			}
-//			if(MQTT_CONNECTION_ACCEPTED != code)
-//			{
-//				break;
-//			}
-//			client.state = GB4MQTTClient::Await::SUBACK;
-//			client.is_connected = true;
-//
-//			got_mqtt_connack = true;
-//		}
-//		break;
-//
-//		case GB4MQTTClient::Await::SUBACK:
-//		if(SUBACK == type)
-//		{
-//			uint16_t packet_id;
-//			int qos_count;
-//			int qos[1];
-//			if(1 != MQTTDeserialize_suback(
-//				&packet_id,
-//				1,
-//				&qos_count,
-//				qos,
-//				rx_buffer,
-//				payload_length))
-//			{
-//				break;
-//			}
-//			got_mqtt_suback = true;
-//
-//			client.state = GB4MQTTClient::Await::PUBLISH;
-//		}
-//		break;
-//		
-//		case GB4MQTTClient::Await::PUBLISH:
-//		if(PUBLISH == type)
-//		{
-//			uint8_t duplicate_flag;
-//			uint8_t retain_flag;
-//			int qos;
-//			uint16_t packet_id;
-//			MQTTString topic;
-//			uint8_t *topic_data;
-//			int topic_data_len;	
-//			if(1 != MQTTDeserialize_publish(
-//				&duplicate_flag,
-//				&qos,
-//				&retain_flag,
-//				&packet_id,
-//				&topic,
-//				&topic_data,
-//				&topic_data_len,
-//				rx_buffer,
-//				payload_length))
-//			{
-//				break;
-//			}
-//			if(0 != memcmp("beep", topic.lenstring.data, 4))
-//			{
-//				break;
-//			}
-//			if('1' != topic_data[0])
-//			{
-//				break;
-//			}
-//			got_mqtt_beep_topic = true;
-//		}
-//		break;
-//
-//		default:
-//		break;
-//	}
-//	fetch_rewind();
-//}
-
-volatile uint32_t timeoutCount = 0;
-
 int main()
 {
 	init();
@@ -197,18 +15,18 @@ int main()
 	digitalWrite(LED_BUILTIN, LOW);
 
 //	GB4MQTT mqtt(9600, "em", 1883, "69.62.134.151");
-	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
-//	GB4MQTT mqtt(
-//		9600,
-////		"em",
-//		"hologram",
-//		8883,
-////		"nsps-sentinel-iot-hub.azure-devices.net",
-//		"40.78.22.17",
-//		true,
-//		"tonitrus",
-//		"nsps-sentinel-iot-hub.azure-devices.net/tonitrus",
-//		"");
+//	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
+	GB4MQTT mqtt(
+		9600,
+//		"em",
+		"hologram",
+		8883,
+//		"nsps-sentinel-iot-hub.azure-devices.net",
+		"40.78.22.17",
+		true,
+		"tonitrus",
+		"nsps-sentinel-iot-hub.azure-devices.net/tonitrus",
+		"");
 	Serial.begin(mqtt.getRadioBaud());
 	Serial.setTimeout(10000);
 
@@ -311,6 +129,5 @@ int main()
 //			}
 //		}
 //	}
-	digitalWrite(LED_BUILTIN, HIGH);
 	for(;;);	
 }
