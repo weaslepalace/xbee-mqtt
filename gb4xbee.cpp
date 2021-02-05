@@ -494,7 +494,7 @@ static bool notify_got_connection = false;
 static bool notify_got_socket_id = false;
 static bool notify_socket_error = false;
 static bool notify_socket_closed = false;
-static void notify_callback(
+static void notifyCallback(
 	xbee_sock_t sockid,
 	uint8_t frame_type,
 	uint8_t message)
@@ -577,7 +577,7 @@ static void notify_callback(
 
 
 bool notify_got_option_response = false;
-void option_callback(
+void optionCallback(
 	xbee_sock_t sock,
 	uint8_t option_id,
 	uint8_t status,
@@ -608,7 +608,7 @@ bool GB4XBee::sendSocketCreate()
 	notify_got_socket_id = false;
 	notify_socket_closed = false;
 	xbee_sock_reset(&xbee);
-	sock = xbee_sock_create(&xbee, transport_protocol, notify_callback);
+	sock = xbee_sock_create(&xbee, transport_protocol, notifyCallback);
 	if(sock < 0)
 	{
 		err = sock;
@@ -648,7 +648,7 @@ bool GB4XBee::sendSocketOption()
 		sock,
 		0,
 		payload, sizeof payload,
-		option_callback);
+		optionCallback);
 	if(0 != status)
 	{
 		return false;
@@ -672,7 +672,7 @@ static bool notify_received_message = false;
 static uint32_t received_messages_dropped = 0;
 static size_t  received_message_len = 0;
 static uint8_t received_message_payload[GB4XBEE_RECEIVED_MESSAGE_MAX_SIZE]; 
-static void receive_callback(
+static void receiveCallback(
 	xbee_sock_t sock,
 	uint8_t status,
 	void const *payload,
@@ -698,7 +698,7 @@ bool GB4XBee::connect(uint16_t port, char const *address)
 	notify_connection_refused = false;
 	notify_got_connection = false;
 	notify_received_message = false;
-	int status = xbee_sock_connect(sock, port, 0, address, receive_callback);
+	int status = xbee_sock_connect(sock, port, 0, address, receiveCallback);
 	if(0 != status)
 	{
 		err = status;
@@ -745,11 +745,17 @@ GB4XBee::Return GB4XBee::pollReceivedMessage(uint8_t message[], size_t *message_
 	return Return::MESSAGE_RECEIVED;
 }
 
+static volatile int __trap__(int status)
+{
+	return digitalRead(LED_BUILTIN);
+}
 
 GB4XBee::Return GB4XBee::sendMessage(uint8_t message[], size_t message_len)
 {
 	Return status;
-	switch(xbee_sock_send(sock, 0, message, message_len))
+	int send_ok = xbee_sock_send(sock, 0, message, message_len);
+	__trap__(send_ok);
+	switch(send_ok)
 	{
 		case 0:
 		status = Return::MESSAGE_SENT;

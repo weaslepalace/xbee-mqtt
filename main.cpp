@@ -18,15 +18,15 @@ int main()
 //	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
 	GB4MQTT mqtt(
 		9600,
-//		"em",
-		"hologram",
-		8883,
-//		"nsps-sentinel-iot-hub.azure-devices.net",
-		"40.78.22.17",
+		"em",
+//		"hologram",
 		true,
-		"tonitrus",
-		"nsps-sentinel-iot-hub.azure-devices.net/tonitrus",
-		"");
+		8883,
+//		const_cast<char*>("nsps-sentinel-iot-hub.azure-devices.net"),
+		const_cast<char*>("40.78.22.17"),
+		const_cast<char*>("tonitrus"),
+		const_cast<char*>("nsps-sentinel-iot-hub.azure-devices.net/tonitrus"),
+		const_cast<char*>(""));
 	Serial.begin(mqtt.getRadioBaud());
 	Serial.setTimeout(10000);
 
@@ -38,11 +38,18 @@ int main()
 		if((true == mqtt.is_ready()) && ((millis() - delay_start) > 2500))
 		{
 			delay_start = millis();
-			uint8_t cnt_s[18];
+			uint8_t cnt_s[300];
 			size_t cnt_len = snprintf(
-				reinterpret_cast<char*>(cnt_s), 18,
-				"{cnt=%d}",
-				cnt);
+				reinterpret_cast<char*>(cnt_s), 300,
+				"["
+					"{"
+						"\"device_id\":\"tonitrus\","
+						"\"latitude\":15.0437602,"
+						"\"longitude\":30.5005255,"
+						"\"robotState\":\"Error\","
+						"\"timestamp\":\"2021-02-03T00:23:22.595Z\""
+					"}"
+				"]");
 			cnt++;
 			static char constexpr t[] = "devices/tonitrus/messages/events/";
 			mqtt.publish(t, sizeof t, cnt_s, cnt_len, 1);

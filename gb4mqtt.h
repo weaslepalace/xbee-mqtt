@@ -6,6 +6,7 @@
 #define GB4MQTT_H
 
 #include "gb4xbee.h"
+#include "mqtt_request_queue.h"
 #include "MQTTPacket.h"
 
 static int32_t constexpr GB4MQTT_CONNACK_TIMEOUT = 10000;
@@ -23,18 +24,19 @@ static char constexpr GB4MQTT_DEFAULT_CLIENT_ID[] = "UNNAMED_GB4";
 static char constexpr GB4MQTT_CONNECT_PACKET_SIZE = 80;
 static int32_t constexpr GB4MQTT_PUBLISH_TIMEOUT = 10000;
 static uint8_t constexpr GB4MQTT_PUBLISH_MAX_TRIES = 4;
+static size_t constexpr GB4MQTT_MAX_QUEUE_DEPTH = 10;
 
 class GB4MQTT {
 	public:
 	GB4MQTT(
 		uint32_t radio_baud,
 		char const *radio_apn,
-		uint16_t network_port,
-		char const *network_address,
 		bool use_tls = false,
-		char const *device_id = GB4MQTT_DEFAULT_CLIENT_ID,
-		char const *name = "",
-		char const *password = "");
+		uint16_t network_port = 0,
+		char *network_address = const_cast<char*>(""),
+		char *id = const_cast<char*>(GB4MQTT_DEFAULT_CLIENT_ID),
+		char *name = const_cast<char*>(""),
+		char *pwd = const_cast<char*>(""));
 
 	enum class Return {
 		NOT_READY = -16,
@@ -54,6 +56,7 @@ class GB4MQTT {
 		CONNACK_REJECTED = -2,
 		CONNACK_ERROR = -1,	
 		LISTENING = 0,
+		RADIO_READY,
 		CONNECT_SENT,	
 		GOT_CONNACK,
 		WAITING_MESSAGE,
@@ -98,52 +101,74 @@ class GB4MQTT {
 		return (state == State::STANDBY);
 	}
 
-	class Queue {
-		public:
-		Queue();
-		
-		static size_t constexpr QUEUE_ARRAY_SIZE = 10;
-		static size_t constexpr TOPIC_MAX_SIZE  = 64;
-		static size_t constexpr MESSAGE_MAX_SIZE = 128;
-	
-		class Request {
-			public:
-			Request(){}
-			Request(
-				char const top[], size_t toplen,
-				uint8_t const mes[], size_t meslen,
-				uint8_t q = 0, uint8_t r = 0, uint16_t id = 0);
-			char topic[TOPIC_MAX_SIZE];
-			size_t topic_len;
-			uint8_t message[MESSAGE_MAX_SIZE];
-			size_t message_len;
-			uint8_t qos;
-			uint8_t retain;
-			uint8_t duplicate;
-			uint16_t packet_id;
-			int32_t start_time;
-			uint8_t tries;
-			bool got_puback;
-		};
-	
-		bool enqueue(Request req);
-		bool enqueue(Request *req);
-		Request *peak();
-		Request *peak(size_t index);
-		Request * findByPacketId(uint8_t packet_id);
-		uint8_t peakQoS();
-		Request *dequeue();
-		bool is_empty();
-		bool is_full();
-		bool get_length();
-	
-		private:
-		Request array[QUEUE_ARRAY_SIZE]; 
-		size_t head;
-		size_t tail;
-		size_t length;
-		bool full;
-	};
+	void setClientID(char *id)
+	{
+		client_id = id;
+	}
+
+	void setPassword(char *pwd)
+	{
+		client_password = pwd;
+	}
+
+	void setClientName(char *name)
+	{
+		client_name = name;
+	}
+
+	void setAddress(char *addr)
+	{
+		address = addr;
+	}
+
+	void setPort(uint16_t p)
+	{
+		port = p;
+	}
+
+//	class Queue {
+//		public:
+//		Queue();
+//		
+//	
+//		class Request {
+//			public:
+//			Request(){}
+//			Request(
+//				char const top[], size_t toplen,
+//				uint8_t const mes[], size_t meslen,
+//				uint8_t q = 0, uint8_t r = 0, uint16_t id = 0);
+//			char topic[TOPIC_MAX_SIZE];
+//			size_t topic_len;
+//			uint8_t message[MESSAGE_MAX_SIZE];
+//			size_t message_len;
+//			uint8_t qos;
+//			uint8_t retain;
+//			uint8_t duplicate;
+//			uint16_t packet_id;
+//			int32_t start_time;
+//			uint8_t tries;
+//			bool got_puback;
+//		};
+//	
+//		bool enqueue(Request req);
+//		bool enqueue(Request *req);
+//		Request *peak();
+//		Request *peak(size_t index);
+//		Request * findByPacketId(uint8_t packet_id);
+//		uint8_t peakQoS();
+//		Request *dequeue();
+//		bool is_empty();
+//		bool is_full();
+//		bool get_length();
+//	
+//		private:
+//		Request array[QUEUE_ARRAY_SIZE]; 
+//		size_t head;
+//		size_t tail;
+//		size_t length;
+//		bool full;
+//	};
 	
 	private:
 	Return sendConnectRequest();
@@ -158,7 +183,7 @@ class GB4MQTT {
 	bool checkPuback(uint8_t message[], size_t message_len);
 	void resetKeepAliveTimer();
 	Return pollKeepAliveTimer();
-	Return sendPublishRequest(Queue::Request *req);
+	Return sendPublishRequest(Request *req);
 	bool handlePublishRequests();
 	void handleInFlightRequests();
 
@@ -186,11 +211,11 @@ class GB4MQTT {
 	int32_t connect_start_time;
 	int32_t keepalive_period_start_time;
 	int32_t ping_period_start_time;
-	char const *client_id;
-	char const *client_name;
-	char const *client_password;
-	uint16_t const port;
-	char const *address;
+	char *client_id;
+	char *client_name;
+	char *client_password;
+	uint16_t port;
+	char *address;
 	
 	class PacketId {
 		public:
@@ -211,9 +236,9 @@ class GB4MQTT {
 	};
 	PacketId packet_id;	
 
-	Queue pub_queue;
-	Queue in_flight;
-//	GB4MQTTQueue sub_queue;
+	RequestQueue<GB4MQTT_MAX_QUEUE_DEPTH> pub_queue;
+	RequestQueue<GB4MQTT_MAX_QUEUE_DEPTH> in_flight;
+//	RequestQueue<GB4MQTT_MAX_QUEUE_DEPTH> sub_queue;
 };
 
 
