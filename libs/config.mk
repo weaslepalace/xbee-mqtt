@@ -18,6 +18,7 @@ HEADERS += \
 	libs/xbee_ansic_library/include \
 	libs/xbee_ansic_library/ports/arduino-due \
 	libs/paho.mqtt.embedded-c/MQTTPacket/src \
+	libs/static_queue \
 
 SYMBOLS += \
 	XBEE_PLATFORM_HEADER="\"platform_config_arduino_due.h\"" \

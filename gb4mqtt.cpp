@@ -56,7 +56,7 @@ GB4MQTT::Return GB4MQTT::publish(
 		return Return::PUBLISH_QUEUE_FULL;
 	}
 
-	Request req(
+	MQTTRequest req(
 		topic, topic_len,
 		message, message_len,
 		qos, 0, packet_id.get_next());
@@ -184,7 +184,7 @@ GB4MQTT::Return GB4MQTT::poll()
 
 		case State::STANDBY:
 		dispatchIncomming();
-		handleInFlightRequests();
+//		handleInFlightRequests();
 		if(false == handlePublishRequests())
 		{
 			state = State::BEGIN_CONNECT_RETRY_DELAY;
@@ -380,6 +380,22 @@ GB4MQTT::Return GB4MQTT::checkConnack(uint8_t message[], size_t message_len)
 }
 
 
+static MQTTRequest *findRequestByPacketId(
+	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> &queue,
+	uint16_t id)
+{
+	LinkedNode<MQTTRequest> *node = queue.peakNode();
+	for( ; nullptr != node; node = node->next())
+	{
+		if(node->value().packet_id == id)
+		{
+			break;
+		}
+	}
+	return &node->value();
+}
+
+
 bool GB4MQTT::checkPuback(uint8_t message[], size_t message_len)
 {
 	uint16_t id;
@@ -389,7 +405,7 @@ bool GB4MQTT::checkPuback(uint8_t message[], size_t message_len)
 	{
 		return false;
 	}
-	Request *req = in_flight.findByPacketId(id);
+	MQTTRequest *req = findRequestByPacketId(pub_queue, id);
 	if(nullptr == req)
 	{
 		return false;
@@ -515,12 +531,12 @@ GB4MQTT::Return GB4MQTT::pollKeepAliveTimer()
 }
 
 
-GB4MQTT::Return GB4MQTT::sendPublishRequest(Request *req)
+GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest *req)
 {
 	static size_t constexpr PUBLISH_HEADER_SIZE = 6;
 	static size_t constexpr PACKET_MAX_SIZE = 
-		Request::TOPIC_MAX_SIZE + 
-		Request::MESSAGE_MAX_SIZE +
+		MQTTRequest::TOPIC_MAX_SIZE + 
+		MQTTRequest::MESSAGE_MAX_SIZE +
 		PUBLISH_HEADER_SIZE;
 
 	uint8_t packet[PACKET_MAX_SIZE];
@@ -557,202 +573,107 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(Request *req)
 }
 
 
-void GB4MQTT::handleInFlightRequests()
-{
-	for(Request *req = in_flight.peak(); nullptr != req; req = req->next())
-	{
-		if(true == req->got_puback)
-		{
-			digitalWrite(LED_BUILTIN, LOW);
-			in_flight.remove(req);
-			continue;
-		}
+//void GB4MQTT::handleInFlightRequests()
+//{
+//	for(
+//		LinkedNode<MQTTRequest> *node = in_flight.peakNode();
+//		nullptr != node;
+//		node = node->next())
+//	{
+//		MQTTRequest *req = &node->value();
+//		if(true == req->got_puback)
+//		{
+//			digitalWrite(LED_BUILTIN, LOW);
+//			in_flight.remove(node);
+//			continue;
+//		}
+//
+//		if((millis() - req->start_time) < GB4MQTT_PUBLISH_TIMEOUT)
+//		{
+//			continue;
+//		}
+//
+//		if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
+//		{
+//			digitalWrite(LED_BUILTIN, LOW);
+//			in_flight.remove(node);
+//			continue;
+//		}
+//		req->start_time = millis();
+//		req->tries++;
+//		if(true == pub_queue.insert(req))
+//		{
+//			in_flight.remove(node);
+//		}
+//	}
+//}
 
-		if((millis() - req->start_time) < GB4MQTT_PUBLISH_TIMEOUT)
-		{
-			continue;
-		}
-
-		if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
-		{
-			digitalWrite(LED_BUILTIN, LOW);
-			in_flight.remove(req);
-			continue;
-		}
-		req->start_time = millis();
-		req->tries++;
-		if(true == pub_queue.insert(req))
-		{
-			in_flight.remove(req);
-		}
-	}
-}
 
 
 bool GB4MQTT::handlePublishRequests()
 {	
-	for(Request *req = pub_queue.peak(); nullptr != req; req = req->next())
+	for(
+		LinkedNode<MQTTRequest> *node = pub_queue.peakNode();
+		nullptr != node;
+		node = node->next())
 	{
-		Return send_ok = sendPublishRequest(req);
-		switch(send_ok)
+		MQTTRequest *req = &node->value();
+		if(true == req->ready_to_send)
 		{
-			case Return::PUBLISH_SENT:
-			if(0 == req->qos)
+			Return send_ok = sendPublishRequest(req);
+			switch(send_ok)
 			{
-				pub_queue.remove(req);
-			}
-			else
-			{
-				if(0 == req->duplicate)
+				case Return::PUBLISH_SENT:
+				if(0 == req->qos)
 				{
-					req->duplicate = 1;
-					req->start_time = millis();	
+					pub_queue.remove(node);
 				}
-				in_flight.insert(req);
-				pub_queue.remove(req);
+				else
+				{
+					if(0 == req->duplicate)
+					{
+						req->duplicate = 1;
+						req->start_time = millis();	
+					}
+					req->ready_to_send = false;
+				}
+				break;
+		
+				case Return::PUBLISH_PACKET_ERROR:
+				pub_queue.remove(node);
+				break;
+				
+				case Return::PUBLISH_SOCKET_ERROR:
+				default:
+				digitalWrite(LED_BUILTIN, LOW);
+				return false;
 			}
-			break;
+		}
+		else
+		{
+			if(true == req->got_puback)
+			{
+				digitalWrite(LED_BUILTIN, LOW);
+				pub_queue.remove(node);
+				continue;
+			}
 	
-			case Return::PUBLISH_PACKET_ERROR:
-			pub_queue.remove(req);
-			break;
-			
-			case Return::PUBLISH_SOCKET_ERROR:
-			default:
-			digitalWrite(LED_BUILTIN, LOW);
-			return false;
+			if((millis() - req->start_time) < GB4MQTT_PUBLISH_TIMEOUT)
+			{
+				continue;
+			}
+	
+			if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
+			{
+				digitalWrite(LED_BUILTIN, LOW);
+				pub_queue.remove(node);
+				continue;
+			}
+			req->start_time = millis();
+			req->tries++;
+			req->ready_to_send = true;
 		}
 	}
 	return true;
 }
 
-
-
-
-//GB4MQTT::Queue::Queue()
-//{
-//	head = 0;
-//	tail = 0;
-//	length = 0;
-//	full = 0;
-//}
-//
-//
-//bool GB4MQTT::Queue::is_empty()
-//{
-//	return (false == full) && (head == tail);
-//}
-//
-//bool GB4MQTT::Queue::is_full()
-//{
-//	return full;
-//}
-//
-//bool GB4MQTT::Queue::get_length()
-//{
-//	size_t len = QUEUE_ARRAY_SIZE;
-//	if(false == full)
-//	{
-//		if(head >= tail)
-//		{
-//			len = head - tail;
-//		}
-//		else
-//		{
-//			len = QUEUE_ARRAY_SIZE + head - tail;
-//		}
-//	}
-//
-//	return len;
-//}
-//
-//
-//bool GB4MQTT::Queue::insert(GB4MQTT::Queue::Request req)
-//{
-//	if(true == full)
-//	{
-////		tail = (tail + 1) % QUEUE_ARRAY_SIZE;
-//		return false;
-//	}
-//	array[head] = req;
-//	head = (head + 1) % QUEUE_ARRAY_SIZE;
-//	full = (head == tail);		
-//	return true;
-//}
-//
-//bool GB4MQTT::Queue::insert(GB4MQTT::Queue::Request *req)
-//{
-//	if(true == full)
-//	{
-//		return false;
-//	}
-//	memcpy(&array[head], req, sizeof(Queue::Request));
-//	head = (head + 1) % QUEUE_ARRAY_SIZE;
-//	full = (head == tail);		
-//	return true;
-//}	
-//
-//
-//GB4MQTT::Queue::Request *GB4MQTT::Queue::peak()
-//{
-//	if(true == is_empty())
-//	{
-//		return nullptr;
-//	}
-//	return &array[tail];
-//}
-//
-//
-//GB4MQTT::Queue::Request *GB4MQTT::Queue::peak(size_t index)
-//{
-//	if(true == is_empty())
-//	{
-//		return nullptr;
-//	}
-//	size_t i = (tail + index) % QUEUE_ARRAY_SIZE;
-//	if(i == head)
-//	{
-//		return nullptr;
-//	}
-//	return &array[i];
-//}
-//
-//
-//GB4MQTT::Queue::Request *GB4MQTT::Queue::findByPacketId(uint8_t packet_id)
-//{
-//	if(true == is_empty())
-//	{
-//		return nullptr;
-//	}
-//	Request *req = peak(0);
-//	for(size_t r = 1; (nullptr != req) && (req->packet_id != packet_id); r++)
-//	{
-//		req = peak(r);
-//	}
-//	return req;
-//}
-//
-//
-//uint8_t GB4MQTT::Queue::peakQoS()
-//{
-//	if(true == is_empty())
-//	{
-//		return 0;
-//	}
-//	return array[tail].qos;
-//}
-//
-//
-//GB4MQTT::Queue::Request *GB4MQTT::Queue::dequeue()
-//{
-//	if(true == is_empty())
-//	{
-//		return nullptr;
-//	}
-//	Queue::Request *req = &array[tail];
-//	full = false;
-//	tail = (tail + 1) % QUEUE_ARRAY_SIZE;
-//	return req;
-//}
-//
-//

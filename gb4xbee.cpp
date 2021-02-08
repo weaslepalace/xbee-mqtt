@@ -745,16 +745,11 @@ GB4XBee::Return GB4XBee::pollReceivedMessage(uint8_t message[], size_t *message_
 	return Return::MESSAGE_RECEIVED;
 }
 
-static volatile int __trap__(int status)
-{
-	return digitalRead(LED_BUILTIN);
-}
 
 GB4XBee::Return GB4XBee::sendMessage(uint8_t message[], size_t message_len)
 {
 	Return status;
 	int send_ok = xbee_sock_send(sock, 0, message, message_len);
-	__trap__(send_ok);
 	switch(send_ok)
 	{
 		case 0:

@@ -6,7 +6,7 @@
 #define GB4MQTT_H
 
 #include "gb4xbee.h"
-#include "mqtt_request_queue.h"
+#include "static_queue.h"
 #include "MQTTPacket.h"
 
 static int32_t constexpr GB4MQTT_CONNACK_TIMEOUT = 10000;
@@ -17,14 +17,56 @@ static uint16_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS = 20;
 static float constexpr GB4MQTT_NETWORK_KEEPALIVE_MODIFIER = 2.0;
 static int32_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL =
 	GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS * 1000;
-static int32_t constexpr GB4MQTT_KEEPALIVE_INTERVAL =
-	GB4MQTT_NETWORK_TIMEOUT_INTERVAL / GB4MQTT_NETWORK_KEEPALIVE_MODIFIER;
+static int32_t constexpr GB4MQTT_KEEPALIVE_INTERVAL = 2000;
+//	GB4MQTT_NETWORK_TIMEOUT_INTERVAL / GB4MQTT_NETWORK_KEEPALIVE_MODIFIER;
 
 static char constexpr GB4MQTT_DEFAULT_CLIENT_ID[] = "UNNAMED_GB4";
 static char constexpr GB4MQTT_CONNECT_PACKET_SIZE = 80;
 static int32_t constexpr GB4MQTT_PUBLISH_TIMEOUT = 10000;
 static uint8_t constexpr GB4MQTT_PUBLISH_MAX_TRIES = 4;
 static size_t constexpr GB4MQTT_MAX_QUEUE_DEPTH = 10;
+
+
+
+class MQTTRequest {
+	public:
+	static size_t constexpr TOPIC_MAX_SIZE = 64;
+	static size_t constexpr MESSAGE_MAX_SIZE = 300;
+
+	MQTTRequest(){}
+	MQTTRequest(
+		char const top[], size_t toplen,
+		uint8_t const mes[], size_t meslen,
+		uint8_t q = 0, uint8_t r = 0, uint16_t id = 0)
+	{
+		strncpy(topic, top, toplen);
+		topic_len = toplen;
+		memcpy(message, mes, meslen);
+		message_len = meslen;
+		qos = q;
+		retain = r;
+		packet_id = id;
+		start_time = millis();
+		tries = 0;
+		duplicate = 0;
+		got_puback = false;
+		ready_to_send = true;
+	}
+
+	char topic[TOPIC_MAX_SIZE];
+	size_t topic_len;
+	uint8_t message[MESSAGE_MAX_SIZE];
+	size_t message_len;
+	uint8_t qos;
+	uint8_t retain;
+	uint8_t duplicate = 0;
+	uint16_t packet_id;
+	int32_t start_time;
+	uint8_t tries = 0;
+	bool got_puback = false;
+	bool ready_to_send = true;
+};
+
 
 class GB4MQTT {
 	public:
@@ -126,50 +168,6 @@ class GB4MQTT {
 		port = p;
 	}
 
-//	class Queue {
-//		public:
-//		Queue();
-//		
-//	
-//		class Request {
-//			public:
-//			Request(){}
-//			Request(
-//				char const top[], size_t toplen,
-//				uint8_t const mes[], size_t meslen,
-//				uint8_t q = 0, uint8_t r = 0, uint16_t id = 0);
-//			char topic[TOPIC_MAX_SIZE];
-//			size_t topic_len;
-//			uint8_t message[MESSAGE_MAX_SIZE];
-//			size_t message_len;
-//			uint8_t qos;
-//			uint8_t retain;
-//			uint8_t duplicate;
-//			uint16_t packet_id;
-//			int32_t start_time;
-//			uint8_t tries;
-//			bool got_puback;
-//		};
-//	
-//		bool enqueue(Request req);
-//		bool enqueue(Request *req);
-//		Request *peak();
-//		Request *peak(size_t index);
-//		Request * findByPacketId(uint8_t packet_id);
-//		uint8_t peakQoS();
-//		Request *dequeue();
-//		bool is_empty();
-//		bool is_full();
-//		bool get_length();
-//	
-//		private:
-//		Request array[QUEUE_ARRAY_SIZE]; 
-//		size_t head;
-//		size_t tail;
-//		size_t length;
-//		bool full;
-//	};
-	
 	private:
 	Return sendConnectRequest();
 	Return sendPingRequest();
@@ -183,7 +181,7 @@ class GB4MQTT {
 	bool checkPuback(uint8_t message[], size_t message_len);
 	void resetKeepAliveTimer();
 	Return pollKeepAliveTimer();
-	Return sendPublishRequest(Request *req);
+	Return sendPublishRequest(MQTTRequest *req);
 	bool handlePublishRequests();
 	void handleInFlightRequests();
 
@@ -232,13 +230,13 @@ class GB4MQTT {
 		}
 		
 		private:
-		uint16_t packet_id;
+		uint16_t packet_id = 0;
 	};
 	PacketId packet_id;	
 
-	RequestQueue<GB4MQTT_MAX_QUEUE_DEPTH> pub_queue;
-	RequestQueue<GB4MQTT_MAX_QUEUE_DEPTH> in_flight;
-//	RequestQueue<GB4MQTT_MAX_QUEUE_DEPTH> sub_queue;
+	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> pub_queue;
+//	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> in_flight;
+//	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> sub_queue;
 };
 
 
