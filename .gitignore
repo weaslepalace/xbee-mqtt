@@ -2,3 +2,4 @@
 .gdbinit
 .jlink.*
 build/
+.breakpoints

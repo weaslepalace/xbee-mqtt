@@ -34,7 +34,7 @@ bool GB4MQTT::begin()
 		state = State::RADIO_INIT_FAILED;
 		return false;
 	}
-	state = State::STARTING_RADIO;
+	state = State::NOT_CONNECTED;
 	return true;	
 }
 
@@ -77,22 +77,15 @@ GB4MQTT::Return GB4MQTT::publish(
 
 GB4MQTT::Return GB4MQTT::poll()
 {
+	GB4XBee::State radio_state = radio.poll();
+	if(radio_state < GB4XBee::State::SOCKET_READY)
+	{
+		state = State::NOT_CONNECTED;
+		return Return::IN_PROGRESS;
+	}
+
 	switch(state)
 	{
-		case State::RESET_SOCKET:
-		radio.resetSocket();
-		state = State::STARTING_RADIO;
-		break;		
-
-		case State::STARTING_RADIO:
-		if(GB4XBee::Return::STARTUP_COMPLETE != radio.pollStartup())
-		{
-			break;
-		}
-		state = State::NOT_CONNECTED;	
-		break;
-	
-
 		case State::NOT_CONNECTED:
 		if(nullptr == address)
 		{
@@ -100,43 +93,28 @@ GB4MQTT::Return GB4MQTT::poll()
 		}
 		if(false == radio.connect(port, address))
 		{
-			state = State::RESET_SOCKET;
+			radio.resetSocket();
 			break;
 		}
 		state = State::CONNECTING_SOCKET;
 		break;
 
 		case State::CONNECTING_SOCKET:
-		switch(radio.pollConnectStatus())
-		{
-			case GB4XBee::Return::CONNECT_IN_PROGRESS:
-			break;
-
-			case GB4XBee::Return::CONNECTED:
-			state = State::CONNECT_MQTT;
-			break;
-
-			case GB4XBee::Return::CONNECT_TRY_AGAIN:
-			case GB4XBee::Return::CONNECT_TIMEOUT:
-			default:
-			state = State::BEGIN_CONNECT_RETRY_DELAY;
-			break;
-		}
-		break;
-
-		case State::BEGIN_CONNECT_RETRY_DELAY:
-		radio.startConnectRetryDelay();
-		state = State::CONNECT_RETRY_DELAY;	
-		break;
-	
-		case State::CONNECT_RETRY_DELAY:
-		if(false == radio.pollConnectRetryDelay())
+		if(
+			(GB4XBee::State::AWAIT_CONNECTION == radio_state) ||
+			(GB4XBee::State::AWAIT_CONNECT_RESPONSE == radio_state))
 		{
 			break;
 		}
-		state = State::NOT_CONNECTED;
+		if(GB4XBee::State::CONNECTED != radio_state)
+		{
+			radio.resetSocket();
+			state = State::NOT_CONNECTED;
+			break;
+		}
+		state = State::CONNECT_MQTT;
 		break;
-		
+
 		case State::CONNECT_MQTT:
 		switch(sendConnectRequest())
 		{
@@ -145,7 +123,8 @@ GB4MQTT::Return GB4MQTT::poll()
 			break;
 			
 			case Return::CONNECT_SOCKET_ERROR:
-			state = State::RESET_SOCKET;
+			radio.resetSocket();
+			state = State::NOT_CONNECTED;
 			break;
 
 			case Return::CONNECT_PACKET_ERROR:
@@ -156,27 +135,29 @@ GB4MQTT::Return GB4MQTT::poll()
 		break;
 
 		case State::AWAIT_CONNACK:
-		switch(pollConnackStatus())
 		{
-			case Return::LISTENING:
-			break;
-
-			case Return::GOT_CONNACK:
-			state = State::BEGIN_STANDBY;
-			break;
-
-			//According to the specification, we should close the connection if the
-			//	CONNACK doesn't come in within a reasonable amount of time.
-			case Return::CONNACK_TIMEOUT:
-			case Return::CONNACK_REJECTED:
-			case Return::CONNACK_ERROR:
-			default:
-			//Close and reconnect? or reset sockets
-			state = State::RESET_SOCKET;
-			break;
+			volatile Return r = pollConnackStatus();
+			switch(r)
+			{
+				case Return::LISTENING:
+				break;
+	
+				case Return::GOT_CONNACK:
+				state = State::BEGIN_STANDBY;
+				break;
+	
+				//According to the specification, we should close the connection if the
+				//	CONNACK doesn't come in within a reasonable amount of time.
+				case Return::CONNACK_TIMEOUT:
+				case Return::CONNACK_REJECTED:
+				case Return::CONNACK_ERROR:
+				default:
+				radio.resetSocket();
+				state = State::NOT_CONNECTED;
+				break;
+			}
 		}
 		break;
-
  
 		case GB4MQTT::State::BEGIN_STANDBY:
 		state = State::STANDBY;
@@ -224,23 +205,6 @@ GB4MQTT::Return GB4MQTT::poll()
 //		if(false == pollSubackStatus())
 //		{
 //			//There should be a timeout here
-//			break;
-//		}
-//		break;
-//
-//		case State::PING:
-//		if(ping() < 0)
-//		{
-//			//Error state
-//			break;
-//		}
-//		state = State::AWAIT_PINGACK;
-//		break;
-//
-//		case State::AWAIT_PINGACK:
-//		if(false == pollPingackStatus())
-//		{
-//			//Timeout?
 //			break;
 //		}
 //		break;
@@ -321,7 +285,7 @@ GB4MQTT::Return GB4MQTT::pollIncomming(
 	size_t payload_len = sizeof payload;
 	
 	if(GB4XBee::Return::WAITING_MESSAGE ==
-		radio.pollReceivedMessage(
+		radio.getReceivedMessage(
 			payload,
 			&payload_len))
 	{
@@ -345,19 +309,6 @@ GB4MQTT::Return GB4MQTT::pollIncomming(
 
 
 
-//GB4MQTT::Return GB4MQTT::pollConnackStatus()
-//{
-//	uint8_t message[GB4MQTT_MAX_PACKET_SIZE];
-//	size_t message_len = sizeof message;
-//	enum msgTypes type;
-//	if(Return::WAITING_MESSAGE == pollIncomming(message, &message_len, &type))
-//	{
-//		if((millis() - connect_start_time) > GB4MQTT_CONNACK_TIMEOUT)
-//		{
-//			return Return::CONNACK_TIMEOUT;
-//		}
-//		return Return::WAITING_CONNACK;
-//	}
 GB4MQTT::Return GB4MQTT::checkConnack(uint8_t message[], size_t message_len)
 {
 	enum connack_return_codes code;
@@ -419,7 +370,7 @@ GB4MQTT::Return GB4MQTT::dispatchIncomming()
 {
 	uint8_t message[GB4MQTT_MAX_PACKET_SIZE];
 	size_t message_len = sizeof message;
-	enum msgTypes type;
+	enum msgTypes type = static_cast<enum msgTypes>(0);
 	if(Return::WAITING_MESSAGE == pollIncomming(message, &message_len, &type))
 	{
 		return Return::LISTENING;
@@ -475,16 +426,18 @@ GB4MQTT::Return GB4MQTT::dispatchIncomming()
 GB4MQTT::Return GB4MQTT::pollConnackStatus()
 {
 	Return status = dispatchIncomming();
+
 	if(Return::GOT_CONNACK == status)
 	{
 		return Return::GOT_CONNACK;
 	}
+
 	if((millis() - connect_start_time) > GB4MQTT_CONNACK_TIMEOUT)
 	{
-		return Return::CONNACK_TIMEOUT;
+		status = Return::CONNACK_TIMEOUT;
 	}
-	return status;
 
+	return status;
 }
 
 

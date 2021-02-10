@@ -2,6 +2,7 @@ TARGET := hello-xbee
 
 CPP_SOURCES := \
 	./gb4xbee.cpp \
+	./xbee_notify.cpp \
 	./gb4mqtt.cpp \
 	./main.cpp \
 
