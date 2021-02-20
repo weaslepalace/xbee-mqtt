@@ -13,9 +13,10 @@ static uint32_t constexpr GB4XBEE_DEFAULT_BAUD = 9600;
 static uint32_t constexpr GB4XBEE_DEFAULT_COMMAND_TIMEOUT = 10000;
 static uint32_t constexpr GB4XBEE_CONNECT_TIMEOUT = 20000;
 static uint32_t constexpr GB4XBEE_SOCKET_CREATE_TIMEOUT = 10000;
-static uint32_t constexpr GB4XBEE_SOCKET_COOLDOWN_INTERVAL = 1000;
+static uint32_t constexpr GB4XBEE_SOCKET_COOLDOWN_INTERVAL = 2000;
 static uint32_t constexpr GB4XBEE_CONNECT_RETRY_DELAY_INTERVAL = 1000;
 static uint32_t constexpr GB4XBEE_TLS_PROFILE_TIMEOUT = 10000;
+static uint32_t constexpr GB4XBEE_SEND_TIMEOUT = 1000;
 
 class GB4XBee {
 	public:
@@ -51,7 +52,8 @@ class GB4XBee {
 		MESSAGE_RECEIVED,
 		MESSAGE_SENT,
 		STARTUP_IN_PROGRESS,
-		STARTUP_COMPLETE
+		STARTUP_COMPLETE,
+		IN_PROGRESS
 	};
 
 	enum class State {
@@ -78,6 +80,7 @@ class GB4XBee {
 		AWAIT_CONNECT_RESPONSE,
 		AWAIT_CONNECTION,
 		CONNECTED,
+		SENDING,
 		MAX_STATE	
 	};
 
@@ -135,6 +138,7 @@ class GB4XBee {
 	int32_t socket_create_start_time;
 	int32_t socket_cooldown_start_time;
 	int32_t option_start_time;
+	int32_t send_start_time;
 	char access_point_name[GB4XBEE_ACCESS_POINT_NAME_SIZE];
 	size_t access_point_name_len;
 	bool got_access_point_name;

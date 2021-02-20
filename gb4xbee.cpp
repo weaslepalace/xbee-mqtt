@@ -29,7 +29,6 @@ GB4XBee::GB4XBee(
 	err(0),
 	tls_profile(use_tls_profile)
 {
-	
 	transport_protocol =
 		(true == use_tls) ?
 		XBEE_SOCK_PROTOCOL_SSL : XBEE_SOCK_PROTOCOL_TCP; 
@@ -254,7 +253,6 @@ GB4XBee::Return GB4XBee::pollStartup()
 }
 
 
-
 GB4XBee::State GB4XBee::poll()
 {
 	if(m_state < State::SOCKET_COOLDOWN_PERIOD)
@@ -276,6 +274,8 @@ GB4XBee::State GB4XBee::poll()
 		break;
 
 		case State::BEGIN_CREATE_SOCKET:
+		notify_count = g_notify.reset();
+		connect_in_progress = false;
 		if(false == sendSocketCreate())
 		{
 			m_state = resetSocket();
@@ -291,7 +291,6 @@ GB4XBee::State GB4XBee::poll()
 			if(elapsed > GB4XBEE_SOCKET_CREATE_TIMEOUT)
 			{
 				m_state = State::BEGIN_CREATE_SOCKET;
-digitalWrite(LED_BUILTIN, LOW);
 			}
 			break;
 		}
@@ -357,19 +356,34 @@ digitalWrite(LED_BUILTIN, LOW);
 		m_state = State::CONNECTED;
 		break;
 
+		case State::SENDING:
+		if((millis() - send_start_time) > GB4XBEE_SEND_TIMEOUT)
+		{
+			m_state = State::CONNECTED;
+		}
+		//Fall-through OK
 
 		case State::CONNECTED:
-		if(g_notify.count() != notify_count)
+		if(g_notify.count() == notify_count)
 		{
-			if(
-				(XBeeNotify::FrameType::SOCK_STATE == g_notify.type) &&
-				(XBeeNotify::StateMesg::CONNECTED != g_notify.state_mesg))
-			{
-				m_state = resetSocket();
-			}	
-			notify_count = g_notify.count();
 			break;
 		}
+		notify_count = g_notify.count();
+		if(
+			(XBeeNotify::FrameType::SOCK_STATE == g_notify.type) &&
+			(XBeeNotify::StateMesg::CONNECTED != g_notify.state_mesg))
+		{
+			m_state = resetSocket();
+			break;
+		}
+		if(
+			(XBeeNotify::FrameType::TX_STATUS == g_notify.type) &&
+			(XBeeNotify::TxMesg::SUCCESS != g_notify.tx_mesg))
+		{
+			m_state = resetSocket();
+			break;
+		}
+		m_state = State::CONNECTED;
 		break;
 	
 		default:
@@ -377,12 +391,6 @@ digitalWrite(LED_BUILTIN, LOW);
 	}
 
 	return m_state;
-//	if(m_state != State::READY)
-//	{
-//		return Return::STARTUP_IN_PROGRESS;
-//	}
-//
-//	return Return::STARTUP_COMPLETE;
 }
 
 
@@ -567,132 +575,8 @@ bool GB4XBee::sendSetAPN()
 }
 
 
-//static bool notify_connection_lost = false;
-//static bool notify_connection_started = false;
-//static bool notify_connection_refused = false;
-//static bool notify_connection_try_again = false;
-//static bool notify_got_connection = false;
-//static bool notify_got_socket_id = false;
-//static bool notify_socket_error = false;
-//static bool notify_socket_closed = false;
-
-
-
-//static XBeeNotify notify;
-//static void notifyCallback(
-//	xbee_sock_t sockid,
-//	uint8_t frame_type,
-//	uint8_t message)
-//{
-//
-////	switch(frame_type)
-////	{
-////		case XBEE_FRAME_TX_STATUS:
-////		switch(message)
-////		{
-////			case XBEE_TX_DELIVERY_SUCCESS:
-////			break;
-////			
-////			case XBEE_TX_DELIVERY_RESOURCE_ERROR:
-////			notify_connection_try_again = true;
-////			break;
-////
-////			case XBEE_TX_DELIVERY_CONNECTION_REFUSED:
-////			notify_connection_refused = true;
-////			break;
-////
-////			default:
-////			notify_socket_error = true;
-////			break;
-////		}
-////		break;
-////
-////		case XBEE_FRAME_SOCK_STATE:
-////		switch(message)
-////		{
-////			case XBEE_SOCK_STATE_CONNECTED:
-////			notify_got_connection = true;
-////			break;
-////			
-////			case XBEE_SOCK_STATE_CONNECTION_REFUSED:
-////			notify_connection_refused = true;
-////			break;
-////
-////			case XBEE_SOCK_STATE_CONNECTION_LOST:
-////			notify_connection_lost = true;
-////			break;	
-////			
-////			default:
-////			notify_socket_error = true;
-////			break;
-////		}
-////		break;
-////
-////		case XBEE_FRAME_SOCK_CREATE_RESP:
-////		if(XBEE_SOCK_STATUS_SUCCESS == message)
-////		{
-////			notify_got_socket_id = true;
-////			notify_socket_error = false;
-////		}
-////		else
-////		{
-////			notify_got_socket_id = false;
-////			notify_socket_error = true;
-////		}
-////		break;		
-////
-////		case XBEE_FRAME_SOCK_CONNECT_RESP:
-////		if(XBEE_SOCK_STATUS_SUCCESS == message)
-////		{
-////			notify_connection_started = true;
-////		}
-////		break;
-////
-////		case XBEE_FRAME_SOCK_CLOSE_RESP:
-////		if(XBEE_SOCK_STATUS_SUCCESS == message)
-////		{
-////			notify_socket_closed = true;
-////		}
-////		break;
-////		
-////		case XBEE_FRAME_SOCK_LISTEN_RESP:
-////		default:
-////		break;
-////	}
-//}
-
-
-//bool notify_got_option_response = false;
-//void optionCallback(
-//	xbee_sock_t sock,
-//	uint8_t option_id,
-//	uint8_t status,
-//	void const *data,
-//	size_t data_len)
-//{
-//	switch(status)
-//	{
-//		case XBEE_SOCK_STATUS_SUCCESS:
-//		notify_got_option_response = true;
-//		break;
-//
-//		case XBEE_SOCK_STATUS_BAD_SOCKET:
-//		notify_socket_error = true;
-//		break;
-//
-//		case XBEE_SOCK_STATUS_INVALID_PARAM:
-//		case XBEE_SOCK_STATUS_FAILED_TO_READ:
-//		default:
-//		break;
-//	}
-//}
-
-
 bool GB4XBee::sendSocketCreate()
 {
-//	notify_socket_error = false;
-//	notify_got_socket_id = false;
-//	notify_socket_closed = false;
 	xbee_sock_reset(&xbee);
 	sock = xbee_sock_create(&xbee, transport_protocol, XBeeNotify::callback);
 	if(sock < 0)
@@ -705,57 +589,6 @@ bool GB4XBee::sendSocketCreate()
 }
 
 
-//GB4XBee::Return GB4XBee::pollSocketStatus()
-//{
-//	xbee_dev_tick(&xbee);
-//	if(notify.count() != notify_count)
-//	{
-//		if((millis() - socket_create_start_time) >
-//			GB4XBEE_SOCKET_CREATE_TIMEOUT)
-//		{
-//			return Return::SOCKET_TIMEOUT;
-//		}
-//		return Return::SOCKET_IN_PROGRESS;
-//	}
-//	notify_count = notify.count();
-//
-//	switch(notify.type)
-//	{
-//		case XBeeNotify::FrameType::SOCK_CREATE_RESP:
-//		switch(notify.mesg.sock)
-//		{
-//			case XBeeNotify::SockMesg::SUCCESS:
-//			break;
-//			
-//			default:
-//			break;
-//		}
-//		break;
-//
-//		case XBeeNotify::FrameType::SOCK_CONNECT_RESP:
-//		switch(notify.mesg.sock)
-//		{
-//			case XBeeNotify::SockMesg::SUCCESS:
-//			break;
-//		
-//			default:
-//			break;
-//		}			
-//		break;
-//
-//		case XBeeNotify::FrameType::SOCK_STATE:
-//		switch(notify.mesg.state)
-//		{
-//			
-//		}
-//		break:
-//
-//		default:
-//		break; 
-//	}	
-//}
-
-
 bool GB4XBee::pollSocketCooldown()
 {
 	return
@@ -764,65 +597,8 @@ bool GB4XBee::pollSocketCooldown()
 }
 
 
-//bool GB4XBee::sendSocketOption()
-//{
-//	notify_socket_error = false;
-//	notify_got_option_response = false;
-//	uint8_t payload[sizeof tls_profile] = {tls_profile};
-//	int status = xbee_sock_option(
-//		sock,
-//		0,
-//		payload, sizeof payload,
-//		optionCallback);
-//	if(0 != status)
-//	{
-//		return false;
-//	}
-//	option_start_time = millis();
-//	return true;
-//}
-
-//GB4XBee::Return GB4XBee::pollSocketOptionResponse()
-//{
-//	return
-//		(true == notify_got_option_response) ? Return::TLS_PROFILE_OK :
-//		(true == notify_socket_error) ? Return::TLS_PROFILE_ERROR :
-//		((millis() - option_start_time) > GB4XBEE_TLS_PROFILE_TIMEOUT) ?
-//			Return::TLS_PROFILE_TIMEOUT : 
-//		Return::TLS_PROFILE_IN_PROGRESS;
-//}
-
-
-//static bool notify_received_message = false;
-//static uint32_t received_messages_dropped = 0;
-//static size_t  received_message_len = 0;
-//static uint8_t received_message_payload[GB4XBEE_RECEIVED_MESSAGE_MAX_SIZE]; 
-//static void receiveCallback(
-//	xbee_sock_t sock,
-//	uint8_t status,
-//	void const *payload,
-//	size_t payload_length)
-//{
-//	if(true == notify_received_message)
-//	{
-//		received_messages_dropped++;
-//		return;
-//	}
-//
-//	received_message_len = 
-//		(payload_length < GB4XBEE_RECEIVED_MESSAGE_MAX_SIZE) ? 
-//		payload_length : GB4XBEE_RECEIVED_MESSAGE_MAX_SIZE;
-//	memcpy(received_message_payload, payload, received_message_len);
-//	notify_received_message = true;
-//}
-
-
 bool GB4XBee::connect(uint16_t port, char const *address)
 {
-//	notify_connection_try_again = false;
-//	notify_connection_refused = false;
-//	notify_got_connection = false;
-//	notify_received_message = false;
 	int status = xbee_sock_connect(
 		sock,
 		port,
@@ -840,31 +616,6 @@ bool GB4XBee::connect(uint16_t port, char const *address)
 } 
 
 
-//GB4XBee::Return GB4XBee::pollConnectStatus()
-//{
-//	xbee_dev_tick(&xbee);
-//	if(g_notify.count() == notify_count)
-//	{
-//		return Return::CONNECT_IN_PROGRESS;
-//	}
-//	notify_count = g_notify.count();
-//	
-//	if((XBeeNotify::FrameType::SOCK_CONNECT_RESP == g_notify.type) &&
-//		(XBeeNotify::SockMesg::SUCCESS == g_notify.sock_mesg))
-//	{
-//		return Return::CONNECT_IN_PROGRESS;
-//	}
-//
-//	if((XBeeNotify::FrameType::SOCK_STATE != g_notify.type) ||
-//		(XBeeNotify::StateMesg::CONNECTED != g_notify.state_mesg))
-//	{
-//		return Return::CONNECT_ERROR;
-//	} 
-//
-//	return Return::CONNECTED;
-//}
-
-
 GB4XBee::Return GB4XBee::getReceivedMessage(uint8_t message[], size_t *message_len)
 {
 	if(false == g_receive.pending())
@@ -880,12 +631,24 @@ GB4XBee::Return GB4XBee::getReceivedMessage(uint8_t message[], size_t *message_l
 
 GB4XBee::Return GB4XBee::sendMessage(uint8_t message[], size_t message_len)
 {
+	if(State::SENDING == m_state)
+	{
+		return Return::IN_PROGRESS;
+	}
+
+	if(State::CONNECTED != m_state)
+	{
+		return Return::DISCONNECTED;
+	}
+
 	Return status;
 	int send_ok = xbee_sock_send(sock, 0, message, message_len);
 	switch(send_ok)
 	{
 		case 0:
 		status = Return::MESSAGE_SENT;
+		send_start_time = millis();
+		m_state = State::SENDING;
 		break;
 
 		case -ENOENT:
@@ -906,6 +669,4 @@ GB4XBee::Return GB4XBee::sendMessage(uint8_t message[], size_t message_len)
 	}
 	return status; 
 }
-
-
 

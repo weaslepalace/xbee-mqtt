@@ -106,6 +106,12 @@ class XBeeNotify {
 		return m_count;
 	}
 
+	uint32_t reset()
+	{
+		m_count = 0;
+		return m_count;	
+	}
+
 	static void callback(
 		xbee_sock_t sockid,
 		uint8_t frame_type,

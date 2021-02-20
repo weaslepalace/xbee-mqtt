@@ -21,6 +21,7 @@ GB4MQTT::GB4MQTT(
 	client_password(pwd)
 {
 	connect_start_time = 0;
+	allow_connect = false;
 	state = State::INIT;
 	err = 0;
 }
@@ -44,12 +45,13 @@ GB4MQTT::Return GB4MQTT::publish(
 	size_t topic_len,
 	uint8_t const message[],
 	size_t message_len,
-	uint8_t qos)
+	uint8_t qos, 
+	bool disconnect)
 {
-	if(false == is_ready())
-	{
-		return Return::NOT_READY;
-	}
+//	if(false == isReady())
+//	{
+//		return Return::NOT_READY;
+//	}
 
 	if(true == pub_queue.isFull())
 	{
@@ -59,20 +61,11 @@ GB4MQTT::Return GB4MQTT::publish(
 	MQTTRequest req(
 		topic, topic_len,
 		message, message_len,
-		qos, 0, packet_id.get_next());
+		qos, 0, packet_id.get_next(),
+		disconnect);
 	pub_queue.insert(req);
-	digitalWrite(LED_BUILTIN, HIGH);
 	return Return::PUBLISH_QUEUED;	
 }
-
-
-//GB4MQTT::Return GB4MQTT::subscribe(
-//	uint8_t topic[],
-//	size_t topic_len,
-//	uint8_t max_qos)
-//{
-//
-//}
 
 
 GB4MQTT::Return GB4MQTT::poll()
@@ -87,7 +80,7 @@ GB4MQTT::Return GB4MQTT::poll()
 	switch(state)
 	{
 		case State::NOT_CONNECTED:
-		if(nullptr == address)
+		if((nullptr == address) || (true == pub_queue.isEmpty()))
 		{
 			break;
 		}
@@ -165,49 +158,32 @@ GB4MQTT::Return GB4MQTT::poll()
 
 		case State::STANDBY:
 		dispatchIncomming();
-//		handleInFlightRequests();
 		if(false == handlePublishRequests())
 		{
-			state = State::BEGIN_CONNECT_RETRY_DELAY;
+			radio.resetSocket();
+			state = State::NOT_CONNECTED;
 			break;
 		}
 
-		switch(pollKeepAliveTimer())
-		{
-			case Return::KEEPALIVE_TIMER_RUNNING:
-			break;
-
-			case Return::KEEPALIVE_TIMER_PING:
-			sendPingRequest();
-			break;
-
-			case Return::KEEPALIVE_TIMER_RECONNECT:
-			state = State::BEGIN_CONNECT_RETRY_DELAY;
-			break;
-
-			default:
-			break;
-		}
-	
-//		else if(false != pub_queue.is_empty())
+//		Return keepalive_status = pollKeepAliveTimer();
+//		switch(keepalive_status)
 //		{
-//			if(0 != pub_queue.peakQoS())
-//			{
-//			}
-//		}
-//		else if(false != sub_queue.is_empty())
-//		{
-//			state = State:AWAIT_SUBACK;
-//		}
-		break;
-
-//		case State::AWAIT_SUBACK:
-//		if(false == pollSubackStatus())
-//		{
-//			//There should be a timeout here
+//			case Return::KEEPALIVE_TIMER_RUNNING:
+//			break;
+//
+//			case Return::KEEPALIVE_TIMER_PING:
+//			sendPingRequest();
+//			break;
+//
+//			case Return::KEEPALIVE_TIMER_RECONNECT:
+//			radio.resetSocket();
+//			state = State::NOT_CONNECTED;
+//			break;
+//
+//			default:
 //			break;
 //		}
-//		break;
+		break;
 	}
 
 	if(State::NOT_CONNECTED == state)
@@ -240,13 +216,24 @@ GB4MQTT::Return GB4MQTT::sendConnectRequest()
 	{
 		return Return::CONNECT_PACKET_ERROR;
 	}
-	if(GB4XBee::Return::MESSAGE_SENT !=
-		radio.sendMessage(
-			connect_packet,
-			connect_packet_len))
+	GB4XBee::Return r = radio.sendMessage(connect_packet, connect_packet_len);
+	switch(r)
 	{
+		case GB4XBee::Return::MESSAGE_SENT:
+		break;
+
+		case GB4XBee::Return::IN_PROGRESS:
+		return Return::IN_PROGRESS;	
+	
+		case GB4XBee::Return::PACKET_ERROR:
+		return Return::CONNECT_PACKET_ERROR;
+
+		case GB4XBee::Return::DISCONNECTED:
+		case GB4XBee::Return::SOCKET_ERROR:
+		default:
 		return Return::CONNECT_SOCKET_ERROR;
 	}
+
 	connect_start_time = millis();
 	return Return::CONNECT_SENT;
 }
@@ -342,6 +329,10 @@ static MQTTRequest *findRequestByPacketId(
 		{
 			break;
 		}
+	}
+	if(nullptr == node)
+	{
+		return nullptr;
 	}
 	return &node->value();
 }
@@ -450,10 +441,22 @@ GB4MQTT::Return GB4MQTT::sendPingRequest()
 	{
 		return Return::PING_PACKET_ERROR;
 	}
-	if(GB4XBee::Return::MESSAGE_SENT != radio.sendMessage(
-		ping_request,
-		PINGREQ_SIZE))
+
+	GB4XBee::Return r = radio.sendMessage(ping_request, PINGREQ_SIZE);
+	switch(r)
 	{
+		case GB4XBee::Return::MESSAGE_SENT:
+		break;
+
+		case GB4XBee::Return::IN_PROGRESS:
+		return Return::IN_PROGRESS;	
+
+		case GB4XBee::Return::PACKET_ERROR:
+		return Return::PING_PACKET_ERROR;
+	
+		case GB4XBee::Return::DISCONNECTED:
+		case GB4XBee::Return::SOCKET_ERROR:
+		default:
 		return Return::PING_SOCKET_ERROR;
 	}
 	ping_period_start_time = millis();
@@ -508,10 +511,15 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest *req)
 	}
 
 	Return status;
-	switch(radio.sendMessage(packet, packet_len))
+	GB4XBee::Return r = radio.sendMessage(packet, packet_len);
+	switch(r)
 	{
 		case GB4XBee::Return::MESSAGE_SENT:
 		status = Return::PUBLISH_SENT;
+		break;
+
+		case GB4XBee::Return::IN_PROGRESS:
+		status = Return::IN_PROGRESS;
 		break;
 
 		case GB4XBee::Return::DISCONNECTED:
@@ -524,43 +532,6 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest *req)
 	}
 	return status;
 }
-
-
-//void GB4MQTT::handleInFlightRequests()
-//{
-//	for(
-//		LinkedNode<MQTTRequest> *node = in_flight.peakNode();
-//		nullptr != node;
-//		node = node->next())
-//	{
-//		MQTTRequest *req = &node->value();
-//		if(true == req->got_puback)
-//		{
-//			digitalWrite(LED_BUILTIN, LOW);
-//			in_flight.remove(node);
-//			continue;
-//		}
-//
-//		if((millis() - req->start_time) < GB4MQTT_PUBLISH_TIMEOUT)
-//		{
-//			continue;
-//		}
-//
-//		if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
-//		{
-//			digitalWrite(LED_BUILTIN, LOW);
-//			in_flight.remove(node);
-//			continue;
-//		}
-//		req->start_time = millis();
-//		req->tries++;
-//		if(true == pub_queue.insert(req))
-//		{
-//			in_flight.remove(node);
-//		}
-//	}
-//}
-
 
 
 bool GB4MQTT::handlePublishRequests()
@@ -585,7 +556,10 @@ bool GB4MQTT::handlePublishRequests()
 				{
 					if(0 == req->duplicate)
 					{
-						req->duplicate = 1;
+						if(false == req->disconnect)
+						{
+							req->duplicate = 1;
+						}
 						req->start_time = millis();	
 					}
 					req->ready_to_send = false;
@@ -595,10 +569,12 @@ bool GB4MQTT::handlePublishRequests()
 				case Return::PUBLISH_PACKET_ERROR:
 				pub_queue.remove(node);
 				break;
-				
+			
+				case Return::IN_PROGRESS:
+				break;
+	
 				case Return::PUBLISH_SOCKET_ERROR:
 				default:
-				digitalWrite(LED_BUILTIN, LOW);
 				return false;
 			}
 		}
@@ -606,8 +582,15 @@ bool GB4MQTT::handlePublishRequests()
 		{
 			if(true == req->got_puback)
 			{
-				digitalWrite(LED_BUILTIN, LOW);
 				pub_queue.remove(node);
+				if(true == req->disconnect)
+				{
+					//Disconnect after transmission
+					uint8_t disconn[2] = {0xE0, 0x00};
+					radio.sendMessage(disconn, 2);
+					pub_queue.remove(node);	
+					return false; //Forces socket to reset
+				}
 				continue;
 			}
 	
@@ -615,10 +598,18 @@ bool GB4MQTT::handlePublishRequests()
 			{
 				continue;
 			}
-	
+
+			if(true == req->disconnect)
+			{
+				//Disconnect after transmission
+				uint8_t disconn[2] = {0xE0, 0x00};
+				radio.sendMessage(disconn, 2);
+				pub_queue.remove(node);	
+				return false; //Forces socket to reset
+			}
+
 			if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
 			{
-				digitalWrite(LED_BUILTIN, LOW);
 				pub_queue.remove(node);
 				continue;
 			}

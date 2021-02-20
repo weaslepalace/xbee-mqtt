@@ -12,32 +12,32 @@
 static int32_t constexpr GB4MQTT_CONNACK_TIMEOUT = 10000;
 static size_t constexpr GB4MQTT_MAX_PACKET_SIZE = 128;
 
-//static uint16_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS = 60;
-static uint16_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS = 20;
+static uint16_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS = 120;
+//static uint16_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS = 20;
 static float constexpr GB4MQTT_NETWORK_KEEPALIVE_MODIFIER = 2.0;
 static int32_t constexpr GB4MQTT_NETWORK_TIMEOUT_INTERVAL =
 	GB4MQTT_NETWORK_TIMEOUT_INTERVAL_SECONDS * 1000;
-static int32_t constexpr GB4MQTT_KEEPALIVE_INTERVAL = 2000;
-//	GB4MQTT_NETWORK_TIMEOUT_INTERVAL / GB4MQTT_NETWORK_KEEPALIVE_MODIFIER;
+static int32_t constexpr GB4MQTT_KEEPALIVE_INTERVAL = 
+	GB4MQTT_NETWORK_TIMEOUT_INTERVAL / GB4MQTT_NETWORK_KEEPALIVE_MODIFIER;
 
 static char constexpr GB4MQTT_DEFAULT_CLIENT_ID[] = "UNNAMED_GB4";
 static char constexpr GB4MQTT_CONNECT_PACKET_SIZE = 80;
 static int32_t constexpr GB4MQTT_PUBLISH_TIMEOUT = 10000;
 static uint8_t constexpr GB4MQTT_PUBLISH_MAX_TRIES = 4;
-static size_t constexpr GB4MQTT_MAX_QUEUE_DEPTH = 10;
-
+static size_t constexpr GB4MQTT_MAX_QUEUE_DEPTH = 2;
 
 
 class MQTTRequest {
 	public:
 	static size_t constexpr TOPIC_MAX_SIZE = 64;
-	static size_t constexpr MESSAGE_MAX_SIZE = 300;
+	static size_t constexpr MESSAGE_MAX_SIZE = 900;
 
 	MQTTRequest(){}
 	MQTTRequest(
 		char const top[], size_t toplen,
 		uint8_t const mes[], size_t meslen,
-		uint8_t q = 0, uint8_t r = 0, uint16_t id = 0)
+		uint8_t q = 0, uint8_t r = 0, uint16_t id = 0,
+		bool disconn = false)
 	{
 		strncpy(topic, top, toplen);
 		topic_len = toplen;
@@ -51,6 +51,7 @@ class MQTTRequest {
 		duplicate = 0;
 		got_puback = false;
 		ready_to_send = true;
+		disconnect = disconn;
 	}
 
 	char topic[TOPIC_MAX_SIZE];
@@ -65,6 +66,7 @@ class MQTTRequest {
 	uint8_t tries = 0;
 	bool got_puback = false;
 	bool ready_to_send = true;
+	bool disconnect = false;
 };
 
 
@@ -123,7 +125,8 @@ class GB4MQTT {
 		size_t topic_len,
 		uint8_t const message[],
 		size_t message_len,
-		uint8_t qos = 0);
+		uint8_t qos = 0,
+		bool disconenct = false);
 	Return poll();
 
 	void end();
@@ -138,7 +141,7 @@ class GB4MQTT {
 		return radio.getSerialNumber();
 	}
 	
-	bool is_ready()
+	bool isReady()
 	{
 		return (state == State::STANDBY);
 	}
@@ -166,6 +169,11 @@ class GB4MQTT {
 	void setPort(uint16_t p)
 	{
 		port = p;
+	}
+	
+	void startConnect()
+	{
+		allow_connect = true;
 	}
 
 	private:
@@ -214,6 +222,7 @@ class GB4MQTT {
 	char *client_password;
 	uint16_t port;
 	char *address;
+	bool allow_connect; 
 	
 	class PacketId {
 		public:

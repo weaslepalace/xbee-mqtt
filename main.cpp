@@ -4,7 +4,25 @@
 //#include "gb4xbee.h"
 #include "MQTTPacket.h"
 #include <cstdio>
+#include <ctime>
 
+#define SENTINEL_DESTINATION
+
+#ifdef SENTINEL_DESTINATION
+char constexpr client_id[] = "tonitrus";
+char constexpr host[] = "nsps-sentinel-iot-hub.azure-devices.net";
+char constexpr username[] = "nsps-sentinel-iot-hub.azure-devices.net/tonitrus";
+char constexpr password[] = "";
+char constexpr topic[] = "devices/tonitrus/messages/events/";
+#endif //SENTINEL_DESTINATION
+
+#ifdef BRIDGE_DESTINATION
+char constexpr client_id[] = "test";
+char constexpr host[] = "69.62.134.151";
+char constexpr username[] = "";
+char constexpr password[] = "";
+char constexpr topic[] = "hello";
+#endif //BRIDGE_DESTINATION
 
 int main()
 {
@@ -14,46 +32,83 @@ int main()
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, LOW);
 
-//	GB4MQTT mqtt(9600, "em", 1883, "69.62.134.151");
-//	GB4MQTT mqtt(9600, "em", 1883, "13.93.230.129");
 	GB4MQTT mqtt(
 		9600,
 		"em",
-//		"hologram",
 		true,
 		8883,
-//		const_cast<char*>("nsps-sentinel-iot-hub.azure-devices.net"),
-		const_cast<char*>("40.78.22.17"),
-		const_cast<char*>("tonitrus"),
-		const_cast<char*>("nsps-sentinel-iot-hub.azure-devices.net/tonitrus"),
-		const_cast<char*>(""));
+		const_cast<char*>(host),
+		const_cast<char*>(client_id),
+		const_cast<char*>(username),
+		const_cast<char*>(password));
 	Serial.begin(mqtt.getRadioBaud());
 	Serial.setTimeout(10000);
 
 	mqtt.begin();
-//	while(GB4MQTT::Return::CONNECTED != mqtt.poll());
+
+#ifdef BRIDGE_DESTINATION
+	uint8_t cnt_s[3 * 64];
+	for(int i = 0; i < 64; i++)
+	{
+		snprintf(reinterpret_cast<char*>(&cnt_s[i * 3]), 3, " 02X", i * 3); 
+	}
+	size_t cnt_len = sizeof cnt_s;	
+#endif //BRIDGE_DESTINATION	
+
 	int delay_start = millis();
+#ifdef SENTINEL_DESTINATION
+	float lat = 15.0;
+	float lon = 30.0;
+	time_t epoch = 1613773076;
+	static size_t constexpr report_size = 150;
+	static size_t constexpr number_of_reports = 6;
+	static size_t constexpr report_buffer_size = 
+		report_size * number_of_reports;
+	uint8_t cnt_s[report_buffer_size] = "[";
+	size_t report_index = 1;
+#endif //SENTINEL_DESTINATION
 	for(uint32_t cnt = 0;;)
 	{	
-//		if((true == mqtt.is_ready()) && ((millis() - delay_start) > 2500))
-//		{
-//			delay_start = millis();
-//			uint8_t cnt_s[300];
-//			size_t cnt_len = snprintf(
-//				reinterpret_cast<char*>(cnt_s), 300,
-//				"["
-//					"{"
-//						"\"device_id\":\"tonitrus\","
-//						"\"latitude\":15.0437602,"
-//						"\"longitude\":30.5005255,"
-//						"\"robotState\":\"Error\","
-//						"\"timestamp\":\"2021-02-03T00:23:22.595Z\""
-//					"}"
-//				"]");
-//			cnt++;
-//			static char constexpr t[] = "devices/tonitrus/messages/events/";
-//			mqtt.publish(t, sizeof t, cnt_s, cnt_len, 1);
-//		}
+		if((millis() - delay_start) > 10000)
+		{
+			delay_start = millis();
+#ifdef SENTINEL_DESTINATION
+			epoch += static_cast<time_t>(delay_start / 1000);
+			
+			char t_buf[32];
+			size_t t_buf_len = strftime(
+				t_buf, 32,
+				"%Y-%m-%dT%H:%M:%SZ", gmtime(&epoch));
+			report_index += snprintf(
+				reinterpret_cast<char*>(&cnt_s[report_index]), report_size,
+			 	"{"
+			 		"\"device_id\":\"%s\","
+			 		"\"latitude\":%f,"
+			 		"\"longitude\":%f,"
+			 		"\"robotState\":\"Error\","
+			 		"\"timestamp\":\"%.*s\""
+			 	"}%c",
+				client_id,
+				lat,
+				lon,
+				32, t_buf,
+				cnt < 5 ? ',' : ']');
+			lat += 0.1;
+			lon -= 0.05;
+#endif //SENTINEL_DESTINATION
+			cnt++;
+		}
+
+		if(6 == cnt)
+		{
+			cnt = 0;
+#ifdef SENTINEL_DESTINATION
+			size_t cnt_len = report_index; 
+			report_index = 1;
+#endif //SENTINEL_DESTINATION
+			mqtt.publish(topic, sizeof topic, cnt_s, cnt_len, 1, true);
+		}
+	
 		mqtt.poll();
 	}
 
