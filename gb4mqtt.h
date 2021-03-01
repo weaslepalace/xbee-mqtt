@@ -32,7 +32,22 @@ class MQTTRequest {
 	static size_t constexpr TOPIC_MAX_SIZE = 64;
 	static size_t constexpr MESSAGE_MAX_SIZE = 900;
 
-	MQTTRequest(){}
+	MQTTRequest()
+	{
+		topic_len = 0;
+		message_len = 0;
+		qos = 0;
+		retain = 0;
+		packet_id = 0;
+		start_time = 0;
+		tries = 0;
+		duplicate = false;
+		got_puback = false;
+		ready_to_send = false;
+		disconnect = false;
+		active = false;
+	}
+
 	MQTTRequest(
 		char const top[], size_t toplen,
 		uint8_t const mes[], size_t meslen,
@@ -52,6 +67,7 @@ class MQTTRequest {
 		got_puback = false;
 		ready_to_send = true;
 		disconnect = disconn;
+		active = false;
 	}
 
 	char topic[TOPIC_MAX_SIZE];
@@ -65,8 +81,9 @@ class MQTTRequest {
 	int32_t start_time;
 	uint8_t tries = 0;
 	bool got_puback = false;
-	bool ready_to_send = true;
+	bool ready_to_send = false;
 	bool disconnect = false;
+	bool active = false;
 };
 
 
@@ -189,7 +206,7 @@ class GB4MQTT {
 	bool checkPuback(uint8_t message[], size_t message_len);
 	void resetKeepAliveTimer();
 	Return pollKeepAliveTimer();
-	Return sendPublishRequest(MQTTRequest *req);
+	Return sendPublishRequest(MQTTRequest &req);
 	bool handlePublishRequests();
 	void handleInFlightRequests();
 
@@ -228,7 +245,7 @@ class GB4MQTT {
 		public:
 		PacketId()
 		{
-			packet_id = 0;
+			packet_id = 1;
 		}
 
 		uint8_t get_next()
@@ -239,11 +256,12 @@ class GB4MQTT {
 		}
 		
 		private:
-		uint16_t packet_id = 0;
+		uint16_t packet_id = 1;
 	};
 	PacketId packet_id;	
-
-	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> pub_queue;
+	
+	MQTTRequest m_publish_request;
+//	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> pub_queue;
 //	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> in_flight;
 //	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> sub_queue;
 };

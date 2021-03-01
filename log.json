@@ -1,0 +1,8416 @@
+[
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.799976,
+      "longitude": 18.600174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:08Z",
+      "cnt": 228
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.899975,
+      "longitude": 18.550175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:18Z",
+      "cnt": 229
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.999973,
+      "longitude": 18.500175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:28Z",
+      "cnt": 230
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.099972,
+      "longitude": 18.450176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:38Z",
+      "cnt": 231
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.19997,
+      "longitude": 18.400177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:48Z",
+      "cnt": 232
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.299969,
+      "longitude": 18.350178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:58Z",
+      "cnt": 233
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.399967,
+      "longitude": 18.300179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:08Z",
+      "cnt": 234
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.499966,
+      "longitude": 18.250179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:18Z",
+      "cnt": 235
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.599964,
+      "longitude": 18.20018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:28Z",
+      "cnt": 236
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.699963,
+      "longitude": 18.150181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:38Z",
+      "cnt": 237
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.799961,
+      "longitude": 18.100182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:48Z",
+      "cnt": 238
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.89996,
+      "longitude": 18.050182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:58Z",
+      "cnt": 239
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.999958,
+      "longitude": 18.000183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:08Z",
+      "cnt": 240
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.099957,
+      "longitude": 17.950184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:18Z",
+      "cnt": 241
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.199955,
+      "longitude": 17.900185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:28Z",
+      "cnt": 242
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.299953,
+      "longitude": 17.850185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:38Z",
+      "cnt": 243
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.399952,
+      "longitude": 17.800186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:48Z",
+      "cnt": 244
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.49995,
+      "longitude": 17.750187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:58Z",
+      "cnt": 245
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.599949,
+      "longitude": 17.700188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:08Z",
+      "cnt": 246
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.699947,
+      "longitude": 17.650188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:18Z",
+      "cnt": 247
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.799946,
+      "longitude": 17.600189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:28Z",
+      "cnt": 248
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.899944,
+      "longitude": 17.55019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:38Z",
+      "cnt": 249
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.999943,
+      "longitude": 17.500191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:48Z",
+      "cnt": 250
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.099941,
+      "longitude": 17.450191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:58Z",
+      "cnt": 251
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.19994,
+      "longitude": 17.400192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:08Z",
+      "cnt": 252
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.299938,
+      "longitude": 17.350193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:18Z",
+      "cnt": 253
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.399937,
+      "longitude": 17.300194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:28Z",
+      "cnt": 254
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.499935,
+      "longitude": 17.250195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:38Z",
+      "cnt": 255
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.599934,
+      "longitude": 17.200195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:48Z",
+      "cnt": 256
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.699932,
+      "longitude": 17.150196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:58Z",
+      "cnt": 257
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.799976,
+      "longitude": 18.600174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:08Z",
+      "cnt": 228
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.899975,
+      "longitude": 18.550175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:18Z",
+      "cnt": 229
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.999973,
+      "longitude": 18.500175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:28Z",
+      "cnt": 230
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.099972,
+      "longitude": 18.450176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:38Z",
+      "cnt": 231
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.19997,
+      "longitude": 18.400177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:48Z",
+      "cnt": 232
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.299969,
+      "longitude": 18.350178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:58Z",
+      "cnt": 233
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.399967,
+      "longitude": 18.300179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:08Z",
+      "cnt": 234
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.499966,
+      "longitude": 18.250179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:18Z",
+      "cnt": 235
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.599964,
+      "longitude": 18.20018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:28Z",
+      "cnt": 236
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.699963,
+      "longitude": 18.150181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:38Z",
+      "cnt": 237
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.799961,
+      "longitude": 18.100182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:48Z",
+      "cnt": 238
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.89996,
+      "longitude": 18.050182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:58Z",
+      "cnt": 239
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.999958,
+      "longitude": 18.000183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:08Z",
+      "cnt": 240
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.099957,
+      "longitude": 17.950184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:18Z",
+      "cnt": 241
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.199955,
+      "longitude": 17.900185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:28Z",
+      "cnt": 242
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.299953,
+      "longitude": 17.850185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:38Z",
+      "cnt": 243
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.399952,
+      "longitude": 17.800186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:48Z",
+      "cnt": 244
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.49995,
+      "longitude": 17.750187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:58Z",
+      "cnt": 245
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.599949,
+      "longitude": 17.700188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:08Z",
+      "cnt": 246
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.699947,
+      "longitude": 17.650188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:18Z",
+      "cnt": 247
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.799946,
+      "longitude": 17.600189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:28Z",
+      "cnt": 248
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.899944,
+      "longitude": 17.55019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:38Z",
+      "cnt": 249
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.999943,
+      "longitude": 17.500191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:48Z",
+      "cnt": 250
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.099941,
+      "longitude": 17.450191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:58Z",
+      "cnt": 251
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.19994,
+      "longitude": 17.400192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:08Z",
+      "cnt": 252
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.299938,
+      "longitude": 17.350193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:18Z",
+      "cnt": 253
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.399937,
+      "longitude": 17.300194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:28Z",
+      "cnt": 254
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.499935,
+      "longitude": 17.250195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:38Z",
+      "cnt": 255
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.599934,
+      "longitude": 17.200195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:48Z",
+      "cnt": 256
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.699932,
+      "longitude": 17.150196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:58Z",
+      "cnt": 257
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.799931,
+      "longitude": 17.100197,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:08Z",
+      "cnt": 258
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.899929,
+      "longitude": 17.050198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:18Z",
+      "cnt": 259
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.999928,
+      "longitude": 17.000198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:28Z",
+      "cnt": 260
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.099926,
+      "longitude": 16.950199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:38Z",
+      "cnt": 261
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.199924,
+      "longitude": 16.9002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:48Z",
+      "cnt": 262
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.299923,
+      "longitude": 16.850201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:58Z",
+      "cnt": 263
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.399921,
+      "longitude": 16.800201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:08Z",
+      "cnt": 264
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.49992,
+      "longitude": 16.750202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:18Z",
+      "cnt": 265
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.599918,
+      "longitude": 16.700203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:28Z",
+      "cnt": 266
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.699917,
+      "longitude": 16.650204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:38Z",
+      "cnt": 267
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.799915,
+      "longitude": 16.600204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:48Z",
+      "cnt": 268
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.899914,
+      "longitude": 16.550205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:58Z",
+      "cnt": 269
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.999912,
+      "longitude": 16.500206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:08Z",
+      "cnt": 270
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.099911,
+      "longitude": 16.450207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:18Z",
+      "cnt": 271
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.199909,
+      "longitude": 16.400208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:28Z",
+      "cnt": 272
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.299908,
+      "longitude": 16.350208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:38Z",
+      "cnt": 273
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.399906,
+      "longitude": 16.300209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:48Z",
+      "cnt": 274
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.499905,
+      "longitude": 16.25021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:58Z",
+      "cnt": 275
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.599903,
+      "longitude": 16.200211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:08Z",
+      "cnt": 276
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.699902,
+      "longitude": 16.150211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:18Z",
+      "cnt": 277
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.7999,
+      "longitude": 16.100212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:28Z",
+      "cnt": 278
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.899899,
+      "longitude": 16.050213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:38Z",
+      "cnt": 279
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.999897,
+      "longitude": 16.000214,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:48Z",
+      "cnt": 280
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.099895,
+      "longitude": 15.950213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:58Z",
+      "cnt": 281
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.199894,
+      "longitude": 15.900213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:08Z",
+      "cnt": 282
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.299892,
+      "longitude": 15.850213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:18Z",
+      "cnt": 283
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.399891,
+      "longitude": 15.800213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:28Z",
+      "cnt": 284
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.499889,
+      "longitude": 15.750213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:38Z",
+      "cnt": 285
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.599888,
+      "longitude": 15.700212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:48Z",
+      "cnt": 286
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.699886,
+      "longitude": 15.650212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:58Z",
+      "cnt": 287
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.799885,
+      "longitude": 15.600212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:08Z",
+      "cnt": 288
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.899883,
+      "longitude": 15.550212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:18Z",
+      "cnt": 289
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.999882,
+      "longitude": 15.500212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:28Z",
+      "cnt": 290
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.09988,
+      "longitude": 15.450212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:38Z",
+      "cnt": 291
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.199879,
+      "longitude": 15.400211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:48Z",
+      "cnt": 292
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.299877,
+      "longitude": 15.350211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:58Z",
+      "cnt": 293
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.399876,
+      "longitude": 15.300211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:08Z",
+      "cnt": 294
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.499874,
+      "longitude": 15.250211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:18Z",
+      "cnt": 295
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.599873,
+      "longitude": 15.200211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:28Z",
+      "cnt": 296
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.699871,
+      "longitude": 15.15021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:38Z",
+      "cnt": 297
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.79987,
+      "longitude": 15.10021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:48Z",
+      "cnt": 298
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.899868,
+      "longitude": 15.05021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:58Z",
+      "cnt": 299
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.999866,
+      "longitude": 15.00021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:08Z",
+      "cnt": 300
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.099865,
+      "longitude": 14.95021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:18Z",
+      "cnt": 301
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.199863,
+      "longitude": 14.900209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:28Z",
+      "cnt": 302
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.299862,
+      "longitude": 14.850209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:38Z",
+      "cnt": 303
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.39986,
+      "longitude": 14.800209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:48Z",
+      "cnt": 304
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.499859,
+      "longitude": 14.750209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:58Z",
+      "cnt": 305
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.599857,
+      "longitude": 14.700209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:08Z",
+      "cnt": 306
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.699856,
+      "longitude": 14.650208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:18Z",
+      "cnt": 307
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.799854,
+      "longitude": 14.600208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:28Z",
+      "cnt": 308
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.899853,
+      "longitude": 14.550208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:38Z",
+      "cnt": 309
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.999851,
+      "longitude": 14.500208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:48Z",
+      "cnt": 310
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.09985,
+      "longitude": 14.450208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:58Z",
+      "cnt": 311
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.199848,
+      "longitude": 14.400208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:08Z",
+      "cnt": 312
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.299847,
+      "longitude": 14.350207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:18Z",
+      "cnt": 313
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.399845,
+      "longitude": 14.300207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:28Z",
+      "cnt": 314
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.499844,
+      "longitude": 14.250207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:38Z",
+      "cnt": 315
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.599842,
+      "longitude": 14.200207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:48Z",
+      "cnt": 316
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.699841,
+      "longitude": 14.150207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:58Z",
+      "cnt": 317
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.799976,
+      "longitude": 18.600174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:08Z",
+      "cnt": 228
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.899975,
+      "longitude": 18.550175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:18Z",
+      "cnt": 229
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 37.999973,
+      "longitude": 18.500175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:28Z",
+      "cnt": 230
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.099972,
+      "longitude": 18.450176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:38Z",
+      "cnt": 231
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.19997,
+      "longitude": 18.400177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:48Z",
+      "cnt": 232
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.299969,
+      "longitude": 18.350178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:28:58Z",
+      "cnt": 233
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.399967,
+      "longitude": 18.300179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:08Z",
+      "cnt": 234
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.499966,
+      "longitude": 18.250179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:18Z",
+      "cnt": 235
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.599964,
+      "longitude": 18.20018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:28Z",
+      "cnt": 236
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.699963,
+      "longitude": 18.150181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:38Z",
+      "cnt": 237
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.799961,
+      "longitude": 18.100182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:48Z",
+      "cnt": 238
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.89996,
+      "longitude": 18.050182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:29:58Z",
+      "cnt": 239
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 38.999958,
+      "longitude": 18.000183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:08Z",
+      "cnt": 240
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.099957,
+      "longitude": 17.950184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:18Z",
+      "cnt": 241
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.199955,
+      "longitude": 17.900185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:28Z",
+      "cnt": 242
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.299953,
+      "longitude": 17.850185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:38Z",
+      "cnt": 243
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.399952,
+      "longitude": 17.800186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:48Z",
+      "cnt": 244
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.49995,
+      "longitude": 17.750187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:30:58Z",
+      "cnt": 245
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.599949,
+      "longitude": 17.700188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:08Z",
+      "cnt": 246
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.699947,
+      "longitude": 17.650188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:18Z",
+      "cnt": 247
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.799946,
+      "longitude": 17.600189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:28Z",
+      "cnt": 248
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.899944,
+      "longitude": 17.55019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:38Z",
+      "cnt": 249
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 39.999943,
+      "longitude": 17.500191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:48Z",
+      "cnt": 250
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.099941,
+      "longitude": 17.450191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:31:58Z",
+      "cnt": 251
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.19994,
+      "longitude": 17.400192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:08Z",
+      "cnt": 252
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.299938,
+      "longitude": 17.350193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:18Z",
+      "cnt": 253
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.399937,
+      "longitude": 17.300194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:28Z",
+      "cnt": 254
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.499935,
+      "longitude": 17.250195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:38Z",
+      "cnt": 255
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.599934,
+      "longitude": 17.200195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:48Z",
+      "cnt": 256
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.699932,
+      "longitude": 17.150196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:32:58Z",
+      "cnt": 257
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.799931,
+      "longitude": 17.100197,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:08Z",
+      "cnt": 258
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.899929,
+      "longitude": 17.050198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:18Z",
+      "cnt": 259
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 40.999928,
+      "longitude": 17.000198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:28Z",
+      "cnt": 260
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.099926,
+      "longitude": 16.950199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:38Z",
+      "cnt": 261
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.199924,
+      "longitude": 16.9002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:48Z",
+      "cnt": 262
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.299923,
+      "longitude": 16.850201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:33:58Z",
+      "cnt": 263
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.399921,
+      "longitude": 16.800201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:08Z",
+      "cnt": 264
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.49992,
+      "longitude": 16.750202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:18Z",
+      "cnt": 265
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.599918,
+      "longitude": 16.700203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:28Z",
+      "cnt": 266
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.699917,
+      "longitude": 16.650204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:38Z",
+      "cnt": 267
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.799915,
+      "longitude": 16.600204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:48Z",
+      "cnt": 268
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.899914,
+      "longitude": 16.550205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:34:58Z",
+      "cnt": 269
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 41.999912,
+      "longitude": 16.500206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:08Z",
+      "cnt": 270
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.099911,
+      "longitude": 16.450207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:18Z",
+      "cnt": 271
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.199909,
+      "longitude": 16.400208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:28Z",
+      "cnt": 272
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.299908,
+      "longitude": 16.350208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:38Z",
+      "cnt": 273
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.399906,
+      "longitude": 16.300209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:48Z",
+      "cnt": 274
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.499905,
+      "longitude": 16.25021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:35:58Z",
+      "cnt": 275
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.599903,
+      "longitude": 16.200211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:08Z",
+      "cnt": 276
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.699902,
+      "longitude": 16.150211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:18Z",
+      "cnt": 277
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.7999,
+      "longitude": 16.100212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:28Z",
+      "cnt": 278
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.899899,
+      "longitude": 16.050213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:38Z",
+      "cnt": 279
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 42.999897,
+      "longitude": 16.000214,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:48Z",
+      "cnt": 280
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.099895,
+      "longitude": 15.950213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:36:58Z",
+      "cnt": 281
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.199894,
+      "longitude": 15.900213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:08Z",
+      "cnt": 282
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.299892,
+      "longitude": 15.850213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:18Z",
+      "cnt": 283
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.399891,
+      "longitude": 15.800213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:28Z",
+      "cnt": 284
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.499889,
+      "longitude": 15.750213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:38Z",
+      "cnt": 285
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.599888,
+      "longitude": 15.700212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:48Z",
+      "cnt": 286
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.699886,
+      "longitude": 15.650212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:58Z",
+      "cnt": 287
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.799885,
+      "longitude": 15.600212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:08Z",
+      "cnt": 288
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.899883,
+      "longitude": 15.550212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:18Z",
+      "cnt": 289
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.999882,
+      "longitude": 15.500212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:28Z",
+      "cnt": 290
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.09988,
+      "longitude": 15.450212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:38Z",
+      "cnt": 291
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.199879,
+      "longitude": 15.400211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:48Z",
+      "cnt": 292
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.299877,
+      "longitude": 15.350211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:58Z",
+      "cnt": 293
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.399876,
+      "longitude": 15.300211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:08Z",
+      "cnt": 294
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.499874,
+      "longitude": 15.250211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:18Z",
+      "cnt": 295
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.599873,
+      "longitude": 15.200211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:28Z",
+      "cnt": 296
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.699871,
+      "longitude": 15.15021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:38Z",
+      "cnt": 297
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.79987,
+      "longitude": 15.10021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:48Z",
+      "cnt": 298
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.899868,
+      "longitude": 15.05021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:58Z",
+      "cnt": 299
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.999866,
+      "longitude": 15.00021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:08Z",
+      "cnt": 300
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.099865,
+      "longitude": 14.95021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:18Z",
+      "cnt": 301
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.199863,
+      "longitude": 14.900209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:28Z",
+      "cnt": 302
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.299862,
+      "longitude": 14.850209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:38Z",
+      "cnt": 303
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.39986,
+      "longitude": 14.800209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:48Z",
+      "cnt": 304
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.499859,
+      "longitude": 14.750209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:58Z",
+      "cnt": 305
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.599857,
+      "longitude": 14.700209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:08Z",
+      "cnt": 306
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.699856,
+      "longitude": 14.650208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:18Z",
+      "cnt": 307
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.799854,
+      "longitude": 14.600208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:28Z",
+      "cnt": 308
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.899853,
+      "longitude": 14.550208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:38Z",
+      "cnt": 309
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.999851,
+      "longitude": 14.500208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:48Z",
+      "cnt": 310
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.09985,
+      "longitude": 14.450208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:58Z",
+      "cnt": 311
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.199848,
+      "longitude": 14.400208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:08Z",
+      "cnt": 312
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.299847,
+      "longitude": 14.350207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:18Z",
+      "cnt": 313
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.399845,
+      "longitude": 14.300207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:28Z",
+      "cnt": 314
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.499844,
+      "longitude": 14.250207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:38Z",
+      "cnt": 315
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.599842,
+      "longitude": 14.200207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:48Z",
+      "cnt": 316
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.699841,
+      "longitude": 14.150207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:58Z",
+      "cnt": 317
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.799839,
+      "longitude": 14.100206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:08Z",
+      "cnt": 318
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.899837,
+      "longitude": 14.050206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:18Z",
+      "cnt": 319
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.999836,
+      "longitude": 14.000206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:28Z",
+      "cnt": 320
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.099834,
+      "longitude": 13.950206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:38Z",
+      "cnt": 321
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.199833,
+      "longitude": 13.900206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:48Z",
+      "cnt": 322
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.299831,
+      "longitude": 13.850205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:58Z",
+      "cnt": 323
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.39983,
+      "longitude": 13.800205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:08Z",
+      "cnt": 324
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.499828,
+      "longitude": 13.750205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:18Z",
+      "cnt": 325
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.599827,
+      "longitude": 13.700205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:28Z",
+      "cnt": 326
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.699825,
+      "longitude": 13.650205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:38Z",
+      "cnt": 327
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.799824,
+      "longitude": 13.600204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:48Z",
+      "cnt": 328
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.899822,
+      "longitude": 13.550204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:58Z",
+      "cnt": 329
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.999821,
+      "longitude": 13.500204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:08Z",
+      "cnt": 330
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.099819,
+      "longitude": 13.450204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:18Z",
+      "cnt": 331
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.199818,
+      "longitude": 13.400204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:28Z",
+      "cnt": 332
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.299816,
+      "longitude": 13.350204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:38Z",
+      "cnt": 333
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.399815,
+      "longitude": 13.300203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:48Z",
+      "cnt": 334
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.499813,
+      "longitude": 13.250203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:58Z",
+      "cnt": 335
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.599812,
+      "longitude": 13.200203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:08Z",
+      "cnt": 336
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.69981,
+      "longitude": 13.150203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:18Z",
+      "cnt": 337
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.799809,
+      "longitude": 13.100203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:28Z",
+      "cnt": 338
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.899807,
+      "longitude": 13.050202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:38Z",
+      "cnt": 339
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.999805,
+      "longitude": 13.000202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:48Z",
+      "cnt": 340
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.099804,
+      "longitude": 12.950202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:58Z",
+      "cnt": 341
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.199802,
+      "longitude": 12.900202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:08Z",
+      "cnt": 342
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.299801,
+      "longitude": 12.850202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:18Z",
+      "cnt": 343
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.399799,
+      "longitude": 12.800201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:28Z",
+      "cnt": 344
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.499798,
+      "longitude": 12.750201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:38Z",
+      "cnt": 345
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.599796,
+      "longitude": 12.700201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:48Z",
+      "cnt": 346
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.699795,
+      "longitude": 12.650201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:58Z",
+      "cnt": 347
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.799793,
+      "longitude": 12.600201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:08Z",
+      "cnt": 348
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.899792,
+      "longitude": 12.5502,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:18Z",
+      "cnt": 349
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.99979,
+      "longitude": 12.5002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:28Z",
+      "cnt": 350
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.099789,
+      "longitude": 12.4502,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:38Z",
+      "cnt": 351
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.199787,
+      "longitude": 12.4002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:48Z",
+      "cnt": 352
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.299786,
+      "longitude": 12.3502,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:58Z",
+      "cnt": 353
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.399784,
+      "longitude": 12.3002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:08Z",
+      "cnt": 354
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.499783,
+      "longitude": 12.250199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:18Z",
+      "cnt": 355
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.599781,
+      "longitude": 12.200199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:28Z",
+      "cnt": 356
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.69978,
+      "longitude": 12.150199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:38Z",
+      "cnt": 357
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.799778,
+      "longitude": 12.100199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:48Z",
+      "cnt": 358
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.899776,
+      "longitude": 12.050199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:58Z",
+      "cnt": 359
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.999775,
+      "longitude": 12.000198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:08Z",
+      "cnt": 360
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.099773,
+      "longitude": 11.950198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:18Z",
+      "cnt": 361
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.199772,
+      "longitude": 11.900198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:28Z",
+      "cnt": 362
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.29977,
+      "longitude": 11.850198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:38Z",
+      "cnt": 363
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.399769,
+      "longitude": 11.800198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:48Z",
+      "cnt": 364
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.499767,
+      "longitude": 11.750197,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:58Z",
+      "cnt": 365
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.199757,
+      "longitude": 11.400196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:08Z",
+      "cnt": 372
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.299755,
+      "longitude": 11.350196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:18Z",
+      "cnt": 373
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.399754,
+      "longitude": 11.300196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:28Z",
+      "cnt": 374
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.499752,
+      "longitude": 11.250196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:38Z",
+      "cnt": 375
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.599751,
+      "longitude": 11.200195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:48Z",
+      "cnt": 376
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.699749,
+      "longitude": 11.150195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:58Z",
+      "cnt": 377
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.799747,
+      "longitude": 11.100195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:08Z",
+      "cnt": 378
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.899746,
+      "longitude": 11.050195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:18Z",
+      "cnt": 379
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.999744,
+      "longitude": 11.000195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:28Z",
+      "cnt": 380
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.099743,
+      "longitude": 10.950194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:38Z",
+      "cnt": 381
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.199741,
+      "longitude": 10.900194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:48Z",
+      "cnt": 382
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.29974,
+      "longitude": 10.850194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:58Z",
+      "cnt": 383
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.399738,
+      "longitude": 10.800194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:08Z",
+      "cnt": 384
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.499737,
+      "longitude": 10.750194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:18Z",
+      "cnt": 385
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.599735,
+      "longitude": 10.700193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:28Z",
+      "cnt": 386
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.699734,
+      "longitude": 10.650193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:38Z",
+      "cnt": 387
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.799732,
+      "longitude": 10.600193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:48Z",
+      "cnt": 388
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.899731,
+      "longitude": 10.550193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:58Z",
+      "cnt": 389
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.999729,
+      "longitude": 10.500193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:08Z",
+      "cnt": 390
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.099728,
+      "longitude": 10.450192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:18Z",
+      "cnt": 391
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.199726,
+      "longitude": 10.400192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:28Z",
+      "cnt": 392
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.299725,
+      "longitude": 10.350192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:38Z",
+      "cnt": 393
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.399723,
+      "longitude": 10.300192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:48Z",
+      "cnt": 394
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.499722,
+      "longitude": 10.250192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:58Z",
+      "cnt": 395
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.59972,
+      "longitude": 10.200191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:08Z",
+      "cnt": 396
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.699718,
+      "longitude": 10.150191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:18Z",
+      "cnt": 397
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.799717,
+      "longitude": 10.100191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:28Z",
+      "cnt": 398
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.899715,
+      "longitude": 10.050191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:38Z",
+      "cnt": 399
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.999714,
+      "longitude": 10.000191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:48Z",
+      "cnt": 400
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.099712,
+      "longitude": 9.950191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:58Z",
+      "cnt": 401
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.199894,
+      "longitude": 15.900213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:08Z",
+      "cnt": 282
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.299892,
+      "longitude": 15.850213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:18Z",
+      "cnt": 283
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.399891,
+      "longitude": 15.800213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:28Z",
+      "cnt": 284
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.499889,
+      "longitude": 15.750213,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:38Z",
+      "cnt": 285
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.599888,
+      "longitude": 15.700212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:48Z",
+      "cnt": 286
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.699886,
+      "longitude": 15.650212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:37:58Z",
+      "cnt": 287
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.799885,
+      "longitude": 15.600212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:08Z",
+      "cnt": 288
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.899883,
+      "longitude": 15.550212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:18Z",
+      "cnt": 289
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 43.999882,
+      "longitude": 15.500212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:28Z",
+      "cnt": 290
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.09988,
+      "longitude": 15.450212,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:38Z",
+      "cnt": 291
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.199879,
+      "longitude": 15.400211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:48Z",
+      "cnt": 292
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.299877,
+      "longitude": 15.350211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:38:58Z",
+      "cnt": 293
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.399876,
+      "longitude": 15.300211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:08Z",
+      "cnt": 294
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.499874,
+      "longitude": 15.250211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:18Z",
+      "cnt": 295
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.599873,
+      "longitude": 15.200211,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:28Z",
+      "cnt": 296
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.699871,
+      "longitude": 15.15021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:38Z",
+      "cnt": 297
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.79987,
+      "longitude": 15.10021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:48Z",
+      "cnt": 298
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.899868,
+      "longitude": 15.05021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:39:58Z",
+      "cnt": 299
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 44.999866,
+      "longitude": 15.00021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:08Z",
+      "cnt": 300
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.099865,
+      "longitude": 14.95021,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:18Z",
+      "cnt": 301
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.199863,
+      "longitude": 14.900209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:28Z",
+      "cnt": 302
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.299862,
+      "longitude": 14.850209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:38Z",
+      "cnt": 303
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.39986,
+      "longitude": 14.800209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:48Z",
+      "cnt": 304
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.499859,
+      "longitude": 14.750209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:40:58Z",
+      "cnt": 305
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.599857,
+      "longitude": 14.700209,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:08Z",
+      "cnt": 306
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.699856,
+      "longitude": 14.650208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:18Z",
+      "cnt": 307
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.799854,
+      "longitude": 14.600208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:28Z",
+      "cnt": 308
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.899853,
+      "longitude": 14.550208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:38Z",
+      "cnt": 309
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 45.999851,
+      "longitude": 14.500208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:48Z",
+      "cnt": 310
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.09985,
+      "longitude": 14.450208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:41:58Z",
+      "cnt": 311
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.199848,
+      "longitude": 14.400208,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:08Z",
+      "cnt": 312
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.299847,
+      "longitude": 14.350207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:18Z",
+      "cnt": 313
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.399845,
+      "longitude": 14.300207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:28Z",
+      "cnt": 314
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.499844,
+      "longitude": 14.250207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:38Z",
+      "cnt": 315
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.599842,
+      "longitude": 14.200207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:48Z",
+      "cnt": 316
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.699841,
+      "longitude": 14.150207,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:42:58Z",
+      "cnt": 317
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.799839,
+      "longitude": 14.100206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:08Z",
+      "cnt": 318
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.899837,
+      "longitude": 14.050206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:18Z",
+      "cnt": 319
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 46.999836,
+      "longitude": 14.000206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:28Z",
+      "cnt": 320
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.099834,
+      "longitude": 13.950206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:38Z",
+      "cnt": 321
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.199833,
+      "longitude": 13.900206,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:48Z",
+      "cnt": 322
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.299831,
+      "longitude": 13.850205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:43:58Z",
+      "cnt": 323
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.39983,
+      "longitude": 13.800205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:08Z",
+      "cnt": 324
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.499828,
+      "longitude": 13.750205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:18Z",
+      "cnt": 325
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.599827,
+      "longitude": 13.700205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:28Z",
+      "cnt": 326
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.699825,
+      "longitude": 13.650205,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:38Z",
+      "cnt": 327
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.799824,
+      "longitude": 13.600204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:48Z",
+      "cnt": 328
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.899822,
+      "longitude": 13.550204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:44:58Z",
+      "cnt": 329
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 47.999821,
+      "longitude": 13.500204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:08Z",
+      "cnt": 330
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.099819,
+      "longitude": 13.450204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:18Z",
+      "cnt": 331
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.199818,
+      "longitude": 13.400204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:28Z",
+      "cnt": 332
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.299816,
+      "longitude": 13.350204,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:38Z",
+      "cnt": 333
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.399815,
+      "longitude": 13.300203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:48Z",
+      "cnt": 334
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.499813,
+      "longitude": 13.250203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:45:58Z",
+      "cnt": 335
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.599812,
+      "longitude": 13.200203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:08Z",
+      "cnt": 336
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.69981,
+      "longitude": 13.150203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:18Z",
+      "cnt": 337
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.799809,
+      "longitude": 13.100203,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:28Z",
+      "cnt": 338
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.899807,
+      "longitude": 13.050202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:38Z",
+      "cnt": 339
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 48.999805,
+      "longitude": 13.000202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:48Z",
+      "cnt": 340
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.099804,
+      "longitude": 12.950202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:46:58Z",
+      "cnt": 341
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.199802,
+      "longitude": 12.900202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:08Z",
+      "cnt": 342
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.299801,
+      "longitude": 12.850202,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:18Z",
+      "cnt": 343
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.399799,
+      "longitude": 12.800201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:28Z",
+      "cnt": 344
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.499798,
+      "longitude": 12.750201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:38Z",
+      "cnt": 345
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.599796,
+      "longitude": 12.700201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:48Z",
+      "cnt": 346
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.699795,
+      "longitude": 12.650201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:47:58Z",
+      "cnt": 347
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.799793,
+      "longitude": 12.600201,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:08Z",
+      "cnt": 348
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.899792,
+      "longitude": 12.5502,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:18Z",
+      "cnt": 349
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 49.99979,
+      "longitude": 12.5002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:28Z",
+      "cnt": 350
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.099789,
+      "longitude": 12.4502,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:38Z",
+      "cnt": 351
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.199787,
+      "longitude": 12.4002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:48Z",
+      "cnt": 352
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.299786,
+      "longitude": 12.3502,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:48:58Z",
+      "cnt": 353
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.399784,
+      "longitude": 12.3002,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:08Z",
+      "cnt": 354
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.499783,
+      "longitude": 12.250199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:18Z",
+      "cnt": 355
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.599781,
+      "longitude": 12.200199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:28Z",
+      "cnt": 356
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.69978,
+      "longitude": 12.150199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:38Z",
+      "cnt": 357
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.799778,
+      "longitude": 12.100199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:48Z",
+      "cnt": 358
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.899776,
+      "longitude": 12.050199,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:49:58Z",
+      "cnt": 359
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 50.999775,
+      "longitude": 12.000198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:08Z",
+      "cnt": 360
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.099773,
+      "longitude": 11.950198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:18Z",
+      "cnt": 361
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.199772,
+      "longitude": 11.900198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:28Z",
+      "cnt": 362
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.29977,
+      "longitude": 11.850198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:38Z",
+      "cnt": 363
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.399769,
+      "longitude": 11.800198,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:48Z",
+      "cnt": 364
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 51.499767,
+      "longitude": 11.750197,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:50:58Z",
+      "cnt": 365
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.199757,
+      "longitude": 11.400196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:08Z",
+      "cnt": 372
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.299755,
+      "longitude": 11.350196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:18Z",
+      "cnt": 373
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.399754,
+      "longitude": 11.300196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:28Z",
+      "cnt": 374
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.499752,
+      "longitude": 11.250196,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:38Z",
+      "cnt": 375
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.599751,
+      "longitude": 11.200195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:48Z",
+      "cnt": 376
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.699749,
+      "longitude": 11.150195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:52:58Z",
+      "cnt": 377
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.799747,
+      "longitude": 11.100195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:08Z",
+      "cnt": 378
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.899746,
+      "longitude": 11.050195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:18Z",
+      "cnt": 379
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.999744,
+      "longitude": 11.000195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:28Z",
+      "cnt": 380
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.099743,
+      "longitude": 10.950194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:38Z",
+      "cnt": 381
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.199741,
+      "longitude": 10.900194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:48Z",
+      "cnt": 382
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.29974,
+      "longitude": 10.850194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:58Z",
+      "cnt": 383
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.399738,
+      "longitude": 10.800194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:08Z",
+      "cnt": 384
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.499737,
+      "longitude": 10.750194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:18Z",
+      "cnt": 385
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.599735,
+      "longitude": 10.700193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:28Z",
+      "cnt": 386
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.699734,
+      "longitude": 10.650193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:38Z",
+      "cnt": 387
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.799732,
+      "longitude": 10.600193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:48Z",
+      "cnt": 388
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.899731,
+      "longitude": 10.550193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:58Z",
+      "cnt": 389
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.999729,
+      "longitude": 10.500193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:08Z",
+      "cnt": 390
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.099728,
+      "longitude": 10.450192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:18Z",
+      "cnt": 391
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.199726,
+      "longitude": 10.400192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:28Z",
+      "cnt": 392
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.299725,
+      "longitude": 10.350192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:38Z",
+      "cnt": 393
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.399723,
+      "longitude": 10.300192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:48Z",
+      "cnt": 394
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.499722,
+      "longitude": 10.250192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:58Z",
+      "cnt": 395
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.59972,
+      "longitude": 10.200191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:08Z",
+      "cnt": 396
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.699718,
+      "longitude": 10.150191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:18Z",
+      "cnt": 397
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.799717,
+      "longitude": 10.100191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:28Z",
+      "cnt": 398
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.899715,
+      "longitude": 10.050191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:38Z",
+      "cnt": 399
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.999714,
+      "longitude": 10.000191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:48Z",
+      "cnt": 400
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.099712,
+      "longitude": 9.950191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:58Z",
+      "cnt": 401
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.199711,
+      "longitude": 9.90019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:08Z",
+      "cnt": 402
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.299709,
+      "longitude": 9.85019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:18Z",
+      "cnt": 403
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.399708,
+      "longitude": 9.80019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:28Z",
+      "cnt": 404
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.499706,
+      "longitude": 9.75019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:38Z",
+      "cnt": 405
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.599705,
+      "longitude": 9.70019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:48Z",
+      "cnt": 406
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.699703,
+      "longitude": 9.650189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:58Z",
+      "cnt": 407
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.799702,
+      "longitude": 9.600189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:08Z",
+      "cnt": 408
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.8997,
+      "longitude": 9.550189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:18Z",
+      "cnt": 409
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.999699,
+      "longitude": 9.500189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:28Z",
+      "cnt": 410
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.099697,
+      "longitude": 9.450189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:38Z",
+      "cnt": 411
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.199696,
+      "longitude": 9.400188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:48Z",
+      "cnt": 412
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.299694,
+      "longitude": 9.350188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:58Z",
+      "cnt": 413
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.399693,
+      "longitude": 9.300188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:08Z",
+      "cnt": 414
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.499691,
+      "longitude": 9.250188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:18Z",
+      "cnt": 415
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.599689,
+      "longitude": 9.200188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:28Z",
+      "cnt": 416
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.699688,
+      "longitude": 9.150187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:38Z",
+      "cnt": 417
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.799686,
+      "longitude": 9.100187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:48Z",
+      "cnt": 418
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.899685,
+      "longitude": 9.050187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:58Z",
+      "cnt": 419
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.999683,
+      "longitude": 9.000187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:08Z",
+      "cnt": 420
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.099682,
+      "longitude": 8.950187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:18Z",
+      "cnt": 421
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.19968,
+      "longitude": 8.900187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:28Z",
+      "cnt": 422
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.299679,
+      "longitude": 8.850186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:38Z",
+      "cnt": 423
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.399677,
+      "longitude": 8.800186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:48Z",
+      "cnt": 424
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.499676,
+      "longitude": 8.750186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:58Z",
+      "cnt": 425
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.599674,
+      "longitude": 8.700186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:08Z",
+      "cnt": 426
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.699673,
+      "longitude": 8.650186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:18Z",
+      "cnt": 427
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.799671,
+      "longitude": 8.600185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:28Z",
+      "cnt": 428
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.89967,
+      "longitude": 8.550185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:38Z",
+      "cnt": 429
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.999668,
+      "longitude": 8.500185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:48Z",
+      "cnt": 430
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.099667,
+      "longitude": 8.450185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:58Z",
+      "cnt": 431
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.199665,
+      "longitude": 8.400185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:08Z",
+      "cnt": 432
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.299664,
+      "longitude": 8.350184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:18Z",
+      "cnt": 433
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.399662,
+      "longitude": 8.300184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:28Z",
+      "cnt": 434
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.49966,
+      "longitude": 8.250184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:38Z",
+      "cnt": 435
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.599659,
+      "longitude": 8.200184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:48Z",
+      "cnt": 436
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.699657,
+      "longitude": 8.150184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:58Z",
+      "cnt": 437
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.799656,
+      "longitude": 8.100183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:08Z",
+      "cnt": 438
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.899654,
+      "longitude": 8.050183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:18Z",
+      "cnt": 439
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.999653,
+      "longitude": 8.000183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:28Z",
+      "cnt": 440
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.099651,
+      "longitude": 7.950183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:38Z",
+      "cnt": 441
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.19965,
+      "longitude": 7.900183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:48Z",
+      "cnt": 442
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.299648,
+      "longitude": 7.850183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:58Z",
+      "cnt": 443
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.399647,
+      "longitude": 7.800182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:08Z",
+      "cnt": 444
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.499645,
+      "longitude": 7.750182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:18Z",
+      "cnt": 445
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.599644,
+      "longitude": 7.700182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:28Z",
+      "cnt": 446
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.699642,
+      "longitude": 7.650182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:38Z",
+      "cnt": 447
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.799641,
+      "longitude": 7.600182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:48Z",
+      "cnt": 448
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.899639,
+      "longitude": 7.550181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:58Z",
+      "cnt": 449
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.999638,
+      "longitude": 7.500181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:08Z",
+      "cnt": 450
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.099636,
+      "longitude": 7.450181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:18Z",
+      "cnt": 451
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.199635,
+      "longitude": 7.400181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:28Z",
+      "cnt": 452
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.299633,
+      "longitude": 7.350181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:38Z",
+      "cnt": 453
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.399632,
+      "longitude": 7.30018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:48Z",
+      "cnt": 454
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.49963,
+      "longitude": 7.25018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:58Z",
+      "cnt": 455
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.599628,
+      "longitude": 7.20018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:08Z",
+      "cnt": 456
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.699627,
+      "longitude": 7.15018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:18Z",
+      "cnt": 457
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.799625,
+      "longitude": 7.10018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:28Z",
+      "cnt": 458
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.899624,
+      "longitude": 7.050179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:38Z",
+      "cnt": 459
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.999622,
+      "longitude": 7.000179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:48Z",
+      "cnt": 460
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.099621,
+      "longitude": 6.950179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:58Z",
+      "cnt": 461
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.199619,
+      "longitude": 6.900179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:08Z",
+      "cnt": 462
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.299618,
+      "longitude": 6.850179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:18Z",
+      "cnt": 463
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.399616,
+      "longitude": 6.800179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:28Z",
+      "cnt": 464
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.499615,
+      "longitude": 6.750178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:38Z",
+      "cnt": 465
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.599613,
+      "longitude": 6.700178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:48Z",
+      "cnt": 466
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.699612,
+      "longitude": 6.650178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:58Z",
+      "cnt": 467
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.79961,
+      "longitude": 6.600178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:08Z",
+      "cnt": 468
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.899609,
+      "longitude": 6.550178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:18Z",
+      "cnt": 469
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.999607,
+      "longitude": 6.500177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:28Z",
+      "cnt": 470
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.099606,
+      "longitude": 6.450177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:38Z",
+      "cnt": 471
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.199604,
+      "longitude": 6.400177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:48Z",
+      "cnt": 472
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.299603,
+      "longitude": 6.350177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:58Z",
+      "cnt": 473
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.399601,
+      "longitude": 6.300177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:08Z",
+      "cnt": 474
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.499599,
+      "longitude": 6.250176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:18Z",
+      "cnt": 475
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.599598,
+      "longitude": 6.200176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:28Z",
+      "cnt": 476
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.699596,
+      "longitude": 6.150176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:38Z",
+      "cnt": 477
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.799595,
+      "longitude": 6.100176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:48Z",
+      "cnt": 478
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.899593,
+      "longitude": 6.050176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:58Z",
+      "cnt": 479
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.999592,
+      "longitude": 6.000175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:08Z",
+      "cnt": 480
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.09959,
+      "longitude": 5.950175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:18Z",
+      "cnt": 481
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.199589,
+      "longitude": 5.900175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:28Z",
+      "cnt": 482
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.299587,
+      "longitude": 5.850175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:38Z",
+      "cnt": 483
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.399586,
+      "longitude": 5.800175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:48Z",
+      "cnt": 484
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.499584,
+      "longitude": 5.750175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:58Z",
+      "cnt": 485
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.599583,
+      "longitude": 5.700174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:08Z",
+      "cnt": 486
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.699581,
+      "longitude": 5.650174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:18Z",
+      "cnt": 487
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.79958,
+      "longitude": 5.600174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:28Z",
+      "cnt": 488
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.899578,
+      "longitude": 5.550174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:38Z",
+      "cnt": 489
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.999577,
+      "longitude": 5.500174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:48Z",
+      "cnt": 490
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.099579,
+      "longitude": 5.450173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:58Z",
+      "cnt": 491
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.799747,
+      "longitude": 11.100195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:08Z",
+      "cnt": 378
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.899746,
+      "longitude": 11.050195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:18Z",
+      "cnt": 379
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 52.999744,
+      "longitude": 11.000195,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:28Z",
+      "cnt": 380
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.099743,
+      "longitude": 10.950194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:38Z",
+      "cnt": 381
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.199741,
+      "longitude": 10.900194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:48Z",
+      "cnt": 382
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.29974,
+      "longitude": 10.850194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:53:58Z",
+      "cnt": 383
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.399738,
+      "longitude": 10.800194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:08Z",
+      "cnt": 384
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.499737,
+      "longitude": 10.750194,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:18Z",
+      "cnt": 385
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.599735,
+      "longitude": 10.700193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:28Z",
+      "cnt": 386
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.699734,
+      "longitude": 10.650193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:38Z",
+      "cnt": 387
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.799732,
+      "longitude": 10.600193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:48Z",
+      "cnt": 388
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.899731,
+      "longitude": 10.550193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:54:58Z",
+      "cnt": 389
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 53.999729,
+      "longitude": 10.500193,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:08Z",
+      "cnt": 390
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.099728,
+      "longitude": 10.450192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:18Z",
+      "cnt": 391
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.199726,
+      "longitude": 10.400192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:28Z",
+      "cnt": 392
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.299725,
+      "longitude": 10.350192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:38Z",
+      "cnt": 393
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.399723,
+      "longitude": 10.300192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:48Z",
+      "cnt": 394
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.499722,
+      "longitude": 10.250192,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:55:58Z",
+      "cnt": 395
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.59972,
+      "longitude": 10.200191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:08Z",
+      "cnt": 396
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.699718,
+      "longitude": 10.150191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:18Z",
+      "cnt": 397
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.799717,
+      "longitude": 10.100191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:28Z",
+      "cnt": 398
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.899715,
+      "longitude": 10.050191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:38Z",
+      "cnt": 399
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 54.999714,
+      "longitude": 10.000191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:48Z",
+      "cnt": 400
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.099712,
+      "longitude": 9.950191,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:56:58Z",
+      "cnt": 401
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.199711,
+      "longitude": 9.90019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:08Z",
+      "cnt": 402
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.299709,
+      "longitude": 9.85019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:18Z",
+      "cnt": 403
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.399708,
+      "longitude": 9.80019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:28Z",
+      "cnt": 404
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.499706,
+      "longitude": 9.75019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:38Z",
+      "cnt": 405
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.599705,
+      "longitude": 9.70019,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:48Z",
+      "cnt": 406
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.699703,
+      "longitude": 9.650189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:57:58Z",
+      "cnt": 407
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.799702,
+      "longitude": 9.600189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:08Z",
+      "cnt": 408
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.8997,
+      "longitude": 9.550189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:18Z",
+      "cnt": 409
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 55.999699,
+      "longitude": 9.500189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:28Z",
+      "cnt": 410
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.099697,
+      "longitude": 9.450189,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:38Z",
+      "cnt": 411
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.199696,
+      "longitude": 9.400188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:48Z",
+      "cnt": 412
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.299694,
+      "longitude": 9.350188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:58:58Z",
+      "cnt": 413
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.399693,
+      "longitude": 9.300188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:08Z",
+      "cnt": 414
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.499691,
+      "longitude": 9.250188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:18Z",
+      "cnt": 415
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.599689,
+      "longitude": 9.200188,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:28Z",
+      "cnt": 416
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.699688,
+      "longitude": 9.150187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:38Z",
+      "cnt": 417
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.799686,
+      "longitude": 9.100187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:48Z",
+      "cnt": 418
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.899685,
+      "longitude": 9.050187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T10:59:58Z",
+      "cnt": 419
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 56.999683,
+      "longitude": 9.000187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:08Z",
+      "cnt": 420
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.099682,
+      "longitude": 8.950187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:18Z",
+      "cnt": 421
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.19968,
+      "longitude": 8.900187,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:28Z",
+      "cnt": 422
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.299679,
+      "longitude": 8.850186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:38Z",
+      "cnt": 423
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.399677,
+      "longitude": 8.800186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:48Z",
+      "cnt": 424
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.499676,
+      "longitude": 8.750186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:00:58Z",
+      "cnt": 425
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.599674,
+      "longitude": 8.700186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:08Z",
+      "cnt": 426
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.699673,
+      "longitude": 8.650186,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:18Z",
+      "cnt": 427
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.799671,
+      "longitude": 8.600185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:28Z",
+      "cnt": 428
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.89967,
+      "longitude": 8.550185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:38Z",
+      "cnt": 429
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 57.999668,
+      "longitude": 8.500185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:48Z",
+      "cnt": 430
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.099667,
+      "longitude": 8.450185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:01:58Z",
+      "cnt": 431
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.199665,
+      "longitude": 8.400185,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:08Z",
+      "cnt": 432
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.299664,
+      "longitude": 8.350184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:18Z",
+      "cnt": 433
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.399662,
+      "longitude": 8.300184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:28Z",
+      "cnt": 434
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.49966,
+      "longitude": 8.250184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:38Z",
+      "cnt": 435
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.599659,
+      "longitude": 8.200184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:48Z",
+      "cnt": 436
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.699657,
+      "longitude": 8.150184,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:02:58Z",
+      "cnt": 437
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.799656,
+      "longitude": 8.100183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:08Z",
+      "cnt": 438
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.899654,
+      "longitude": 8.050183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:18Z",
+      "cnt": 439
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 58.999653,
+      "longitude": 8.000183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:28Z",
+      "cnt": 440
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.099651,
+      "longitude": 7.950183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:38Z",
+      "cnt": 441
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.19965,
+      "longitude": 7.900183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:48Z",
+      "cnt": 442
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.299648,
+      "longitude": 7.850183,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:03:58Z",
+      "cnt": 443
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.399647,
+      "longitude": 7.800182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:08Z",
+      "cnt": 444
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.499645,
+      "longitude": 7.750182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:18Z",
+      "cnt": 445
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.599644,
+      "longitude": 7.700182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:28Z",
+      "cnt": 446
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.699642,
+      "longitude": 7.650182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:38Z",
+      "cnt": 447
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.799641,
+      "longitude": 7.600182,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:48Z",
+      "cnt": 448
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.899639,
+      "longitude": 7.550181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:04:58Z",
+      "cnt": 449
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 59.999638,
+      "longitude": 7.500181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:08Z",
+      "cnt": 450
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.099636,
+      "longitude": 7.450181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:18Z",
+      "cnt": 451
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.199635,
+      "longitude": 7.400181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:28Z",
+      "cnt": 452
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.299633,
+      "longitude": 7.350181,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:38Z",
+      "cnt": 453
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.399632,
+      "longitude": 7.30018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:48Z",
+      "cnt": 454
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.49963,
+      "longitude": 7.25018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:05:58Z",
+      "cnt": 455
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.599628,
+      "longitude": 7.20018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:08Z",
+      "cnt": 456
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.699627,
+      "longitude": 7.15018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:18Z",
+      "cnt": 457
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.799625,
+      "longitude": 7.10018,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:28Z",
+      "cnt": 458
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.899624,
+      "longitude": 7.050179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:38Z",
+      "cnt": 459
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 60.999622,
+      "longitude": 7.000179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:48Z",
+      "cnt": 460
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.099621,
+      "longitude": 6.950179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:06:58Z",
+      "cnt": 461
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.199619,
+      "longitude": 6.900179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:08Z",
+      "cnt": 462
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.299618,
+      "longitude": 6.850179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:18Z",
+      "cnt": 463
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.399616,
+      "longitude": 6.800179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:28Z",
+      "cnt": 464
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.499615,
+      "longitude": 6.750178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:38Z",
+      "cnt": 465
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.599613,
+      "longitude": 6.700178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:48Z",
+      "cnt": 466
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.699612,
+      "longitude": 6.650178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:58Z",
+      "cnt": 467
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.79961,
+      "longitude": 6.600178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:08Z",
+      "cnt": 468
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.899609,
+      "longitude": 6.550178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:18Z",
+      "cnt": 469
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.999607,
+      "longitude": 6.500177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:28Z",
+      "cnt": 470
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.099606,
+      "longitude": 6.450177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:38Z",
+      "cnt": 471
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.199604,
+      "longitude": 6.400177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:48Z",
+      "cnt": 472
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.299603,
+      "longitude": 6.350177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:58Z",
+      "cnt": 473
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.399601,
+      "longitude": 6.300177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:08Z",
+      "cnt": 474
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.499599,
+      "longitude": 6.250176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:18Z",
+      "cnt": 475
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.599598,
+      "longitude": 6.200176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:28Z",
+      "cnt": 476
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.699596,
+      "longitude": 6.150176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:38Z",
+      "cnt": 477
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.799595,
+      "longitude": 6.100176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:48Z",
+      "cnt": 478
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.899593,
+      "longitude": 6.050176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:58Z",
+      "cnt": 479
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.999592,
+      "longitude": 6.000175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:08Z",
+      "cnt": 480
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.09959,
+      "longitude": 5.950175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:18Z",
+      "cnt": 481
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.199589,
+      "longitude": 5.900175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:28Z",
+      "cnt": 482
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.299587,
+      "longitude": 5.850175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:38Z",
+      "cnt": 483
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.399586,
+      "longitude": 5.800175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:48Z",
+      "cnt": 484
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.499584,
+      "longitude": 5.750175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:58Z",
+      "cnt": 485
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.599583,
+      "longitude": 5.700174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:08Z",
+      "cnt": 486
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.699581,
+      "longitude": 5.650174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:18Z",
+      "cnt": 487
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.79958,
+      "longitude": 5.600174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:28Z",
+      "cnt": 488
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.899578,
+      "longitude": 5.550174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:38Z",
+      "cnt": 489
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.999577,
+      "longitude": 5.500174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:48Z",
+      "cnt": 490
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.099579,
+      "longitude": 5.450173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:58Z",
+      "cnt": 491
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.199577,
+      "longitude": 5.400173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:08Z",
+      "cnt": 492
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.299576,
+      "longitude": 5.350173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:18Z",
+      "cnt": 493
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.399574,
+      "longitude": 5.300173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:28Z",
+      "cnt": 494
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.499573,
+      "longitude": 5.250173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:38Z",
+      "cnt": 495
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.599571,
+      "longitude": 5.200172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:48Z",
+      "cnt": 496
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.69957,
+      "longitude": 5.150172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:58Z",
+      "cnt": 497
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.799568,
+      "longitude": 5.100172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:08Z",
+      "cnt": 498
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.899567,
+      "longitude": 5.050172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:18Z",
+      "cnt": 499
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.999565,
+      "longitude": 5.000172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:28Z",
+      "cnt": 500
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.099564,
+      "longitude": 4.950171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:38Z",
+      "cnt": 501
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.199562,
+      "longitude": 4.900171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:48Z",
+      "cnt": 502
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.299561,
+      "longitude": 4.850171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:58Z",
+      "cnt": 503
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.399559,
+      "longitude": 4.800171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:08Z",
+      "cnt": 504
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.499557,
+      "longitude": 4.750171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:18Z",
+      "cnt": 505
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.599556,
+      "longitude": 4.700171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:28Z",
+      "cnt": 506
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.699554,
+      "longitude": 4.65017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:38Z",
+      "cnt": 507
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.799553,
+      "longitude": 4.60017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:48Z",
+      "cnt": 508
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.899551,
+      "longitude": 4.55017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:58Z",
+      "cnt": 509
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.99955,
+      "longitude": 4.50017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:08Z",
+      "cnt": 510
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.099548,
+      "longitude": 4.45017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:18Z",
+      "cnt": 511
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.199547,
+      "longitude": 4.400169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:28Z",
+      "cnt": 512
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.299545,
+      "longitude": 4.350169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:38Z",
+      "cnt": 513
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.399544,
+      "longitude": 4.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:48Z",
+      "cnt": 514
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.499542,
+      "longitude": 4.250169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:58Z",
+      "cnt": 515
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.599541,
+      "longitude": 4.200169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:08Z",
+      "cnt": 516
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.699539,
+      "longitude": 4.150168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:18Z",
+      "cnt": 517
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.799538,
+      "longitude": 4.100168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:28Z",
+      "cnt": 518
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.899536,
+      "longitude": 4.050168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:38Z",
+      "cnt": 519
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.999535,
+      "longitude": 4.000168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:48Z",
+      "cnt": 520
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.099533,
+      "longitude": 3.950168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:58Z",
+      "cnt": 521
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.199532,
+      "longitude": 3.900168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:08Z",
+      "cnt": 522
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.29953,
+      "longitude": 3.850168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:18Z",
+      "cnt": 523
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.399529,
+      "longitude": 3.800168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:28Z",
+      "cnt": 524
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.499527,
+      "longitude": 3.750168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:38Z",
+      "cnt": 525
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.599525,
+      "longitude": 3.700168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:48Z",
+      "cnt": 526
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.699524,
+      "longitude": 3.650168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:58Z",
+      "cnt": 527
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.799522,
+      "longitude": 3.600168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:08Z",
+      "cnt": 528
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.899521,
+      "longitude": 3.550168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:18Z",
+      "cnt": 529
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.999519,
+      "longitude": 3.500168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:28Z",
+      "cnt": 530
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.099518,
+      "longitude": 3.450168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:38Z",
+      "cnt": 531
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.199516,
+      "longitude": 3.400168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:48Z",
+      "cnt": 532
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.299515,
+      "longitude": 3.350168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:58Z",
+      "cnt": 533
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.399513,
+      "longitude": 3.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:08Z",
+      "cnt": 534
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.499512,
+      "longitude": 3.250169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:18Z",
+      "cnt": 535
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.59951,
+      "longitude": 3.200169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:28Z",
+      "cnt": 536
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.699509,
+      "longitude": 3.150169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:38Z",
+      "cnt": 537
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.799507,
+      "longitude": 3.100169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:48Z",
+      "cnt": 538
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.899506,
+      "longitude": 3.050169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:58Z",
+      "cnt": 539
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.999504,
+      "longitude": 3.000169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:08Z",
+      "cnt": 540
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.099503,
+      "longitude": 2.950169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:18Z",
+      "cnt": 541
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.199501,
+      "longitude": 2.900169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:28Z",
+      "cnt": 542
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.2995,
+      "longitude": 2.850169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:38Z",
+      "cnt": 543
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.399498,
+      "longitude": 2.800169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:48Z",
+      "cnt": 544
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.499496,
+      "longitude": 2.750169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:58Z",
+      "cnt": 545
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.599495,
+      "longitude": 2.700169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:08Z",
+      "cnt": 546
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.699493,
+      "longitude": 2.650169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:18Z",
+      "cnt": 547
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.799492,
+      "longitude": 2.600169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:28Z",
+      "cnt": 548
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.89949,
+      "longitude": 2.550169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:38Z",
+      "cnt": 549
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.999489,
+      "longitude": 2.500169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:48Z",
+      "cnt": 550
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.099487,
+      "longitude": 2.450169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:58Z",
+      "cnt": 551
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.199486,
+      "longitude": 2.400169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:08Z",
+      "cnt": 552
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.299484,
+      "longitude": 2.350169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:18Z",
+      "cnt": 553
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.399483,
+      "longitude": 2.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:28Z",
+      "cnt": 554
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.499481,
+      "longitude": 2.25017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:38Z",
+      "cnt": 555
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.59948,
+      "longitude": 2.20017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:48Z",
+      "cnt": 556
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.699478,
+      "longitude": 2.15017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:58Z",
+      "cnt": 557
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.799477,
+      "longitude": 2.10017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:08Z",
+      "cnt": 558
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.899475,
+      "longitude": 2.05017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:18Z",
+      "cnt": 559
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.999474,
+      "longitude": 2.00017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:28Z",
+      "cnt": 560
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.099472,
+      "longitude": 1.95017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:38Z",
+      "cnt": 561
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.199471,
+      "longitude": 1.90017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:48Z",
+      "cnt": 562
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.299469,
+      "longitude": 1.85017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:58Z",
+      "cnt": 563
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.399467,
+      "longitude": 1.80017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:08Z",
+      "cnt": 564
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.499466,
+      "longitude": 1.75017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:18Z",
+      "cnt": 565
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.599464,
+      "longitude": 1.70017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:28Z",
+      "cnt": 566
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.699463,
+      "longitude": 1.65017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:38Z",
+      "cnt": 567
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.799461,
+      "longitude": 1.60017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:48Z",
+      "cnt": 568
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.89946,
+      "longitude": 1.55017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:58Z",
+      "cnt": 569
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.999458,
+      "longitude": 1.50017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:08Z",
+      "cnt": 570
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.099457,
+      "longitude": 1.45017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:18Z",
+      "cnt": 571
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.199455,
+      "longitude": 1.40017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:28Z",
+      "cnt": 572
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.299454,
+      "longitude": 1.35017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:38Z",
+      "cnt": 573
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.399452,
+      "longitude": 1.30017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:48Z",
+      "cnt": 574
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.499451,
+      "longitude": 1.25017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:58Z",
+      "cnt": 575
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.599449,
+      "longitude": 1.200171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:08Z",
+      "cnt": 576
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.699448,
+      "longitude": 1.150171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:18Z",
+      "cnt": 577
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.799446,
+      "longitude": 1.100171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:28Z",
+      "cnt": 578
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.899445,
+      "longitude": 1.050171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:38Z",
+      "cnt": 579
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.999443,
+      "longitude": 1.000171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:48Z",
+      "cnt": 580
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.099442,
+      "longitude": 0.950171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:58Z",
+      "cnt": 581
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.199619,
+      "longitude": 6.900179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:08Z",
+      "cnt": 462
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.299618,
+      "longitude": 6.850179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:18Z",
+      "cnt": 463
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.399616,
+      "longitude": 6.800179,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:28Z",
+      "cnt": 464
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.499615,
+      "longitude": 6.750178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:38Z",
+      "cnt": 465
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.599613,
+      "longitude": 6.700178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:48Z",
+      "cnt": 466
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.699612,
+      "longitude": 6.650178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:07:58Z",
+      "cnt": 467
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.79961,
+      "longitude": 6.600178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:08Z",
+      "cnt": 468
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.899609,
+      "longitude": 6.550178,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:18Z",
+      "cnt": 469
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 61.999607,
+      "longitude": 6.500177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:28Z",
+      "cnt": 470
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.099606,
+      "longitude": 6.450177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:38Z",
+      "cnt": 471
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.199604,
+      "longitude": 6.400177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:48Z",
+      "cnt": 472
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.299603,
+      "longitude": 6.350177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:08:58Z",
+      "cnt": 473
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.399601,
+      "longitude": 6.300177,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:08Z",
+      "cnt": 474
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.499599,
+      "longitude": 6.250176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:18Z",
+      "cnt": 475
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.599598,
+      "longitude": 6.200176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:28Z",
+      "cnt": 476
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.699596,
+      "longitude": 6.150176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:38Z",
+      "cnt": 477
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.799595,
+      "longitude": 6.100176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:48Z",
+      "cnt": 478
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.899593,
+      "longitude": 6.050176,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:09:58Z",
+      "cnt": 479
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 62.999592,
+      "longitude": 6.000175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:08Z",
+      "cnt": 480
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.09959,
+      "longitude": 5.950175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:18Z",
+      "cnt": 481
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.199589,
+      "longitude": 5.900175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:28Z",
+      "cnt": 482
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.299587,
+      "longitude": 5.850175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:38Z",
+      "cnt": 483
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.399586,
+      "longitude": 5.800175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:48Z",
+      "cnt": 484
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.499584,
+      "longitude": 5.750175,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:10:58Z",
+      "cnt": 485
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.599583,
+      "longitude": 5.700174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:08Z",
+      "cnt": 486
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.699581,
+      "longitude": 5.650174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:18Z",
+      "cnt": 487
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.79958,
+      "longitude": 5.600174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:28Z",
+      "cnt": 488
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.899578,
+      "longitude": 5.550174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:38Z",
+      "cnt": 489
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 63.999577,
+      "longitude": 5.500174,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:48Z",
+      "cnt": 490
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.099579,
+      "longitude": 5.450173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:11:58Z",
+      "cnt": 491
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.199577,
+      "longitude": 5.400173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:08Z",
+      "cnt": 492
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.299576,
+      "longitude": 5.350173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:18Z",
+      "cnt": 493
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.399574,
+      "longitude": 5.300173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:28Z",
+      "cnt": 494
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.499573,
+      "longitude": 5.250173,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:38Z",
+      "cnt": 495
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.599571,
+      "longitude": 5.200172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:48Z",
+      "cnt": 496
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.69957,
+      "longitude": 5.150172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:12:58Z",
+      "cnt": 497
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.799568,
+      "longitude": 5.100172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:08Z",
+      "cnt": 498
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.899567,
+      "longitude": 5.050172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:18Z",
+      "cnt": 499
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 64.999565,
+      "longitude": 5.000172,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:28Z",
+      "cnt": 500
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.099564,
+      "longitude": 4.950171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:38Z",
+      "cnt": 501
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.199562,
+      "longitude": 4.900171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:48Z",
+      "cnt": 502
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.299561,
+      "longitude": 4.850171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:13:58Z",
+      "cnt": 503
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.399559,
+      "longitude": 4.800171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:08Z",
+      "cnt": 504
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.499557,
+      "longitude": 4.750171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:18Z",
+      "cnt": 505
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.599556,
+      "longitude": 4.700171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:28Z",
+      "cnt": 506
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.699554,
+      "longitude": 4.65017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:38Z",
+      "cnt": 507
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.799553,
+      "longitude": 4.60017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:48Z",
+      "cnt": 508
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.899551,
+      "longitude": 4.55017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:14:58Z",
+      "cnt": 509
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 65.99955,
+      "longitude": 4.50017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:08Z",
+      "cnt": 510
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.099548,
+      "longitude": 4.45017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:18Z",
+      "cnt": 511
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.199547,
+      "longitude": 4.400169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:28Z",
+      "cnt": 512
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.299545,
+      "longitude": 4.350169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:38Z",
+      "cnt": 513
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.399544,
+      "longitude": 4.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:48Z",
+      "cnt": 514
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.499542,
+      "longitude": 4.250169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:15:58Z",
+      "cnt": 515
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.599541,
+      "longitude": 4.200169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:08Z",
+      "cnt": 516
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.699539,
+      "longitude": 4.150168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:18Z",
+      "cnt": 517
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.799538,
+      "longitude": 4.100168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:28Z",
+      "cnt": 518
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.899536,
+      "longitude": 4.050168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:38Z",
+      "cnt": 519
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.999535,
+      "longitude": 4.000168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:48Z",
+      "cnt": 520
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.099533,
+      "longitude": 3.950168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:58Z",
+      "cnt": 521
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.199532,
+      "longitude": 3.900168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:08Z",
+      "cnt": 522
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.29953,
+      "longitude": 3.850168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:18Z",
+      "cnt": 523
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.399529,
+      "longitude": 3.800168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:28Z",
+      "cnt": 524
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.499527,
+      "longitude": 3.750168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:38Z",
+      "cnt": 525
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.599525,
+      "longitude": 3.700168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:48Z",
+      "cnt": 526
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.699524,
+      "longitude": 3.650168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:58Z",
+      "cnt": 527
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.799522,
+      "longitude": 3.600168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:08Z",
+      "cnt": 528
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.899521,
+      "longitude": 3.550168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:18Z",
+      "cnt": 529
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.999519,
+      "longitude": 3.500168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:28Z",
+      "cnt": 530
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.099518,
+      "longitude": 3.450168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:38Z",
+      "cnt": 531
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.199516,
+      "longitude": 3.400168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:48Z",
+      "cnt": 532
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.299515,
+      "longitude": 3.350168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:58Z",
+      "cnt": 533
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.399513,
+      "longitude": 3.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:08Z",
+      "cnt": 534
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.499512,
+      "longitude": 3.250169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:18Z",
+      "cnt": 535
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.59951,
+      "longitude": 3.200169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:28Z",
+      "cnt": 536
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.699509,
+      "longitude": 3.150169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:38Z",
+      "cnt": 537
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.799507,
+      "longitude": 3.100169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:48Z",
+      "cnt": 538
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.899506,
+      "longitude": 3.050169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:58Z",
+      "cnt": 539
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.999504,
+      "longitude": 3.000169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:08Z",
+      "cnt": 540
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.099503,
+      "longitude": 2.950169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:18Z",
+      "cnt": 541
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.199501,
+      "longitude": 2.900169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:28Z",
+      "cnt": 542
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.2995,
+      "longitude": 2.850169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:38Z",
+      "cnt": 543
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.399498,
+      "longitude": 2.800169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:48Z",
+      "cnt": 544
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.499496,
+      "longitude": 2.750169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:58Z",
+      "cnt": 545
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.599495,
+      "longitude": 2.700169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:08Z",
+      "cnt": 546
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.699493,
+      "longitude": 2.650169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:18Z",
+      "cnt": 547
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.799492,
+      "longitude": 2.600169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:28Z",
+      "cnt": 548
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.89949,
+      "longitude": 2.550169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:38Z",
+      "cnt": 549
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.999489,
+      "longitude": 2.500169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:48Z",
+      "cnt": 550
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.099487,
+      "longitude": 2.450169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:58Z",
+      "cnt": 551
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.199486,
+      "longitude": 2.400169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:08Z",
+      "cnt": 552
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.299484,
+      "longitude": 2.350169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:18Z",
+      "cnt": 553
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.399483,
+      "longitude": 2.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:28Z",
+      "cnt": 554
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.499481,
+      "longitude": 2.25017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:38Z",
+      "cnt": 555
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.59948,
+      "longitude": 2.20017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:48Z",
+      "cnt": 556
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.699478,
+      "longitude": 2.15017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:58Z",
+      "cnt": 557
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.799477,
+      "longitude": 2.10017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:08Z",
+      "cnt": 558
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.899475,
+      "longitude": 2.05017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:18Z",
+      "cnt": 559
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.999474,
+      "longitude": 2.00017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:28Z",
+      "cnt": 560
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.099472,
+      "longitude": 1.95017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:38Z",
+      "cnt": 561
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.199471,
+      "longitude": 1.90017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:48Z",
+      "cnt": 562
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.299469,
+      "longitude": 1.85017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:58Z",
+      "cnt": 563
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.399467,
+      "longitude": 1.80017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:08Z",
+      "cnt": 564
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.499466,
+      "longitude": 1.75017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:18Z",
+      "cnt": 565
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.599464,
+      "longitude": 1.70017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:28Z",
+      "cnt": 566
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.699463,
+      "longitude": 1.65017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:38Z",
+      "cnt": 567
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.799461,
+      "longitude": 1.60017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:48Z",
+      "cnt": 568
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.89946,
+      "longitude": 1.55017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:58Z",
+      "cnt": 569
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.999458,
+      "longitude": 1.50017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:08Z",
+      "cnt": 570
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.099457,
+      "longitude": 1.45017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:18Z",
+      "cnt": 571
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.199455,
+      "longitude": 1.40017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:28Z",
+      "cnt": 572
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.299454,
+      "longitude": 1.35017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:38Z",
+      "cnt": 573
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.399452,
+      "longitude": 1.30017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:48Z",
+      "cnt": 574
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.499451,
+      "longitude": 1.25017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:58Z",
+      "cnt": 575
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.599449,
+      "longitude": 1.200171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:08Z",
+      "cnt": 576
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.699448,
+      "longitude": 1.150171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:18Z",
+      "cnt": 577
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.799446,
+      "longitude": 1.100171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:28Z",
+      "cnt": 578
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.899445,
+      "longitude": 1.050171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:38Z",
+      "cnt": 579
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.999443,
+      "longitude": 1.000171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:48Z",
+      "cnt": 580
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.099442,
+      "longitude": 0.950171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:58Z",
+      "cnt": 581
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.19944,
+      "longitude": 0.900171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:08Z",
+      "cnt": 582
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.299438,
+      "longitude": 0.850171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:18Z",
+      "cnt": 583
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.399437,
+      "longitude": 0.800171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:28Z",
+      "cnt": 584
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.499435,
+      "longitude": 0.750171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:38Z",
+      "cnt": 585
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.599434,
+      "longitude": 0.700171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:48Z",
+      "cnt": 586
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.699432,
+      "longitude": 0.650171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:58Z",
+      "cnt": 587
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.799431,
+      "longitude": 0.600171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:08Z",
+      "cnt": 588
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.899429,
+      "longitude": 0.550171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:18Z",
+      "cnt": 589
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.999428,
+      "longitude": 0.500171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:28Z",
+      "cnt": 590
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.099426,
+      "longitude": 0.450171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:38Z",
+      "cnt": 591
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.199425,
+      "longitude": 0.400171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:48Z",
+      "cnt": 592
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.299423,
+      "longitude": 0.350171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:58Z",
+      "cnt": 593
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.399422,
+      "longitude": 0.300171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:08Z",
+      "cnt": 594
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.49942,
+      "longitude": 0.250171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:18Z",
+      "cnt": 595
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.599419,
+      "longitude": 0.200171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:28Z",
+      "cnt": 596
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.699417,
+      "longitude": 0.150171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:38Z",
+      "cnt": 597
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.799416,
+      "longitude": 0.100171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:48Z",
+      "cnt": 598
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.899414,
+      "longitude": 0.050171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:58Z",
+      "cnt": 599
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.999413,
+      "longitude": 0.000171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:08Z",
+      "cnt": 600
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.099411,
+      "longitude": -0.049829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:18Z",
+      "cnt": 601
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.199409,
+      "longitude": -0.099829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:28Z",
+      "cnt": 602
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.299408,
+      "longitude": -0.149829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:38Z",
+      "cnt": 603
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.399406,
+      "longitude": -0.199829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:48Z",
+      "cnt": 604
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.499405,
+      "longitude": -0.249829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:58Z",
+      "cnt": 605
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.599403,
+      "longitude": -0.299829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:08Z",
+      "cnt": 606
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.699402,
+      "longitude": -0.349829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:18Z",
+      "cnt": 607
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.7994,
+      "longitude": -0.399829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:28Z",
+      "cnt": 608
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.899399,
+      "longitude": -0.449829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:38Z",
+      "cnt": 609
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.999397,
+      "longitude": -0.49983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:48Z",
+      "cnt": 610
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.099396,
+      "longitude": -0.549829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:58Z",
+      "cnt": 611
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.199394,
+      "longitude": -0.599829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:08Z",
+      "cnt": 612
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.299393,
+      "longitude": -0.64983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:18Z",
+      "cnt": 613
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.399391,
+      "longitude": -0.69983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:28Z",
+      "cnt": 614
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.49939,
+      "longitude": -0.74983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:38Z",
+      "cnt": 615
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.599388,
+      "longitude": -0.79983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:48Z",
+      "cnt": 616
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.699387,
+      "longitude": -0.84983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:58Z",
+      "cnt": 617
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.799385,
+      "longitude": -0.89983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:08Z",
+      "cnt": 618
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.899384,
+      "longitude": -0.94983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:18Z",
+      "cnt": 619
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.999382,
+      "longitude": -0.99983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:28Z",
+      "cnt": 620
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.09938,
+      "longitude": -1.04983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:38Z",
+      "cnt": 621
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.199379,
+      "longitude": -1.09983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:48Z",
+      "cnt": 622
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.299377,
+      "longitude": -1.14983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:58Z",
+      "cnt": 623
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.399376,
+      "longitude": -1.199829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:08Z",
+      "cnt": 624
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.499374,
+      "longitude": -1.249829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:18Z",
+      "cnt": 625
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.599373,
+      "longitude": -1.299829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:28Z",
+      "cnt": 626
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.699371,
+      "longitude": -1.349829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:38Z",
+      "cnt": 627
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.79937,
+      "longitude": -1.399829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:48Z",
+      "cnt": 628
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.899368,
+      "longitude": -1.449829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:58Z",
+      "cnt": 629
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.999367,
+      "longitude": -1.499829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:08Z",
+      "cnt": 630
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.099365,
+      "longitude": -1.549829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:18Z",
+      "cnt": 631
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.199364,
+      "longitude": -1.599829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:28Z",
+      "cnt": 632
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.299362,
+      "longitude": -1.649829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:38Z",
+      "cnt": 633
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.399361,
+      "longitude": -1.699829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:48Z",
+      "cnt": 634
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.499359,
+      "longitude": -1.749829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:58Z",
+      "cnt": 635
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.599541,
+      "longitude": 4.200169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:08Z",
+      "cnt": 516
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.699539,
+      "longitude": 4.150168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:18Z",
+      "cnt": 517
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.799538,
+      "longitude": 4.100168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:28Z",
+      "cnt": 518
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.899536,
+      "longitude": 4.050168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:38Z",
+      "cnt": 519
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 66.999535,
+      "longitude": 4.000168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:48Z",
+      "cnt": 520
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.099533,
+      "longitude": 3.950168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:16:58Z",
+      "cnt": 521
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.199532,
+      "longitude": 3.900168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:08Z",
+      "cnt": 522
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.29953,
+      "longitude": 3.850168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:18Z",
+      "cnt": 523
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.399529,
+      "longitude": 3.800168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:28Z",
+      "cnt": 524
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.499527,
+      "longitude": 3.750168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:38Z",
+      "cnt": 525
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.599525,
+      "longitude": 3.700168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:48Z",
+      "cnt": 526
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.699524,
+      "longitude": 3.650168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:17:58Z",
+      "cnt": 527
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.799522,
+      "longitude": 3.600168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:08Z",
+      "cnt": 528
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.899521,
+      "longitude": 3.550168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:18Z",
+      "cnt": 529
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 67.999519,
+      "longitude": 3.500168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:28Z",
+      "cnt": 530
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.099518,
+      "longitude": 3.450168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:38Z",
+      "cnt": 531
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.199516,
+      "longitude": 3.400168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:48Z",
+      "cnt": 532
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.299515,
+      "longitude": 3.350168,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:18:58Z",
+      "cnt": 533
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.399513,
+      "longitude": 3.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:08Z",
+      "cnt": 534
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.499512,
+      "longitude": 3.250169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:18Z",
+      "cnt": 535
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.59951,
+      "longitude": 3.200169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:28Z",
+      "cnt": 536
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.699509,
+      "longitude": 3.150169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:38Z",
+      "cnt": 537
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.799507,
+      "longitude": 3.100169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:48Z",
+      "cnt": 538
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.899506,
+      "longitude": 3.050169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:19:58Z",
+      "cnt": 539
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 68.999504,
+      "longitude": 3.000169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:08Z",
+      "cnt": 540
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.099503,
+      "longitude": 2.950169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:18Z",
+      "cnt": 541
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.199501,
+      "longitude": 2.900169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:28Z",
+      "cnt": 542
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.2995,
+      "longitude": 2.850169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:38Z",
+      "cnt": 543
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.399498,
+      "longitude": 2.800169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:48Z",
+      "cnt": 544
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.499496,
+      "longitude": 2.750169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:20:58Z",
+      "cnt": 545
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.599495,
+      "longitude": 2.700169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:08Z",
+      "cnt": 546
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.699493,
+      "longitude": 2.650169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:18Z",
+      "cnt": 547
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.799492,
+      "longitude": 2.600169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:28Z",
+      "cnt": 548
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.89949,
+      "longitude": 2.550169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:38Z",
+      "cnt": 549
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 69.999489,
+      "longitude": 2.500169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:48Z",
+      "cnt": 550
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.099487,
+      "longitude": 2.450169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:21:58Z",
+      "cnt": 551
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.199486,
+      "longitude": 2.400169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:08Z",
+      "cnt": 552
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.299484,
+      "longitude": 2.350169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:18Z",
+      "cnt": 553
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.399483,
+      "longitude": 2.300169,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:28Z",
+      "cnt": 554
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.499481,
+      "longitude": 2.25017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:38Z",
+      "cnt": 555
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.59948,
+      "longitude": 2.20017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:48Z",
+      "cnt": 556
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.699478,
+      "longitude": 2.15017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:22:58Z",
+      "cnt": 557
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.799477,
+      "longitude": 2.10017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:08Z",
+      "cnt": 558
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.899475,
+      "longitude": 2.05017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:18Z",
+      "cnt": 559
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 70.999474,
+      "longitude": 2.00017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:28Z",
+      "cnt": 560
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.099472,
+      "longitude": 1.95017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:38Z",
+      "cnt": 561
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.199471,
+      "longitude": 1.90017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:48Z",
+      "cnt": 562
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.299469,
+      "longitude": 1.85017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:23:58Z",
+      "cnt": 563
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.399467,
+      "longitude": 1.80017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:08Z",
+      "cnt": 564
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.499466,
+      "longitude": 1.75017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:18Z",
+      "cnt": 565
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.599464,
+      "longitude": 1.70017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:28Z",
+      "cnt": 566
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.699463,
+      "longitude": 1.65017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:38Z",
+      "cnt": 567
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.799461,
+      "longitude": 1.60017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:48Z",
+      "cnt": 568
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.89946,
+      "longitude": 1.55017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:24:58Z",
+      "cnt": 569
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 71.999458,
+      "longitude": 1.50017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:08Z",
+      "cnt": 570
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.099457,
+      "longitude": 1.45017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:18Z",
+      "cnt": 571
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.199455,
+      "longitude": 1.40017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:28Z",
+      "cnt": 572
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.299454,
+      "longitude": 1.35017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:38Z",
+      "cnt": 573
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.399452,
+      "longitude": 1.30017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:48Z",
+      "cnt": 574
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.499451,
+      "longitude": 1.25017,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:25:58Z",
+      "cnt": 575
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.599449,
+      "longitude": 1.200171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:08Z",
+      "cnt": 576
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.699448,
+      "longitude": 1.150171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:18Z",
+      "cnt": 577
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.799446,
+      "longitude": 1.100171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:28Z",
+      "cnt": 578
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.899445,
+      "longitude": 1.050171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:38Z",
+      "cnt": 579
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 72.999443,
+      "longitude": 1.000171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:48Z",
+      "cnt": 580
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.099442,
+      "longitude": 0.950171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:26:58Z",
+      "cnt": 581
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.19944,
+      "longitude": 0.900171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:08Z",
+      "cnt": 582
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.299438,
+      "longitude": 0.850171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:18Z",
+      "cnt": 583
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.399437,
+      "longitude": 0.800171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:28Z",
+      "cnt": 584
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.499435,
+      "longitude": 0.750171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:38Z",
+      "cnt": 585
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.599434,
+      "longitude": 0.700171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:48Z",
+      "cnt": 586
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.699432,
+      "longitude": 0.650171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:27:58Z",
+      "cnt": 587
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.799431,
+      "longitude": 0.600171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:08Z",
+      "cnt": 588
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.899429,
+      "longitude": 0.550171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:18Z",
+      "cnt": 589
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 73.999428,
+      "longitude": 0.500171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:28Z",
+      "cnt": 590
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.099426,
+      "longitude": 0.450171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:38Z",
+      "cnt": 591
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.199425,
+      "longitude": 0.400171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:48Z",
+      "cnt": 592
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.299423,
+      "longitude": 0.350171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:28:58Z",
+      "cnt": 593
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.399422,
+      "longitude": 0.300171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:08Z",
+      "cnt": 594
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.49942,
+      "longitude": 0.250171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:18Z",
+      "cnt": 595
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.599419,
+      "longitude": 0.200171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:28Z",
+      "cnt": 596
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.699417,
+      "longitude": 0.150171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:38Z",
+      "cnt": 597
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.799416,
+      "longitude": 0.100171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:48Z",
+      "cnt": 598
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.899414,
+      "longitude": 0.050171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:29:58Z",
+      "cnt": 599
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 74.999413,
+      "longitude": 0.000171,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:08Z",
+      "cnt": 600
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.099411,
+      "longitude": -0.049829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:18Z",
+      "cnt": 601
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.199409,
+      "longitude": -0.099829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:28Z",
+      "cnt": 602
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.299408,
+      "longitude": -0.149829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:38Z",
+      "cnt": 603
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.399406,
+      "longitude": -0.199829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:48Z",
+      "cnt": 604
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.499405,
+      "longitude": -0.249829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:30:58Z",
+      "cnt": 605
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.599403,
+      "longitude": -0.299829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:08Z",
+      "cnt": 606
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.699402,
+      "longitude": -0.349829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:18Z",
+      "cnt": 607
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.7994,
+      "longitude": -0.399829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:28Z",
+      "cnt": 608
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.899399,
+      "longitude": -0.449829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:38Z",
+      "cnt": 609
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 75.999397,
+      "longitude": -0.49983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:48Z",
+      "cnt": 610
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.099396,
+      "longitude": -0.549829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:31:58Z",
+      "cnt": 611
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.199394,
+      "longitude": -0.599829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:08Z",
+      "cnt": 612
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.299393,
+      "longitude": -0.64983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:18Z",
+      "cnt": 613
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.399391,
+      "longitude": -0.69983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:28Z",
+      "cnt": 614
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.49939,
+      "longitude": -0.74983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:38Z",
+      "cnt": 615
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.599388,
+      "longitude": -0.79983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:48Z",
+      "cnt": 616
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.699387,
+      "longitude": -0.84983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:32:58Z",
+      "cnt": 617
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.799385,
+      "longitude": -0.89983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:08Z",
+      "cnt": 618
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.899384,
+      "longitude": -0.94983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:18Z",
+      "cnt": 619
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 76.999382,
+      "longitude": -0.99983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:28Z",
+      "cnt": 620
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.09938,
+      "longitude": -1.04983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:38Z",
+      "cnt": 621
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.199379,
+      "longitude": -1.09983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:48Z",
+      "cnt": 622
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.299377,
+      "longitude": -1.14983,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:33:58Z",
+      "cnt": 623
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.399376,
+      "longitude": -1.199829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:08Z",
+      "cnt": 624
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.499374,
+      "longitude": -1.249829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:18Z",
+      "cnt": 625
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.599373,
+      "longitude": -1.299829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:28Z",
+      "cnt": 626
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.699371,
+      "longitude": -1.349829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:38Z",
+      "cnt": 627
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.79937,
+      "longitude": -1.399829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:48Z",
+      "cnt": 628
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.899368,
+      "longitude": -1.449829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:34:58Z",
+      "cnt": 629
+    }
+  ]
+,
+  [
+    {
+      "device_id": "tonitrus",
+      "latitude": 77.999367,
+      "longitude": -1.499829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:08Z",
+      "cnt": 630
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.099365,
+      "longitude": -1.549829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:18Z",
+      "cnt": 631
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.199364,
+      "longitude": -1.599829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:28Z",
+      "cnt": 632
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.299362,
+      "longitude": -1.649829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:38Z",
+      "cnt": 633
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.399361,
+      "longitude": -1.699829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:48Z",
+      "cnt": 634
+    },
+    {
+      "device_id": "tonitrus",
+      "latitude": 78.499359,
+      "longitude": -1.749829,
+      "robotState": "Error",
+      "timestamp": "2021-02-23T11:35:58Z",
+      "cnt": 635
+    }
+  ]
+]

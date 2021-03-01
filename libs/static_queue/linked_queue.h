@@ -35,7 +35,6 @@ class LinkedQueue {
 		if(nullptr == m_tail)
 		{
 			m_tail = elem;
-			
 		}
 		m_head->link(elem);
 		m_head = elem;
@@ -46,10 +45,6 @@ class LinkedQueue {
 
 	LinkedNode<T> *peakNode()
 	{
-		if(true == isEmpty())
-		{
-			return nullptr;
-		}
 		return m_tail;
 	}
 

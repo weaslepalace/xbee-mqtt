@@ -5,12 +5,14 @@
 #include "MQTTPacket.h"
 #include <cstdio>
 #include <ctime>
+#include <sys/time.h>
 
 #define SENTINEL_DESTINATION
 
 #ifdef SENTINEL_DESTINATION
 char constexpr client_id[] = "tonitrus";
-char constexpr host[] = "nsps-sentinel-iot-hub.azure-devices.net";
+//char constexpr host[] = "nsps-sentinel-iot-hub.azure-devices.net";
+char constexpr host[] = "40.78.22.17";
 char constexpr username[] = "nsps-sentinel-iot-hub.azure-devices.net/tonitrus";
 char constexpr password[] = "";
 char constexpr topic[] = "devices/tonitrus/messages/events/";
@@ -45,7 +47,23 @@ int main()
 	Serial.setTimeout(10000);
 
 	mqtt.begin();
-
+	
+	char const compile_time[22] = __DATE__ " " __TIME__;
+	char const mon[] = "JanFebMarAprMayJunJulAugSepOctNovDec";
+	struct tm btm = {0};
+	char compile_month[4];
+	sscanf(compile_time, "%s %d %d %d:%d:%d",
+		compile_month,
+		&btm.tm_mday,
+		&btm.tm_year,
+		&btm.tm_hour,
+		&btm.tm_min,
+		&btm.tm_sec);
+	btm.tm_year -= 1900;
+	char *monp = strstr(mon, compile_month);
+	btm.tm_mon = (monp - mon) / 3;
+	time_t epoch = mktime(&btm);
+	
 #ifdef BRIDGE_DESTINATION
 	uint8_t cnt_s[3 * 64];
 	for(int i = 0; i < 64; i++)
@@ -59,26 +77,27 @@ int main()
 #ifdef SENTINEL_DESTINATION
 	float lat = 15.0;
 	float lon = 30.0;
-	time_t epoch = 1613773076;
 	static size_t constexpr report_size = 150;
 	static size_t constexpr number_of_reports = 6;
 	static size_t constexpr report_buffer_size = 
 		report_size * number_of_reports;
 	uint8_t cnt_s[report_buffer_size] = "[";
 	size_t report_index = 1;
+
+//	mqtt.publish(topic, sizeof topic, cnt_s + 1, report_size * 4, true);
 #endif //SENTINEL_DESTINATION
-	for(uint32_t cnt = 0;;)
+	for(uint32_t cnt = 0, objnum = 0;;)
 	{	
 		if((millis() - delay_start) > 10000)
 		{
 			delay_start = millis();
 #ifdef SENTINEL_DESTINATION
-			epoch += static_cast<time_t>(delay_start / 1000);
 			
 			char t_buf[32];
+			time_t now = epoch + (delay_start / 1000);
 			size_t t_buf_len = strftime(
 				t_buf, 32,
-				"%Y-%m-%dT%H:%M:%SZ", gmtime(&epoch));
+				"%Y-%m-%dT%H:%M:%SZ", gmtime(&now));
 			report_index += snprintf(
 				reinterpret_cast<char*>(&cnt_s[report_index]), report_size,
 			 	"{"
@@ -86,17 +105,20 @@ int main()
 			 		"\"latitude\":%f,"
 			 		"\"longitude\":%f,"
 			 		"\"robotState\":\"Error\","
-			 		"\"timestamp\":\"%.*s\""
+			 		"\"timestamp\":\"%.*s\","
+					"\"cnt\":%d"
 			 	"}%c",
 				client_id,
 				lat,
 				lon,
 				32, t_buf,
+				objnum,
 				cnt < 5 ? ',' : ']');
 			lat += 0.1;
 			lon -= 0.05;
 #endif //SENTINEL_DESTINATION
 			cnt++;
+			objnum++;
 		}
 
 		if(6 == cnt)

@@ -48,22 +48,21 @@ GB4MQTT::Return GB4MQTT::publish(
 	uint8_t qos, 
 	bool disconnect)
 {
-//	if(false == isReady())
-//	{
-//		return Return::NOT_READY;
-//	}
-
-	if(true == pub_queue.isFull())
-	{
-		return Return::PUBLISH_QUEUE_FULL;
-	}
-
-	MQTTRequest req(
-		topic, topic_len,
-		message, message_len,
-		qos, 0, packet_id.get_next(),
-		disconnect);
-	pub_queue.insert(req);
+	strncpy(m_publish_request.topic, topic, topic_len);
+	m_publish_request.topic_len = topic_len;
+	memcpy(m_publish_request.message, message, message_len);
+	m_publish_request.message_len = message_len;
+	m_publish_request.qos = qos;
+	m_publish_request.retain = 0;
+	m_publish_request.duplicate = 0;
+	m_publish_request.start_time = millis();
+	m_publish_request.tries = 0;
+	m_publish_request.packet_id = packet_id.get_next();
+	m_publish_request.disconnect = disconnect;
+	m_publish_request.got_puback = false;
+	m_publish_request.ready_to_send = true;
+	m_publish_request.active = true;
+	
 	return Return::PUBLISH_QUEUED;	
 }
 
@@ -80,7 +79,7 @@ GB4MQTT::Return GB4MQTT::poll()
 	switch(state)
 	{
 		case State::NOT_CONNECTED:
-		if((nullptr == address) || (true == pub_queue.isEmpty()))
+		if((nullptr == address) || (false == m_publish_request.active))
 		{
 			break;
 		}
@@ -347,12 +346,11 @@ bool GB4MQTT::checkPuback(uint8_t message[], size_t message_len)
 	{
 		return false;
 	}
-	MQTTRequest *req = findRequestByPacketId(pub_queue, id);
-	if(nullptr == req)
+	if(m_publish_request.packet_id != id)
 	{
 		return false;
 	}
-	req->got_puback = true;
+	m_publish_request.got_puback = true;
 	return true;	
 }
 
@@ -487,7 +485,7 @@ GB4MQTT::Return GB4MQTT::pollKeepAliveTimer()
 }
 
 
-GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest *req)
+GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest &req)
 {
 	static size_t constexpr PUBLISH_HEADER_SIZE = 6;
 	static size_t constexpr PACKET_MAX_SIZE = 
@@ -496,15 +494,15 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest *req)
 		PUBLISH_HEADER_SIZE;
 
 	uint8_t packet[PACKET_MAX_SIZE];
-	MQTTString topic = {.cstring = req->topic};
+	MQTTString topic = {.cstring = req.topic};
 	int32_t packet_len = MQTTSerialize_publish(
 		packet, PACKET_MAX_SIZE,
-		req->duplicate,
-		req->qos,
-		req->retain,
-		req->packet_id,
+		req.duplicate,
+		req.qos,
+		req.retain,
+		req.packet_id,
 		topic,
-		req->message, req->message_len);
+		req.message, req.message_len);
 	if(packet_len <= 0)
 	{
 		return Return::PUBLISH_PACKET_ERROR;
@@ -535,89 +533,86 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest *req)
 
 
 bool GB4MQTT::handlePublishRequests()
-{	
-	for(
-		LinkedNode<MQTTRequest> *node = pub_queue.peakNode();
-		nullptr != node;
-		node = node->next())
+{
+	if(false == m_publish_request.active)
 	{
-		MQTTRequest *req = &node->value();
-		if(true == req->ready_to_send)
-		{
-			Return send_ok = sendPublishRequest(req);
-			switch(send_ok)
-			{
-				case Return::PUBLISH_SENT:
-				if(0 == req->qos)
-				{
-					pub_queue.remove(node);
-				}
-				else
-				{
-					if(0 == req->duplicate)
-					{
-						if(false == req->disconnect)
-						{
-							req->duplicate = 1;
-						}
-						req->start_time = millis();	
-					}
-					req->ready_to_send = false;
-				}
-				break;
-		
-				case Return::PUBLISH_PACKET_ERROR:
-				pub_queue.remove(node);
-				break;
-			
-				case Return::IN_PROGRESS:
-				break;
-	
-				case Return::PUBLISH_SOCKET_ERROR:
-				default:
-				return false;
-			}
-		}
-		else
-		{
-			if(true == req->got_puback)
-			{
-				pub_queue.remove(node);
-				if(true == req->disconnect)
-				{
-					//Disconnect after transmission
-					uint8_t disconn[2] = {0xE0, 0x00};
-					radio.sendMessage(disconn, 2);
-					pub_queue.remove(node);	
-					return false; //Forces socket to reset
-				}
-				continue;
-			}
-	
-			if((millis() - req->start_time) < GB4MQTT_PUBLISH_TIMEOUT)
-			{
-				continue;
-			}
+		return true;
+	}	
 
-			if(true == req->disconnect)
+	if(true == m_publish_request.ready_to_send)
+	{
+		m_publish_request.ready_to_send = false;
+		Return send_ok = sendPublishRequest(m_publish_request);
+		switch(send_ok)
+		{
+			case Return::PUBLISH_SENT:
+			if(0 == m_publish_request.qos)
+			{
+				m_publish_request.active = false;
+			}
+			else if(
+				(0 != m_publish_request.qos) &&
+				(0 == m_publish_request.duplicate))
+			{
+				if(false == m_publish_request.disconnect)
+				{
+					m_publish_request.duplicate = 1;
+				}
+				m_publish_request.start_time = millis();	
+			}
+			break;
+	
+			case Return::PUBLISH_PACKET_ERROR:
+			m_publish_request.active = false;
+			break;
+		
+			case Return::IN_PROGRESS:
+			break;
+	
+			case Return::PUBLISH_SOCKET_ERROR:
+			default:
+			return false;
+		}
+	}
+	else
+	{
+		if(true == m_publish_request.got_puback)
+		{
+			m_publish_request.active = false;
+			if(true == m_publish_request.disconnect)
 			{
 				//Disconnect after transmission
 				uint8_t disconn[2] = {0xE0, 0x00};
 				radio.sendMessage(disconn, 2);
-				pub_queue.remove(node);	
 				return false; //Forces socket to reset
 			}
-
-			if(req->tries > GB4MQTT_PUBLISH_MAX_TRIES)
-			{
-				pub_queue.remove(node);
-				continue;
-			}
-			req->start_time = millis();
-			req->tries++;
-			req->ready_to_send = true;
+			return true;
 		}
+	
+		if((millis() - m_publish_request.start_time) < GB4MQTT_PUBLISH_TIMEOUT)
+		{
+			return true;
+		}
+
+		if(true == m_publish_request.disconnect)
+		{
+			//Disconnect after transmission
+			uint8_t disconn[2] = {0xE0, 0x00};
+			radio.sendMessage(disconn, 2);
+			m_publish_request.active = false;
+			return false; //Forces socket to reset
+		}
+
+		if(m_publish_request.tries > GB4MQTT_PUBLISH_MAX_TRIES)
+		{
+			m_publish_request.active = false;
+			return false;;
+		}
+		m_publish_request.start_time = millis();
+		m_publish_request.tries++;
+		m_publish_request.ready_to_send = true;
 	}
+	
 	return true;
 }
 
