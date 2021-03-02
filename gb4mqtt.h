@@ -6,7 +6,6 @@
 #define GB4MQTT_H
 
 #include "gb4xbee.h"
-#include "static_queue.h"
 #include "MQTTPacket.h"
 
 static int32_t constexpr GB4MQTT_CONNACK_TIMEOUT = 10000;
@@ -261,9 +260,6 @@ class GB4MQTT {
 	PacketId packet_id;	
 	
 	MQTTRequest m_publish_request;
-//	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> pub_queue;
-//	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> in_flight;
-//	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> sub_queue;
 };
 
 

@@ -27,11 +27,18 @@ GB4MQTT::GB4MQTT(
 }
 
 
+/**
+ *	Initialize and start the MQTT and radio state machine
+ *	Note: This is not a concurrent, and GB4MQTT::poll() must be called once per
+ *		loop in order to advance and execute the state machien
+ *	@return
+ *		true on success 
+ *		false on failure
+ */
 bool GB4MQTT::begin()
 {
 	if(false == radio.begin())
 	{
-//		err = radio.get_error();
 		state = State::RADIO_INIT_FAILED;
 		return false;
 	}
@@ -40,6 +47,25 @@ bool GB4MQTT::begin()
 }
 
 
+/**
+ *	Enqueue a message to publish. The message will be sent via the state
+ *		machine in subsequent calls to GB4MQTT::poll().
+ *	Note (1st March 2021): Because of reasons, only one message can be enqueued
+ *	@param topic - Publish topic string
+ *	@param topic_len - Length of topic in bytes
+ *	@param message - Message to publish
+ *	@param message_len - Length of message in bytes
+ *	@param qos - Publish Quality of Serice
+ *	         0 - At most once
+ *	         1 - At least once
+ *	         2 - Only once
+ *	@param disconnect - Indicates to the state machine whether or not the
+ *	                    connection should be terminated after the publish
+ *	                    request has been sent
+ *	             true - Disconnect after publish
+ *	            false - Stay connected a after publish
+ *	@return GB4MQTT::Return::PUBLISH_QUEUED
+ */
 GB4MQTT::Return GB4MQTT::publish(
 	char const topic[],
 	size_t topic_len,
@@ -67,6 +93,21 @@ GB4MQTT::Return GB4MQTT::publish(
 }
 
 
+/**
+ *	Execute the MQTT and radio state machines
+ *	Note: Must be called once per main loop
+ *	@return
+ *		GB4MQTT::Return::IN_PROGRESS - Radio is establishing a socket
+ *		                               connection to the server via the tower
+ *		                               or access point
+ *		GB4MQTT::Return::RADIO_READY - Radio has established a socket
+ *		                               conenction, but a connection has not yet
+ *		                               been made to the broker via the MQTT
+ *		                               protocol
+ *		GB4MQTT::Return::CONNECTED - A connection to the has been established
+ *		                             and messages can now be published to the 
+ *		                             broker
+ */
 GB4MQTT::Return GB4MQTT::poll()
 {
 	GB4XBee::State radio_state = radio.poll();
@@ -163,25 +204,6 @@ GB4MQTT::Return GB4MQTT::poll()
 			state = State::NOT_CONNECTED;
 			break;
 		}
-
-//		Return keepalive_status = pollKeepAliveTimer();
-//		switch(keepalive_status)
-//		{
-//			case Return::KEEPALIVE_TIMER_RUNNING:
-//			break;
-//
-//			case Return::KEEPALIVE_TIMER_PING:
-//			sendPingRequest();
-//			break;
-//
-//			case Return::KEEPALIVE_TIMER_RECONNECT:
-//			radio.resetSocket();
-//			state = State::NOT_CONNECTED;
-//			break;
-//
-//			default:
-//			break;
-//		}
 		break;
 	}
 
@@ -198,6 +220,24 @@ GB4MQTT::Return GB4MQTT::poll()
 }
 
 
+/**
+ *	Formulate and transmit an MQTT CONNECT request packet to the broker
+ *	Must be done before messages can be published
+ *	@return
+ *		GB4MQTT::Return::CONNECT_PACKET_ERROR - There is a problem with the
+ *		                                        packet. Most likely, the packet
+ *		                                        is too long to fit into a buffer
+ *		GB4MQTT::Return::CONNECT_SOCKET_ERROR - There is a problem with the
+ *		                                        socket, and a new connection
+ *		                                        should be established
+ *		GB4MQTT::Return::IN_PROGRESS - The radio is busy sending another packet
+ *		                               Wait for the transmission to end or
+ *		                               timeout
+ *		GB4MQTT::Return::DISCONNECTED - An attempt was made to send on a socket
+ *		                                that isn't connected
+ *		GB4MQTT::Return::CONNECT_SENT - The CONNECT request has bee sent to
+ *		                                the broker
+ */
 GB4MQTT::Return GB4MQTT::sendConnectRequest()
 {
 	uint8_t connect_packet[GB4MQTT_CONNECT_PACKET_SIZE];
@@ -238,6 +278,11 @@ GB4MQTT::Return GB4MQTT::sendConnectRequest()
 }
 
 
+/**
+ *	Helper function for resetting data used by _fetch_callback()
+ *	Call before the call to MQTTPacket_read()
+ *	@param d - Pointer to the user data that _fetch_callback() will write into
+ */
 static uint8_t *_fetch_data = NULL;
 static int _fetch_head = 0;
 static void _set_fetch_data(uint8_t *d)
@@ -246,6 +291,15 @@ static void _set_fetch_data(uint8_t *d)
 	_fetch_data = d;
 }
 
+/**
+ *	Callback used by MQTTPacket_read() to write received MQTT packets into a 
+ *	user data array.
+ *	@param c - Pointer to user data array
+ *	@param len - Length of user data arary in bytes
+ *	@return
+ *		-1 on failure
+ *		Otherwise, length of data written
+ */
 static int _fetch_callback(uint8_t *c, int len)
 {
 	if(NULL == _fetch_data)
@@ -262,6 +316,18 @@ static int _fetch_callback(uint8_t *c, int len)
 }
 
 
+/**
+ *	Check if there is pending data to read. If so, read it into a message buffer
+ *	@param message - Message buffer to read data into
+ *	@param message_len - Input - Max size of message buffer to prevent overrun
+ *	                     Output - The length of the received message in bytes
+ *	@param type - Output - The MQTT Control Packet type
+ *	                       see paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.h
+ *	@return
+ *		GB4MQTT::Return::WAITING_MESSAGE - No message was received
+ *		GB4MQTT::Return::MESSAGE_RECEIVED - Yep
+ *
+ */
 GB4MQTT::Return GB4MQTT::pollIncomming(
 	uint8_t message[],
 	size_t *message_len,
@@ -293,8 +359,20 @@ GB4MQTT::Return GB4MQTT::pollIncomming(
 }
 
 
-
-
+/**
+ *	Check if a received message contains a CONNACK.
+ *	If so, look at its contents to see if the connection was accepted
+ *	@param message - Input - Message buffer that may contain a CONNACK packet
+ *	@param message_len - Length of message in bytes
+ *	@return 
+ *		GB4MQTT::Return:CONNACK_ERROR - There wsa an error decoding the packet
+ *		                                It's probably not a CONNACK
+ *		GB4MQTT::Return::CONNACK_REJECTED - The CONNECT request was rejected,
+ *		                                    most likely due to an auth error
+ *		                                    Check the certificates, username,
+ *		                                    password, and client ID
+ *		GB4MQTT::Return::GOT_CONNACK - The broker has accepted the connection
+ */
 GB4MQTT::Return GB4MQTT::checkConnack(uint8_t message[], size_t message_len)
 {
 	enum connack_return_codes code;
@@ -317,26 +395,14 @@ GB4MQTT::Return GB4MQTT::checkConnack(uint8_t message[], size_t message_len)
 }
 
 
-static MQTTRequest *findRequestByPacketId(
-	StaticQueue<MQTTRequest, GB4MQTT_MAX_QUEUE_DEPTH> &queue,
-	uint16_t id)
-{
-	LinkedNode<MQTTRequest> *node = queue.peakNode();
-	for( ; nullptr != node; node = node->next())
-	{
-		if(node->value().packet_id == id)
-		{
-			break;
-		}
-	}
-	if(nullptr == node)
-	{
-		return nullptr;
-	}
-	return &node->value();
-}
-
-
+/**
+ *	Check if a received message is a PUBACK control packet from the broker
+ *	@param message - Input - Message buffer that may contain a PUBACK packet
+ *	@param message_len - Length of message in bytes
+ *	@return
+ *		true - The message is a PUBACK
+ *		false - The message is something other than a PUBACK	
+ */
 bool GB4MQTT::checkPuback(uint8_t message[], size_t message_len)
 {
 	uint16_t id;
@@ -355,6 +421,23 @@ bool GB4MQTT::checkPuback(uint8_t message[], size_t message_len)
 }
 
 
+/**
+ *	Check for pending data to read, read it, and do something with it.
+ *	@return
+ *		GB4MQTT::Return::LISTENING - No message received
+ *		GB4MQTT::Return::DISPATCH_TYPE_ERROR - Message type doesn't match a
+ *		                                       known type in enum msgType
+ *		GB4MQTT::Return::DISPATCHED_PING - Read a PINGRESP message
+ *		                                   reset the keepalive timer
+ *		GB4MQTT::Return::CONNACK_REJECTED - The CONNECT request was rejected,
+ *		                                    most likely due to an auth error
+ *		                                    Check the certificates, username,
+ *		                                    password, and client ID
+ *		GB4MQTT::Return::GOT_CONNACK - The broker has accepted the connection
+ *		GB4MQTT::Return::PUBACK_MALFORMED -
+ *		GB4MQTT::Return::DISPATCHED_PUBACK - 
+ *
+ */
 GB4MQTT::Return GB4MQTT::dispatchIncomming()
 {
 	uint8_t message[GB4MQTT_MAX_PACKET_SIZE];
@@ -365,10 +448,6 @@ GB4MQTT::Return GB4MQTT::dispatchIncomming()
 		return Return::LISTENING;
 	}
 
-	//Times to call resetKeepAliveTimer:
-	//	PINGRESP, CONNACK,
-	//	PUBACK, PUBREC, PUBCOMP,
-	//	SUBACK, UNSUBACK
 	GB4MQTT::Return status;
 	switch(type)
 	{
@@ -412,6 +491,17 @@ GB4MQTT::Return GB4MQTT::dispatchIncomming()
 }
 
 
+/**
+ *	Check for a response to a CONNECT control packet and maintain a timeout
+ *	@return
+ *		GB4MQTT::Return::LISTENING - No message received
+ *		GB4MQTT::Return::CONNACK_TIMEOUT - No response has been received in the
+ *		                                   number of milliseconds given by
+ *		                                   GB4MQTT_CONNACK_TIMEOUT
+ *		GB4MQTT::Return::DISPATCH_TYPE_ERROR - Message type doesn't match a
+ *		                                       known type in enum msgType
+ *		GB4MQTT::Return::GOT_CONNACK - The broker has accepted the connection
+ */
 GB4MQTT::Return GB4MQTT::pollConnackStatus()
 {
 	Return status = dispatchIncomming();
@@ -430,6 +520,23 @@ GB4MQTT::Return GB4MQTT::pollConnackStatus()
 }
 
 
+/**
+ *	Send a PINGREQ control packet to maintain keepalive status,
+ *	and check if the broker is listening
+ *	A PINGREQ should be sent if there has been nothing sent or recieved for
+ *	the number of millisecond given by GB4MQTT_KEEPALIVE_INTERVAL
+ *	@return
+ *		GB4MQTT::Return::PING_PACKET_ERROR - There was a problem with the
+ *		                                     packet format, or it is too large
+ *		                                     to fit into a buffer
+ *		GB4MQTT::Return::IN_PROGRESS - The radio is busy sending another packet
+ *		                               Wait for the transmission to end or
+ *		                               timeout
+ *		GB4MQTT::Return::SOCKET_ERROR - There was a problem with the socket and
+ *		                                it must be disconnected
+ *		GB4MQTT::Return::PING_SENT - The PINGREQ has been successfully queued
+ *		                             for transmission
+ */
 GB4MQTT::Return GB4MQTT::sendPingRequest()
 {
 	static size_t constexpr PINGREQ_SIZE = 2;
@@ -462,6 +569,10 @@ GB4MQTT::Return GB4MQTT::sendPingRequest()
 }
 
 
+/**
+ *	Reset the keepalive timer to prevent a timeout
+ *	Should be called whenever a message sent to the broker is acknowledged
+ */
 void GB4MQTT::resetKeepAliveTimer()
 {
 	keepalive_period_start_time = millis();
@@ -469,6 +580,17 @@ void GB4MQTT::resetKeepAliveTimer()
 }
 
 
+/**
+ *	Update the keepalive timer. Called once per call to GB4MQTT::poll() if
+ *	state is GB4MQTT::State::CONNECTED
+ *	@return 
+ *		GB4MQTT::Return::KEEPALIVE_TIMER_RECONNECT - A timeout has ocurred and
+ *		                                             a new connection should be
+ *		                                             attempted
+ *		GB4MQTT::Return::KEEPALIVE_TIMER_PING - A PINGREQ should be sent in
+ *		                                        order to prevent a timeout
+ *		GB4MQTT::Retrun::KEEPALIVE_TIMER_RUNNING - No timeout, everything's fine
+ */
 GB4MQTT::Return GB4MQTT::pollKeepAliveTimer()
 {
 	int32_t network_interval = millis() - keepalive_period_start_time;
@@ -485,6 +607,25 @@ GB4MQTT::Return GB4MQTT::pollKeepAliveTimer()
 }
 
 
+/**
+ *	Formulate and transmit an MQTT Publish control packet to the broker
+ *	This will be called by GB4MQTT::poll() after a publish message has been
+ *	enqueued with a call to GB4MQTT::publish
+ *	@param req - A publish request object generated by a call to
+ *	             GB4MQTT::publish()
+ *	@return 
+ *		GB4MQTT::Return::IN_PROGRESS - The radio is busy sending another packet
+ *		                               Wait for the transmission to end or
+ *		                               timeout
+ *		GB4MQTT::Return::PUBLISH_SOCKET_ERROR - There was a problem with the
+ *		                                        socket and it must be
+ *		                                        disconnected
+ *		GB4MQTT::Return::PUBLISH_PACKET_ERROR - There was a problem formatting
+ *		                                        the control packet
+ *		GB4MQTT::Return::PUBLISH_SENT - The PUBLISH packet has been
+ *		                                successfully queued for
+ *		                                transmission
+ */
 GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest &req)
 {
 	static size_t constexpr PUBLISH_HEADER_SIZE = 6;
@@ -532,6 +673,15 @@ GB4MQTT::Return GB4MQTT::sendPublishRequest(MQTTRequest &req)
 }
 
 
+/**
+ *	Handle the transmission a PUBLISH control packets, and keep track of its
+ *	state while waiting for a response if Quality of Service is greater than 0.
+ *	Retransmit failed packets.
+ *	Disconnect when finised if the disconnect is true.
+ *	@return
+ *		true - Everything's fine
+ *		false - There was a problem requiring the socket to be reset
+ */
 bool GB4MQTT::handlePublishRequests()
 {
 	if(false == m_publish_request.active)
