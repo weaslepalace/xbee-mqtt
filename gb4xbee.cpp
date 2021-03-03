@@ -7,7 +7,6 @@
 
 static uint32_t constexpr GB4XBEE_CAST_GUARD = 0x47425842;
 
-
 xbee_dispatch_table_entry_t const xbee_frame_handlers[] = {
 	XBEE_FRAME_HANDLE_LOCAL_AT,
 	XBEE_SOCK_FRAME_HANDLERS,
@@ -36,36 +35,12 @@ GB4XBee::GB4XBee(
 }
 
 
-uint32_t GB4XBee::getBaud()
-{
-	return ser.baudrate;
-}
-
-
-char const *GB4XBee::getAPN()
-{
-	return access_point_name;
-}
-
-
-uint64_t GB4XBee::getSerialNumber()
-{
-	if(m_state < State::BEGIN_API_MODE_COMMAND)
-	{
-		return 0;
-	}
-
-	return 
-		(static_cast<uint64_t>(xbee.wpan_dev.address.ieee.l[0]) << 32) | 
-		(xbee.wpan_dev.address.ieee.l[1]);
-}
-
-
-GB4XBee::State GB4XBee::state()
-{
-	return m_state;
-}
-
+/**
+ *	Initialize the XBee driver, and start the state machine
+ *	@return
+ *		true - Driver and state machine started
+ *		false - Problem starting the XBee driver
+ */
 bool GB4XBee::begin()
 {
 	int status = xbee_dev_init(&xbee, &ser, NULL, NULL);
@@ -80,6 +55,13 @@ bool GB4XBee::begin()
 }
 
 
+/**
+ *	Allows an external module to manipulate the state machine. Forces the state
+ *	to GB4XBee::State::SOCKET_COOLDOWN, and starts cooldown timer. The cooldown
+ *	timer adds a delay to the creation of a new socket since socket creation 
+ *	tends to fail if down immediately after closing the socket.
+ *	@return The new state machine state
+ */
 GB4XBee::State GB4XBee::resetSocket()
 {
 	m_state = State::SOCKET_COOLDOWN_PERIOD;
@@ -88,20 +70,20 @@ GB4XBee::State GB4XBee::resetSocket()
 }
 
 
-void GB4XBee::startConnectRetryDelay()
-{
-	connect_retry_delay_start_time = millis();
-}
-
-
-bool GB4XBee::pollConnectRetryDelay()
-{
-	return
-		(millis() - connect_retry_delay_start_time) > 
-		GB4XBEE_CONNECT_RETRY_DELAY_INTERVAL;
-}
-
-
+/**
+ *	Execute and advance the state machine to do the initial configuration and 
+ *	startup for the device. This only needs to be done at the start of the
+ *	program's execution. 
+ *	Upon completion of the state machine, the device will be in API mode, and
+ *	ready to create a socket.
+ *	Call once per startup loop.
+ *	@return
+ *		GB4XBee::Return::STARTUP_IN_PROGRESS - The device is not yet configured
+ *		GB4XBee::Return::STARTUP_COMPLETE - The device is in API mode, and
+ *		                                    ready to create a socket. This
+ *		                                    does not need to be called again
+ *		                                    until the MCU is reset
+ */
 GB4XBee::Return GB4XBee::pollStartup()
 {
 	switch(m_state)
@@ -253,6 +235,14 @@ GB4XBee::Return GB4XBee::pollStartup()
 }
 
 
+/**
+ *	Execute and advance to state machine main state machine
+ *	The purpose of the state machine is to maintian connection to a
+ *	socket to a preconfigured address. If a socket is unexpectedly closed, it
+ *	will automatically try to reconnect.
+ *	Call once per main loop.
+ *	@return The current state of the state machine
+ */
 GB4XBee::State GB4XBee::poll()
 {
 	if(m_state < State::SOCKET_COOLDOWN_PERIOD)
@@ -479,6 +469,22 @@ GB4XBee::Return GB4XBee::pollInitStatus()
 }
 
 
+/**
+ *	Callback for the AT command to read the access point name (AN)
+ *	Verifies that the APN in the device matches the desired APN which as
+ *	configured with a argument to the class constructor.
+ *	@param response - Object created by the XBee driver containing the response
+ *	                  to the AT command. This object also has context parameter
+ *	                  embedded is a void pointer to the GB4XBee object that
+ *	                  initiated the AT command.
+ *	                  Note: The void pointer is cast to a GB4XBee pointer. In
+ *	                        order to prevent dereference of invalid address
+ *	                        space, a cast guard is used to validate that the
+ *	                        pointer points to the correct object.
+ *	@return
+ *		XBEE_ATCMD_DONE - Indicates to the XBee driver calling this callback
+ *		                  that this is the only callback it needs to call
+ */
 static int readAPNCallback(xbee_cmd_response_t const *response)
 {
 	GB4XBee *ctx = static_cast<GB4XBee *>(response->context);
@@ -492,6 +498,16 @@ static int readAPNCallback(xbee_cmd_response_t const *response)
 }
 
 
+/**
+ *	Helper function to verify that the APN in the device matches the desired APN
+ *	which was configured with a argument to the class constructor.
+ *	Sets a private flag need_set_access_point_name if they do not match
+ *	@param value - The APN currently configured in the device
+ *	@param len - The length of value in bytes
+ *	@return
+ *		false - value does not match the object's access_point_name
+ *		true - value matches the object's access_point_name
+ */
 bool GB4XBee::verifyAccessPointName(uint8_t const *value, size_t const len)
 {
 	got_access_point_name = true;
@@ -504,6 +520,15 @@ bool GB4XBee::verifyAccessPointName(uint8_t const *value, size_t const len)
 }
 
 
+/**
+ *	Send the AT command to read the access point name off the XBee device (AN)
+ *	This is an asynchronous call; the driver will readAPNCallback() when the
+ *	response arrives. The callback checks if the APN on the device matches the 
+ *	expected APN, and set's the need_set_access_point_name if they do not.
+ *	@return 
+ *		false - There was a problem creating the command
+ *		true - The command was created and sent to the device
+ */
 bool GB4XBee::sendReadAPN()
 {
 	int16_t handle = xbee_cmd_create(&xbee, "AN");
@@ -518,6 +543,17 @@ bool GB4XBee::sendReadAPN()
 }
 
 
+/**
+ *	Check if readAPNCallback has yet been called, and if a new APN needs to be
+ *	written to the device
+ *	@return
+ *		GB4XBee::Return::APN_READ_IN_PROGRESS - Waiting for a response from the
+ *		                                        XBee device
+ *		GB4XBee::Return::APN_NOT_SET - Response has arrived and a new APN need
+ *		                               to be written to the device
+ *		GB4XBee::Return::APN_IS_SET - Response has arrived and no further
+ *		                              action is required
+ */
 GB4XBee::Return GB4XBee::pollAPNStatus()
 {
 	xbee_dev_tick(&xbee);
@@ -533,6 +569,13 @@ GB4XBee::Return GB4XBee::pollAPNStatus()
 }
 
 
+/**
+ *	Send the AT command to save parameters to non-volatile memory (WR)
+ *	This command has no response and doesn't require a callback
+ *	@return 
+ *		false - There was a problem generating or sending the command
+ *		true - The command was send
+ */
 bool GB4XBee::sendWriteChanges()
 {
 	int16_t handle = xbee_cmd_create(&xbee, "WR");
@@ -551,6 +594,13 @@ bool GB4XBee::sendWriteChanges()
 }
 
 
+/**
+ *	Send the AT command to write a new access point name (AN) to the device
+ *	This command has no response and doesn't require a callback
+ *	@return 
+ *		false - There was a problem generating or sending the command
+ *		true - The command was send
+ */
 bool GB4XBee::sendSetAPN()
 {
 	int16_t handle = xbee_cmd_create(&xbee, "AN");
@@ -575,6 +625,13 @@ bool GB4XBee::sendSetAPN()
 }
 
 
+/**
+ *	Send the API frame to create a new socket. Start a timeout.
+ *	The socket's status will be updated in the notify callback in
+ *	xbee_notify.cpp.
+ *	The notify callback will be executed with a call to GB4XBee::poll() after
+ *	the response arrives. 
+ */
 bool GB4XBee::sendSocketCreate()
 {
 	xbee_sock_reset(&xbee);
@@ -589,6 +646,13 @@ bool GB4XBee::sendSocketCreate()
 }
 
 
+/**
+ *	Check if enough time has elapsed since closing a socket before creating a
+ *	new socket
+ *	@return
+ *		false - Continue waiting before creating a new socket
+ *		true - A new socket may now be created
+ */
 bool GB4XBee::pollSocketCooldown()
 {
 	return
@@ -597,6 +661,23 @@ bool GB4XBee::pollSocketCooldown()
 }
 
 
+/**
+ *	Sent the API frame to connect the most recently created socket to the given
+ *	port and network address.
+ *	This currently doesn't support multiple sockets; only one socket may be
+ *	open at a time.
+ *	@param port - The network port to connect to
+ *	@param address - The network address, either a fully qualified domain name,
+ *	                 or a '.' seperated IP address
+ *	@return
+ *		false - There was a problem connecting to the socket. This socket shall
+ *		        be closed and a new one created after a cooldown period
+ *		true - The API frame was sent successfully. The socket's state will be
+ *		       updated in a callback function in xbee_notify.cpp. The callback
+ *		       will be executed with a call the GB4XBee::poll() after the
+ *		       response arrives. The response contains infomation about whether
+ *		       or not the connection was successful.
+ */
 bool GB4XBee::connect(uint16_t port, char const *address)
 {
 	int status = xbee_sock_connect(
@@ -616,6 +697,21 @@ bool GB4XBee::connect(uint16_t port, char const *address)
 } 
 
 
+/**
+ * 	Read pending data from the UART buffer after receiveng Socket Receive API
+ * 	frame from the XBee.
+ *	Call this function after XBeeReceive::callback() in xbee_notify.cpp has
+ *	been called. The callback is executed with call to GB4XBee::poll()
+ *	@param message - Output - UART buffer contents containing the received data
+ *	                          will be copied into this buffer
+ *	@param message_len - Input - The total size of the message array before an
+ *	                             overrun occurs
+ *	                     Output - The length of the received message
+ *	@return
+ *		GB4XBee::Return::WAITING_MESSAGE - There is no pending message in the
+ *		                                   UART buffer yet
+ *		GB4XBee::Return::MESSAGE_RECEIVED - Received and copied the message 
+ */
 GB4XBee::Return GB4XBee::getReceivedMessage(uint8_t message[], size_t *message_len)
 {
 	if(false == g_receive.pending())
@@ -629,6 +725,31 @@ GB4XBee::Return GB4XBee::getReceivedMessage(uint8_t message[], size_t *message_l
 }
 
 
+/**
+ *	Encode a message into a socket send API frame and send to the XBee device
+ *	This will transmit the encoded message to endpoint of the connected socket
+ *	@param message - Input - Message to send
+ *	@param message_len - Length of message in bytes
+ *	@return
+ *		GB4XBee::Return::IN_PROGRESS - A messsage is already being sent, wait 
+ *		                               for it to finish before sending this
+ *		                               message 
+ *		GB4XBee::Return::DISCONNECTED - The socket has been disconnected. It
+ *		                                should be closed and a new one created 
+ *		GB4XBee::Return::BUFFER_FULL - The UART buffer is full, wait for it to
+ *		                               drain before attempting to send
+ *		GB4XBee::Return::PACKET_ERROR - The UART buffer is not large enough to
+ *		                                fit this API frame. The message should
+ *		                                be broken up into multiple packets.
+ *		GB4XBee::Return::SOCKET_ERROR - There a problem sending on the socket.
+ *		                                The socket should be close and a new
+ *		                                one created
+ *		GB4XBee::Return::MESSAGE_SENT - The message was successfully sent. The
+ *		                                state of the socket will be updated
+ *		                                in XBeeNotify::callback() in
+ *		                                xbee_notify.cpp. The callback is
+ *		                                executed with a call to GB4XBee::poll()
+ */
 GB4XBee::Return GB4XBee::sendMessage(uint8_t message[], size_t message_len)
 {
 	if(State::SENDING == m_state)

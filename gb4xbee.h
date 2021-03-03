@@ -96,16 +96,50 @@ class GB4XBee {
 	State poll();
 	bool connect(uint16_t port, char const *address);
 	Return pollConnectStatus();
-	void startConnectRetryDelay();
-	bool pollConnectRetryDelay();
 	Return getReceivedMessage(uint8_t message[], size_t *message_len);
 	Return sendMessage(uint8_t message[], size_t message_len);
 
 	bool verifyAccessPointName(uint8_t const *value, size_t const len);
-	uint32_t getBaud();
+
+	void startConnectRetryDelay();
+	{
+		connect_retry_delay_start_time = millis();
+	}
+
+	bool pollConnectRetryDelay();
+	{
+		return
+			(millis() - connect_retry_delay_start_time) > 
+			GB4XBEE_CONNECT_RETRY_DELAY_INTERVAL;
+	}
+
+	uint32_t getBaud()
+	{
+		return ser.baudrate;
+	}
+
 	char const *getAPN();
+	{
+		return access_point_name;
+	}
+
 	uint64_t getSerialNumber();
+	{
+		if(m_state < State::BEGIN_API_MODE_COMMAND)
+		{
+			return 0;
+		}
+	
+		return 
+			(static_cast<uint64_t>(xbee.wpan_dev.address.ieee.l[0]) << 32) | 
+			(xbee.wpan_dev.address.ieee.l[1]);
+	}
+
 	State state();
+	{
+		return m_state;
+	}
+
 	uint32_t const cast_guard;
 
 	private:
