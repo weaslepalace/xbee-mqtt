@@ -101,12 +101,12 @@ class GB4XBee {
 
 	bool verifyAccessPointName(uint8_t const *value, size_t const len);
 
-	void startConnectRetryDelay();
+	void startConnectRetryDelay()
 	{
 		connect_retry_delay_start_time = millis();
 	}
 
-	bool pollConnectRetryDelay();
+	bool pollConnectRetryDelay()
 	{
 		return
 			(millis() - connect_retry_delay_start_time) > 
@@ -118,12 +118,12 @@ class GB4XBee {
 		return ser.baudrate;
 	}
 
-	char const *getAPN();
+	char const *getAPN()
 	{
 		return access_point_name;
 	}
 
-	uint64_t getSerialNumber();
+	uint64_t getSerialNumber()
 	{
 		if(m_state < State::BEGIN_API_MODE_COMMAND)
 		{
@@ -135,7 +135,7 @@ class GB4XBee {
 			(xbee.wpan_dev.address.ieee.l[1]);
 	}
 
-	State state();
+	State state()
 	{
 		return m_state;
 	}

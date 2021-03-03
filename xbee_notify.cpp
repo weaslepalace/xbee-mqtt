@@ -17,6 +17,19 @@ XBeeNotify::XBeeNotify()
 }
 
 
+/**
+ *	Callback executed when a socket changes state. It is called by
+ *	xbee_dev_tick() which is called by GB4XBee::poll(). When a socket's state
+ *	changes flags are updated to direct the flow of the state machine.
+ *	@param sockid - The ID of the socket whos state has changed
+ *	@param frame_type - The API frame used to notify of the state change.
+ *	                    Different frame types allow the message byte to be
+ *	                    overloaded
+ *	@param message - Single byte message (more more like a status code)
+ *	                 porviding infomation on how the state changed
+ *	                 0 represents a positive outcome (ie. connection success)
+ *	                 Non-zero represents a negitive outcome (ie. socket error)
+ */
 void XBeeNotify::callback(
 		xbee_sock_t sockid,
 		uint8_t frame_type,
@@ -60,6 +73,13 @@ XBeeReceive::XBeeReceive()
 }
 
 
+/**
+ *	Read received data that was buffered in the a call to
+ *	XBeeReceive::callback()
+ *	@param buffer - Output - Container to read buffered data into
+ *	@param len - Total size of buffer to prevent overrun
+ *	@return Lentgh of buffered data in bytes
+ */
 size_t XBeeReceive::read(uint8_t *buffer, size_t len)
 {
 	if(len > m_payload_len)
@@ -71,6 +91,14 @@ size_t XBeeReceive::read(uint8_t *buffer, size_t len)
 	return len;
 }
 
+
+/**
+ *	Helper function for XBeeReceive::callback()
+ *	Copies received data into a buffer, and sets m_pendign flags to notify the
+ *	state machine
+ *	@param buffer - Input - Buffer containing the received data
+ *	@param len - Length of buffer in bytes
+ */
 void XBeeReceive::write(uint8_t const *buffer, size_t len)
 {
 	if(true == m_pending)
@@ -85,6 +113,21 @@ void XBeeReceive::write(uint8_t const *buffer, size_t len)
 	m_pending = true;	
 }
 
+
+/**
+ *	Callback function called when data has been received from a connected socket.
+ *	Copies the data into a buffer and sets a flag to tell the state machine of
+ *	the pending data.
+ *  Called from within xbee_dev_tick() which is called by GB4XBee::poll()
+ *	Note: This data is not queued, and will be overwritten if not read before 
+ *	      subsequent calls to the callback, thus m_pending must be checked for
+ *	      every call to xbee_dev_tick() if incomming data is expected
+ *	@param sock - The socket the data was received on
+ *	@param status - Seems to always be zero. I have no idea what this is.
+ *	                Must be used internally by the xbee driver
+ *	@param payload - Input - Buffer containing the received data
+ *	@param payload_length - The length of buffer in bytes
+ */
 void XBeeReceive::callback(
 	xbee_sock_t sock,
 	uint8_t status,
